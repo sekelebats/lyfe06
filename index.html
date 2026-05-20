@@ -1,294 +1,127 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiket Bus Sosial Media · Struk Link</title>
-    <style>
-        :root {
-            --bg-body: #d5d0c5;
-            --ticket-bg: #fafaf5;
-            --ink: #1a1a1a;
-            --fade: #8a8a80;
-            --border-dash: #b0a898;
-            --stamp: #c0392b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Segera Hadir - My Awesome SaaS</title>
+  <!-- Font tulisan tangan dari Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Caveat', cursive; /* Font tulisan tangan */
+      padding: 1.5rem;
+    }
 
-        body {
-            background-color: var(--bg-body);
-            font-family: 'Courier New', 'IBM Plex Mono', 'Liberation Mono', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 24px 12px;
-            min-height: 100vh;
-        }
+    .card {
+      background: white;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 1.5rem;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
 
-        .ticket {
-            max-width: 520px;
-            width: 100%;
-            background: var(--ticket-bg);
-            border: 3px solid #000;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
-            padding: 28px 22px 22px;
-            position: relative;
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--ink);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    .emoji-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-        /* Garis putus-putus atas */
-        .ticket::before {
-            content: "";
-            position: absolute;
-            top: 12px;
-            left: 10px;
-            right: 10px;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, #000 0px, #000 6px, transparent 6px, transparent 12px);
-        }
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #2d2d2d;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
 
-        /* Garis putus-putus bawah */
-        .ticket::after {
-            content: "";
-            position: absolute;
-            bottom: 12px;
-            left: 10px;
-            right: 10px;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, #000 0px, #000 6px, transparent 6px, transparent 12px);
-        }
+    .tagline {
+      font-size: 1.8rem;
+      color: #555;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
 
-        .header-ticket {
-            text-align: center;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 8px;
-        }
+    .description {
+      font-size: 1.3rem;
+      color: #4a4a4a;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
 
-        .sub-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--fade);
-            margin-bottom: 6px;
-        }
+    .notify-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-        .divider-dashed {
-            border: none;
-            border-top: 1px dashed #aaa;
-            margin: 6px 0;
-        }
+    .email-input {
+      padding: 0.9rem 1.2rem;
+      font-size: 1.3rem;
+      font-family: 'Caveat', cursive; /* font tulisan tangan di input */
+      border: 2px dashed #bbb;
+      border-radius: 3rem;
+      outline: none;
+      text-align: center;
+      transition: border 0.3s;
+      background: #fefefe;
+    }
 
-        .item-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin: 8px 0;
-        }
+    .email-input:focus {
+      border-color: #e07a5f;
+    }
 
-        .item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-size: 14px;
-            border-bottom: 1px dotted #d5d0c5;
-            padding-bottom: 2px;
-        }
+    .btn {
+      background: #e07a5f;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      font-family: 'Caveat', cursive; /* font tulisan tangan di tombol */
+      font-weight: 700;
+      padding: 0.8rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 6px 12px rgba(224, 122, 95, 0.3);
+    }
 
-        .item-row .platform a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-bottom: 1px solid #000;
-            transition: all 0.15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .item-row .platform a:hover {
-            color: #c0392b;
-            border-bottom-color: #c0392b;
-            background: #fff0f0;
-        }
+    .btn:hover {
+      background: #c96a4f;
+      transform: translateY(-2px);
+    }
 
-        .item-row .price {
-            font-weight: 700;
-            color: #444;
-            letter-spacing: 0.5px;
-        }
-
-        .total-section {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            font-size: 16px;
-            border-top: 2px solid #000;
-            margin-top: 4px;
-            padding-top: 8px;
-        }
-
-        .barcode {
-            text-align: center;
-            font-size: 20px;
-            letter-spacing: 3px;
-            color: #333;
-            margin: 8px 0 4px;
-            user-select: none;
-        }
-
-        .stamp-box {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 4px;
-        }
-        .stamp {
-            color: var(--stamp);
-            border: 2px solid var(--stamp);
-            padding: 4px 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 13px;
-            transform: rotate(-2deg);
-            opacity: 0.85;
-            display: inline-block;
-        }
-
-        .footer-note {
-            font-size: 10px;
-            color: #999;
-            text-align: center;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        @media (max-width: 500px) {
-            .ticket {
-                padding: 20px 14px 16px;
-                font-size: 12px;
-            }
-            .item-row {
-                font-size: 12px;
-            }
-        }
-    </style>
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="ticket">
-        <!-- Header -->
-        <div class="header-ticket">
-            🚌 BUS KATA · TIKET LINK
-        </div>
-        <div class="sub-header">
-            <span>No: 0902 / B</span>
-            <span>21 MEI 2026</span>
-        </div>
-        <hr class="divider-dashed">
-
-        <!-- Daftar platform -->
-        <ul class="item-list">
-            <li class="item-row">
-                <span class="platform">
-                    📷 <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                </span>
-                <span class="price">2.4M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🧵 <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a>
-                </span>
-                <span class="price">1.2M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🐦 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X</a>
-                </span>
-                <span class="price">500M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🎵 <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
-                </span>
-                <span class="price">1.5B</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    📌 <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a>
-                </span>
-                <span class="price">450M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🌐 <a href="https://www.tumblr.com" target="_blank" rel="noopener noreferrer">Tumblr</a>
-                </span>
-                <span class="price">300M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🎧 <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a>
-                </span>
-                <span class="price">200M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    💼 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </span>
-                <span class="price">900M</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    🤖 <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer">Reddit</a>
-                </span>
-                <span class="price">100K+</span>
-            </li>
-            <li class="item-row">
-                <span class="platform">
-                    ▶️ <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
-                </span>
-                <span class="price">2.5B</span>
-            </li>
-        </ul>
-
-        <hr class="divider-dashed">
-
-        <!-- Total -->
-        <div class="total-section">
-            <span>TOTAL PENGGUNA AKTIF</span>
-            <span>∞</span>
-        </div>
-
-        <!-- Barcode imitasi -->
-        <div class="barcode">
-            ||||||| ||| || |||||| || |||
-        </div>
-
-        <!-- Stempel -->
-        <div class="stamp-box">
-            <span class="stamp">✔ VALID</span>
-        </div>
-
-        <div class="footer-note">
-            * Tiket berlaku seumur hidup · klik platform untuk berangkat
-        </div>
-    </div>
-
+  <div class="card">
+    <div class="emoji-icon">✍️</div>
+    <h1>My Awesome SaaS</h1>
+    <p class="tagline">Tulis ide, wujudkan karya.</p>
+    <p class="description">
+      Kami sedang menyiapkan sesuatu yang istimewa untukmu.
+      Bergabunglah sebagai pendengar pertama dan dapatkan akses awal.
+    </p>
+    <form class="notify-form" onsubmit="alert('🎉 Kamu sudah terdaftar! Nantikan kabar dari kami.'); return false;">
+      <input type="email" class="email-input" placeholder="Masukkan email kamu..." required>
+      <button type="submit" class="btn">🔥 Beri Tahu Saya</button>
+    </form>
+    <p class="footer-note">Segera hadir di Product Hunt 🚀</p>
+  </div>
 </body>
 </html>
