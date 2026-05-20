@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZINE LINKS · Social Media Directory</title>
+    <title>Kata Random · Social Media Links</title>
     <style>
         :root {
-            --bg: #f6f6ef;
-            --paper: #fffff0;
-            --ink: #111;
-            --accent: #e60000;
-            --meta: #666;
-            --border: #ddd;
-            --hover: #f9f9f0;
+            --bg: #f5f5f0;
+            --card-bg: #ffffff;
+            --text-gray: #999;
+            --text-dark: #b0b0b0;
+            --link-black: #000;
+            --border: #e0e0d8;
+            --shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         * {
@@ -22,275 +22,110 @@
         }
 
         body {
-            background: #e8e8df;
-            font-family: 'Courier New', 'IBM Plex Mono', monospace;
-            font-size: 13px;
-            line-height: 1.5;
-            color: var(--ink);
+            background-color: #eaeae2;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-gray);
             display: flex;
             justify-content: center;
-            padding: 16px;
+            padding: 24px 12px;
             min-height: 100vh;
-            background-image: repeating-linear-gradient(0deg, #ddd 0px, #ddd 1px, transparent 1px, transparent 30px);
         }
 
         .container {
-            max-width: 750px;
             width: 100%;
-            background: var(--paper);
-            border: 3px solid #000;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.25);
+            max-width: 680px;
             display: flex;
             flex-direction: column;
+            gap: 18px;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER SIMPLE ===== */
         .header {
-            background: #000;
-            color: #fff;
-            padding: 12px 16px;
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            flex-wrap: wrap;
-            border-bottom: 3px solid var(--accent);
-        }
-        .header .logo {
-            font-family: 'Arial Black', 'Impact', sans-serif;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-        .header .edisi {
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
-        }
-
-        /* ===== INTRO BAR ===== */
-        .intro {
-            padding: 8px 16px;
-            background: #f0f0e0;
-            border-bottom: 1px solid #ccc;
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #444;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .intro span {
-            font-weight: 300;
-            font-style: italic;
-            text-transform: none;
-            letter-spacing: 0;
-            color: #888;
-        }
-
-        /* ===== LINK LIST ===== */
-        .link-list {
-            list-style: none;
-            padding: 0;
-            flex: 1;
-        }
-
-        .link-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 12px 16px;
-            border-bottom: 1px solid #e0e0d0;
-            transition: background 0.15s;
-            background: #fffff8;
-        }
-        .link-item:hover {
-            background: var(--hover);
-        }
-
-        /* Nomor ala HN */
-        .num {
-            color: #999;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            min-width: 24px;
-            text-align: right;
-            flex-shrink: 0;
-            padding-top: 2px;
-            user-select: none;
-        }
-
-        /* Ikon */
-        .icon {
-            font-size: 22px;
-            flex-shrink: 0;
-            width: 28px;
             text-align: center;
-            filter: grayscale(0.3);
-        }
-
-        /* Konten */
-        .link-content {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-
-        /* Variasi tipografi judul */
-        .link-title {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-            word-break: break-word;
-            line-height: 1.3;
-            transition: color 0.2s;
-        }
-        .link-title:hover {
-            color: var(--accent);
-        }
-
-        /* Style 1: Bold besar kapital */
-        .title-bold-caps {
-            font-family: 'Arial Black', 'Impact', sans-serif;
-            font-weight: 900;
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: -0.3px;
-        }
-
-        /* Style 2: Light tipis */
-        .title-light {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Style 3: Italic serif */
-        .title-italic {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        /* Style 4: Monospace tebal */
-        .title-mono-bold {
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-
-        /* Style 5: Sans-serif bold dengan underline wavy */
-        .title-sans-wavy {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            text-decoration: underline wavy #e60000 1px;
-            text-underline-offset: 4px;
-        }
-
-        /* Style 6: Kapital kecil */
-        .title-small-caps {
-            font-family: 'Arial Narrow', 'Helvetica Neue', sans-serif;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* Style 7: Bold italic */
-        .title-bold-italic {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: 15px;
-        }
-
-        /* Style 8: Tipis monospace */
-        .title-thin-mono {
-            font-family: 'Courier New', monospace;
-            font-weight: 300;
+            padding: 10px 0 20px;
+            font-family: 'Arial', 'Helvetica Neue', sans-serif;
             font-size: 12px;
-            letter-spacing: 0.8px;
-        }
-
-        /* Deskripsi / subtext */
-        .subtext {
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            color: #888;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: baseline;
-        }
-        .subtext .tag {
-            background: #000;
-            color: #fff;
-            padding: 1px 6px;
-            font-size: 9px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 2px;
+            color: #bbb;
         }
-        .subtext .domain {
-            color: #555;
-            font-weight: 600;
+        .header span {
+            color: #000;
+            font-weight: 700;
         }
 
-        /* ===== SEPARATOR DEKORATIF ===== */
-        .separator {
-            border: none;
-            border-top: 2px dashed #ccc;
-            margin: 0 16px;
+        /* ===== CARD ===== */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s, border-color 0.2s;
+            word-break: break-word;
+        }
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-color: #ccc;
+        }
+
+        /* Teks abu-abu */
+        .card .text {
+            color: #aaa;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        /* Link social media dalam teks */
+        .card .text a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1.5px solid #000;
+            transition: color 0.2s, border-color 0.2s;
+            padding: 0 1px;
+        }
+        .card .text a:hover {
+            color: #e60000;
+            border-bottom-color: #e60000;
+            background: #fff5f5;
+        }
+
+        /* Variasi kecil: ada yang italic, ada yang normal */
+        .card.italic {
+            font-style: italic;
+        }
+        .card.normal {
+            font-style: normal;
         }
 
         /* ===== FOOTER ===== */
         .footer {
-            background: #000;
-            color: #fff;
-            padding: 10px 16px;
             text-align: center;
-            font-family: 'Courier New', monospace;
+            padding: 20px 0;
+            font-family: 'Arial', sans-serif;
             font-size: 10px;
-            text-transform: uppercase;
             letter-spacing: 1.5px;
-            border-top: 3px solid var(--accent);
-            margin-top: auto;
+            text-transform: uppercase;
+            color: #ccc;
         }
         .footer a {
-            color: #ff0;
+            color: #000;
             text-decoration: none;
             font-weight: 700;
         }
         .footer a:hover {
-            background: #fff;
-            color: #000;
+            text-decoration: underline;
         }
 
         @media (max-width: 500px) {
-            .link-item {
-                padding: 10px 8px;
-                gap: 6px;
+            .card {
+                padding: 14px 16px;
             }
-            .icon {
-                font-size: 18px;
-                width: 22px;
-            }
-            .title-bold-caps {
+            body {
                 font-size: 13px;
-            }
-            .title-light {
-                font-size: 12px;
             }
         }
     </style>
@@ -299,203 +134,112 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <span class="logo">⬡ SOCIAL ZINE</span>
-            <span class="edisi">direktori tautan · edisi #001</span>
+            <span>✷</span> fragmen kata · tautan sosial <span>✷</span>
         </div>
 
-        <!-- Intro -->
-        <div class="intro">
-            <span>daftar platform sosial · klik untuk jelajah</span>
-            <span>diperbarui: pagi ini</span>
+        <!-- Card 1 -->
+        <div class="card normal">
+            <span class="text">
+                Pagi ini hujan turun dengan lembut dan aku berpikir tentang 
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> 
+                yang selalu penuh warna meski dunia luar kelabu. Seseorang berkata bahwa 
+                <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a> 
+                lebih tenang, seperti perpustakaan kecil di pojok kota. Aku belum yakin, tapi 
+                angin berbisik pelan membawa aroma kopi dan tanah basah.
+            </span>
         </div>
 
-        <!-- Daftar Link -->
-        <ul class="link-list">
-            <!-- 1. Instagram - bold kapital -->
-            <li class="link-item">
-                <span class="num">1.</span>
-                <span class="icon">📷</span>
-                <div class="link-content">
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="link-title title-bold-caps">
-                        INSTAGRAM · RUANG VISUAL
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(instagram.com)</span>
-                        <span class="tag">foto & reels</span>
-                        <span>2.4M pengguna aktif</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 2. Threads - light tipis -->
-            <li class="link-item">
-                <span class="num">2.</span>
-                <span class="icon">🧵</span>
-                <div class="link-content">
-                    <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer" class="link-title title-light">
-                        Threads — percakapan ringan tanpa beban
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(threads.net)</span>
-                        <span class="tag">mikroblog</span>
-                        <span>oleh tim Instagram</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 3. Twitter / X - italic serif -->
-            <li class="link-item">
-                <span class="num">3.</span>
-                <span class="icon">🐦</span>
-                <div class="link-content">
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="link-title title-italic">
-                        Twitter / X — tempat berita pecah pertama kali
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(twitter.com)</span>
-                        <span class="tag">real-time</span>
-                        <span>500M tweet/hari</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 4. Pinterest - monospace bold -->
-            <li class="link-item">
-                <span class="num">4.</span>
-                <span class="icon">📌</span>
-                <div class="link-content">
-                    <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" class="link-title title-mono-bold">
-                        PINTEREST · INSPIRASI VISUAL
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(pinterest.com)</span>
-                        <span class="tag">moodboard</span>
-                        <span>450M pengguna</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 5. TikTok - sans bold wavy underline -->
-            <li class="link-item">
-                <span class="num">5.</span>
-                <span class="icon">🎵</span>
-                <div class="link-content">
-                    <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" class="link-title title-sans-wavy">
-                        TikTok · algoritma paling adiktif sedunia
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(tiktok.com)</span>
-                        <span class="tag">video pendek</span>
-                        <span>1.5B+ unduhan</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 6. Tumblr - small caps -->
-            <li class="link-item">
-                <span class="num">6.</span>
-                <span class="icon">🌐</span>
-                <div class="link-content">
-                    <a href="https://www.tumblr.com" target="_blank" rel="noopener noreferrer" class="link-title title-small-caps">
-                        TUMBLR · BUDAYA INTERNET
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(tumblr.com)</span>
-                        <span class="tag">blog mikro</span>
-                        <span>estetika indie</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 7. Reddit - bold italic -->
-            <li class="link-item">
-                <span class="num">7.</span>
-                <span class="icon">🤖</span>
-                <div class="link-content">
-                    <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer" class="link-title title-bold-italic">
-                        Reddit — halaman depan internet
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(reddit.com)</span>
-                        <span class="tag">komunitas</span>
-                        <span>100K+ subreddit</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 8. Discord - thin mono -->
-            <li class="link-item">
-                <span class="num">8.</span>
-                <span class="icon">🎧</span>
-                <div class="link-content">
-                    <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="link-title title-thin-mono">
-                        discord · ngobrol santai sambil nugas
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(discord.com)</span>
-                        <span class="tag">voice & chat</span>
-                        <span>gamer & komunitas</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 9. LinkedIn - bold caps lagi untuk penutup -->
-            <li class="link-item">
-                <span class="num">9.</span>
-                <span class="icon">💼</span>
-                <div class="link-content">
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="link-title title-bold-caps">
-                        LINKEDIN · JEJARING PROFESIONAL
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(linkedin.com)</span>
-                        <span class="tag">karir</span>
-                        <span>900M+ anggota</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-        <hr class="separator">
-
-        <!-- Tambahan bonus: "Show ZN" ala Show HN -->
-        <div style="padding: 12px 16px; font-family: 'Courier New', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #444; background: #fafaf0;">
-            🧪 Show ZN: <a href="#" style="color:#000; font-weight:700;">Platform indie yang wajib kamu coba</a> <span style="color:#888; text-transform:none;">(kirim rekomendasi ke redaksi)</span>
+        <!-- Card 2 -->
+        <div class="card italic">
+            <span class="text">
+                Di sebuah kafe yang lampunya redup, dua orang berdebat tentang apakah 
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> 
+                masih relevan sejak berganti nama menjadi X. "Aku lebih suka 
+                <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>," 
+                kata salah satunya, "karena di sana algoritma benar-benar mengenal jiwaku." 
+                Hujan di luar makin deras, dan barista mulai memainkan lagu Sendu.
+            </span>
         </div>
 
-        <ul class="link-list">
-            <li class="link-item">
-                <span class="num">10.</span>
-                <span class="icon">📝</span>
-                <div class="link-content">
-                    <a href="https://bearblog.dev" target="_blank" rel="noopener noreferrer" class="link-title title-italic">
-                        Bear Blog — ngeblog tanpa distraksi
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(bearblog.dev)</span>
-                        <span class="tag">minimalis</span>
-                    </div>
-                </div>
-            </li>
-            <li class="link-item">
-                <span class="num">11.</span>
-                <span class="icon">🕸️</span>
-                <div class="link-content">
-                    <a href="https://neocities.org" target="_blank" rel="noopener noreferrer" class="link-title title-mono-bold">
-                        NEOCITIES · WEB 1.0 REVIVAL
-                    </a>
-                    <div class="subtext">
-                        <span class="domain">(neocities.org)</span>
-                        <span class="tag">hosting gratis</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <!-- Card 3 -->
+        <div class="card normal">
+            <span class="text">
+                Malam minggu biasanya sepi, tapi kali ini aku tenggelam di 
+                <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a>, 
+                menyusun papan inspirasi untuk proyek yang entah kapan dimulai. Tiba-tiba notifikasi 
+                <a href="https://www.tumblr.com" target="_blank" rel="noopener noreferrer">Tumblr</a> 
+                berbunyi—seseorang me-reblog foto pucuk teh dari tahun 2014. Aku tersenyum kecil, 
+                internet kadang terasa seperti mesin waktu yang kacau dan indah.
+            </span>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card italic">
+            <span class="text">
+                Kucing tetangga melompati pagar dan duduk manis di teras. Aku memotretnya dan 
+                langsung mengunggah ke 
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> 
+                dengan filter hangat. Seseorang dari 
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a> 
+                mengirim stiker kucing sebagai balasan. "Ini kenapa internet diciptakan," 
+                gumamku sambil mengelus bulu kucing yang masih basah oleh embun.
+            </span>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card normal">
+            <span class="text">
+                Buku yang kubaca minggu ini bercerita tentang seorang desainer yang meninggalkan 
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a> 
+                karena lelah dengan pesan "Halo, saya merekrut untuk posisi...". Ia malah membuat 
+                akun rahasia di 
+                <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer">Reddit</a> 
+                dan menghabiskan waktu di subreddit tanaman hias. Katanya, daun monstera lebih 
+                jujur daripada algoritma rekrutmen.
+            </span>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card italic">
+            <span class="text">
+                Senin pagi selalu berat, tapi secangkir teh dan scroll singkat di 
+                <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a> 
+                membuatnya lebih ringan. Seseorang menulis tentang bagaimana 
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a> 
+                merekomendasikan video memasak tepat saat ia sedang lapar—kebetulan atau sihir? 
+                "Mungkin keduanya," jawabku pada layar yang tak bisa mendengar.
+            </span>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card normal">
+            <span class="text">
+                Di tengah malam yang sunyi, aku membuka 
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> 
+                dan membaca utas panjang tentang sejarah tipografi. Seseorang menyebut bahwa 
+                <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a> 
+                adalah arsip visual terbesar umat manusia, dan aku setuju. Lalu aku tertidur 
+                dengan ponsel di tangan, bermimpi tentang poster-poster vintage dan font serif.
+            </span>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card italic">
+            <span class="text">
+                Sahabatku bilang dia ingin keluar dari semua sosial media kecuali 
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a> 
+                karena di sana tidak ada likes, tidak ada followers, hanya obrolan hangat seperti 
+                warung kopi digital. Aku mengangguk pelan sambil membuka 
+                <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a> 
+                dan tertawa pada video kucing yang mencoba membuka pintu. Mungkin keduanya bisa 
+                hidup berdampingan, pikirku.
+            </span>
+        </div>
 
         <!-- Footer -->
-        <footer class="footer">
-            <p>☠️ halaman statis · bebas javascript · <a href="#">arsip</a> · <a href="#">kirim tautan</a></p>
-        </footer>
+        <div class="footer">
+            <p>fragmen acak · semua tautan nyata · <a href="#">bagikan tulisan ini</a></p>
+        </div>
     </div>
 </body>
 </html>
