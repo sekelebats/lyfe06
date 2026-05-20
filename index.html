@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Perpustakaan · Social Media</title>
+    <title>Tiket Bus Sosial Media · Struk Link</title>
     <style>
         :root {
-            --bg-body: #d9d2c0;
-            --card-bg: #f7f0df;
-            --ink-gray: #8a8a7e;
-            --ink-black: #1a1a1a;
-            --stamp-red: #b33a3a;
-            --border: #c2b59b;
-            --slip-bg: #fdf7ed;
+            --bg-body: #d5d0c5;
+            --ticket-bg: #fafaf5;
+            --ink: #1a1a1a;
+            --fade: #8a8a80;
+            --border-dash: #b0a898;
+            --stamp: #c0392b;
         }
 
         * {
@@ -23,262 +22,271 @@
 
         body {
             background-color: var(--bg-body);
-            font-family: 'Courier New', 'IBM Plex Mono', monospace;
-            font-size: 14px;
-            line-height: 1.7;
-            color: var(--ink-gray);
+            font-family: 'Courier New', 'IBM Plex Mono', 'Liberation Mono', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 24px 12px;
             min-height: 100vh;
-            background-image: radial-gradient(circle at 10% 20%, rgba(0,0,0,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
         }
 
-        .library-card {
-            max-width: 780px;
+        .ticket {
+            max-width: 520px;
             width: 100%;
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: 1px;
-            box-shadow: 6px 6px 12px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,240,0.5);
-            display: flex;
-            flex-wrap: wrap;
+            background: var(--ticket-bg);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+            padding: 28px 22px 22px;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Noda kopi imajiner */
-        .library-card::after {
-            content: "";
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            width: 90px;
-            height: 70px;
-            background: radial-gradient(circle at 30% 40%, rgba(139, 119, 90, 0.35) 0%, transparent 70%);
-            border-radius: 60% 40% 50% 45%;
-            transform: rotate(-15deg);
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Kolom kiri: slip peminjaman */
-        .due-slip {
-            width: 200px;
-            background: var(--slip-bg);
-            border-right: 2px solid var(--border);
-            padding: 18px 14px;
-            font-size: 12px;
-            color: #5e5e54;
-            letter-spacing: 0.3px;
-            position: relative;
-            z-index: 1;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--ink);
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .due-slip h3 {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 1px dashed #b0a590;
-            padding-bottom: 6px;
-            margin-bottom: 4px;
-            color: #4a4540;
-            font-weight: 700;
+        /* Garis putus-putus atas */
+        .ticket::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            right: 10px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #000 0px, #000 6px, transparent 6px, transparent 12px);
         }
 
-        .due-slip table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
+        /* Garis putus-putus bawah */
+        .ticket::after {
+            content: "";
+            position: absolute;
+            bottom: 12px;
+            left: 10px;
+            right: 10px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #000 0px, #000 6px, transparent 6px, transparent 12px);
         }
-        .due-slip th {
-            text-align: left;
-            font-weight: 700;
-            border-bottom: 1px solid #b0a590;
-            padding: 3px 0;
-            color: #4a4540;
-        }
-        .due-slip td {
-            padding: 4px 0;
-            border-bottom: 1px dotted #d6cdb8;
-            color: #6b655a;
-        }
-        .due-slip .stamp {
-            margin-top: 12px;
-            font-size: 10px;
-            color: var(--stamp-red);
-            border: 1.5px solid var(--stamp-red);
-            display: inline-block;
-            padding: 4px 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            transform: rotate(-3deg);
-            opacity: 0.8;
+
+        .header-ticket {
             text-align: center;
-            align-self: flex-start;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 8px;
         }
 
-        /* Kolom kanan: narasi */
-        .catalog-text {
-            flex: 1;
-            padding: 22px 24px;
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--fade);
+            margin-bottom: 6px;
+        }
+
+        .divider-dashed {
+            border: none;
+            border-top: 1px dashed #aaa;
+            margin: 6px 0;
+        }
+
+        .item-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 8px 0;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             font-size: 14px;
-            line-height: 1.8;
-            color: #8a8a7e;
-            position: relative;
-            z-index: 1;
-            columns: 2;
-            column-gap: 24px;
-            column-rule: 1px dotted #c2b59b;
+            border-bottom: 1px dotted #d5d0c5;
+            padding-bottom: 2px;
         }
 
-        .catalog-text p {
-            margin-bottom: 1em;
-            text-indent: 0.8em;
-            break-inside: avoid;
-        }
-        .catalog-text p:first-child {
-            text-indent: 0;
-        }
-
-        /* Link social media di dalam teks */
-        .catalog-text a {
+        .item-row .platform a {
             color: #000;
             text-decoration: none;
             font-weight: 700;
-            background: rgba(0,0,0,0.05);
-            padding: 0 3px;
-            border-radius: 2px;
-            transition: all 0.2s;
-            border-bottom: 1.5px solid #000;
+            border-bottom: 1px solid #000;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
-        .catalog-text a:hover {
-            color: #b33a3a;
+        .item-row .platform a:hover {
+            color: #c0392b;
+            border-bottom-color: #c0392b;
             background: #fff0f0;
-            border-bottom-color: #b33a3a;
         }
 
-        /* Header katalog */
-        .catalog-header {
-            width: 100%;
-            border-bottom: 2px solid var(--border);
-            padding: 10px 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
+        .item-row .price {
             font-weight: 700;
-            color: #4a4540;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: #444;
+            letter-spacing: 0.5px;
+        }
+
+        .total-section {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            background: #efe4cf;
-            z-index: 1;
-        }
-        .catalog-header span {
-            font-size: 10px;
-            color: #8a7e6e;
-            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 16px;
+            border-top: 2px solid #000;
+            margin-top: 4px;
+            padding-top: 8px;
         }
 
-        /* Responsive: tumpuk jadi satu kolom */
-        @media (max-width: 650px) {
-            .library-card {
-                flex-direction: column;
+        .barcode {
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 3px;
+            color: #333;
+            margin: 8px 0 4px;
+            user-select: none;
+        }
+
+        .stamp-box {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 4px;
+        }
+        .stamp {
+            color: var(--stamp);
+            border: 2px solid var(--stamp);
+            padding: 4px 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 13px;
+            transform: rotate(-2deg);
+            opacity: 0.85;
+            display: inline-block;
+        }
+
+        .footer-note {
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 500px) {
+            .ticket {
+                padding: 20px 14px 16px;
+                font-size: 12px;
             }
-            .due-slip {
-                width: 100%;
-                border-right: none;
-                border-bottom: 2px solid var(--border);
-                padding: 14px;
-            }
-            .catalog-text {
-                columns: 1;
-                padding: 16px;
+            .item-row {
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="library-card">
-        <!-- Header kartu -->
-        <div class="catalog-header">
-            KATALOG UMUM · P-0902
-            <span>subyek: sosial digital</span>
+    <div class="ticket">
+        <!-- Header -->
+        <div class="header-ticket">
+            🚌 BUS KATA · TIKET LINK
+        </div>
+        <div class="sub-header">
+            <span>No: 0902 / B</span>
+            <span>21 MEI 2026</span>
+        </div>
+        <hr class="divider-dashed">
+
+        <!-- Daftar platform -->
+        <ul class="item-list">
+            <li class="item-row">
+                <span class="platform">
+                    📷 <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </span>
+                <span class="price">2.4M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🧵 <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a>
+                </span>
+                <span class="price">1.2M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🐦 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                </span>
+                <span class="price">500M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🎵 <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
+                </span>
+                <span class="price">1.5B</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    📌 <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a>
+                </span>
+                <span class="price">450M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🌐 <a href="https://www.tumblr.com" target="_blank" rel="noopener noreferrer">Tumblr</a>
+                </span>
+                <span class="price">300M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🎧 <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a>
+                </span>
+                <span class="price">200M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    💼 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </span>
+                <span class="price">900M</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    🤖 <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer">Reddit</a>
+                </span>
+                <span class="price">100K+</span>
+            </li>
+            <li class="item-row">
+                <span class="platform">
+                    ▶️ <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </span>
+                <span class="price">2.5B</span>
+            </li>
+        </ul>
+
+        <hr class="divider-dashed">
+
+        <!-- Total -->
+        <div class="total-section">
+            <span>TOTAL PENGGUNA AKTIF</span>
+            <span>∞</span>
         </div>
 
-        <!-- Slip peminjaman di kiri -->
-        <div class="due-slip">
-            <h3>📋 Date Due</h3>
-            <table>
-                <tr><th>Tgl</th><th>Peminjam</th></tr>
-                <tr><td>03/09</td><td>R. Ayu</td></tr>
-                <tr><td>17/09</td><td>B. Dika</td></tr>
-                <tr><td>01/10</td><td>M. Putri</td></tr>
-                <tr><td>15/10</td><td>S. Arif</td></tr>
-                <tr><td>29/10</td><td>N. Indah</td></tr>
-                <tr><td>12/11</td><td>P. Wira</td></tr>
-            </table>
-            <div class="stamp">TELAT</div>
-            <div style="margin-top: auto; font-size: 10px; color: #9a9280; font-style: italic;">
-                * slip ini bukan bukti kepemilikan
-            </div>
+        <!-- Barcode imitasi -->
+        <div class="barcode">
+            ||||||| ||| || |||||| || |||
         </div>
 
-        <!-- Teks narasi di kanan -->
-        <div class="catalog-text">
-            <p>
-                Catatan pagi: aku memulai dengan 
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> 
-                yang menampilkan foto-foto hujan di layar, sementara 
-                <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a> 
-                menenangkan dengan diskusi ringan. Seseorang menyebut bahwa 
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> 
-                sudah berubah, tapi tetap menjadi sumber berita pertama.
-            </p>
-            <p>
-                Saat kopi mendingin, aku menyelami 
-                <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a> 
-                mencari referensi visual, sementara 
-                <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a> 
-                menyuguhkan video pendek yang entah kenapa selalu relevan. 
-                <a href="https://www.tumblr.com" target="_blank" rel="noopener noreferrer">Tumblr</a> 
-                mengingatkanku pada era blogging yang lebih personal.
-            </p>
-            <p>
-                Kucing tetangga muncul lagi, dan fotonya langsung terunggah ke 
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>. 
-                Di 
-                <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a>, 
-                teman-teman mengirimkan stiker lucu. "Internet diciptakan untuk ini," gumamku, 
-                sembari mengecek 
-                <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer">Reddit</a> 
-                untuk subreddit tanaman hias.
-            </p>
-            <p>
-                Menjelang siang, 
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a> 
-                mengirim pesan rekrutmen, tapi aku lebih tertarik pada 
-                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a> 
-                yang merekomendasikan dokumenter tentang mesin tik kuno.
-            </p>
-            <p>
-                Malam tiba, dan 
-                <a href="https://www.threads.net" target="_blank" rel="noopener noreferrer">Threads</a> 
-                kembali menjadi tempat berbagi renungan. 
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> 
-                dipenuhi utas sejarah, sementara 
-                <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a> 
-                menjadi arsip visual yang tak ada habisnya. Aku tertidur di antara tab.
-            </p>
+        <!-- Stempel -->
+        <div class="stamp-box">
+            <span class="stamp">✔ VALID</span>
+        </div>
+
+        <div class="footer-note">
+            * Tiket berlaku seumur hidup · klik platform untuk berangkat
         </div>
     </div>
 
