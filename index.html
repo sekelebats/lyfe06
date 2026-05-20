@@ -2,144 +2,303 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Belajar HTML: Gambar, URL, Code, Blockquote, dan Format Teks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Belajar HTML Lengkap | Gambar, Link, Code, Format Teks</title>
     <style>
-        /* Style agar inline code dan block code lebih jelas */
-        code {
-            background-color: #f0f0f0;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.95em;
+        /* Reset & dasar responsif */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 16px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 20px 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        /* Ukuran font lebih besar di mobile */
+        html {
+            font-size: 16px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+            .container {
+                padding: 16px;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; margin-top: 1.2em; }
+        }
+        h1, h2, h3 {
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+            color: #1e293b;
+        }
+        h1 { margin-top: 0; font-size: 1.9rem; border-left: 5px solid #3b82f6; padding-left: 12px; }
+        h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+        
+        /* Kode */
+        code, .inline-code {
+            background-color: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: #0f172a;
         }
         pre {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-            padding: 10px;
-            border-radius: 6px;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            padding: 14px;
+            border-radius: 12px;
             overflow-x: auto;
+            margin: 16px 0;
         }
         pre code {
             background: none;
+            color: inherit;
             padding: 0;
+            font-size: 0.85rem;
         }
         blockquote {
-            border-left: 4px solid #ccc;
-            margin: 20px 0;
-            padding-left: 20px;
-            font-style: italic;
-            color: #555;
+            border-left: 4px solid #94a3b8;
+            background: #f8fafc;
+            padding: 12px 20px;
+            margin: 16px 0;
+            border-radius: 12px;
+            font-style: normal;
+            color: #334155;
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 16px;
+            display: block;
+            margin: 12px 0;
+            border: 1px solid #e2e8f0;
         }
-        /* Tambahan style untuk demo format teks */
-        .demo-format {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
+        /* Kartu contoh format teks */
+        .card-demo {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 16px;
             margin: 20px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
-        mark {
-            background-color: yellow;
-            padding: 0 2px;
+        .demo-item {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+        }
+        .demo-label {
+            font-weight: 600;
+            color: #3b82f6;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .demo-result {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .demo-code {
+            background: #eef2ff;
+            padding: 8px 10px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            color: #1e293b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f1f5f9;
+        }
+        hr {
+            margin: 24px 0;
+            border: none;
+            height: 1px;
+            background: #e2e8f0;
+        }
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+<div class="container">
+    <h1>📘 Belajar HTML: Contoh Langsung + Cara Nulis</h1>
+    <p>Halaman ini dirancang <strong>responsif untuk HP & PC</strong>. Setiap fitur ditampilkan <strong>hasilnya</strong> diikuti dengan <strong>kode HTML</strong> yang ditulis. Jadi kamu bisa lihat dan langsung tiru!</p>
 
-    <h1>📚 Belajar Elemen HTML Dasar</h1>
-    <p>Halaman ini berisi contoh <strong>gambar</strong>, <strong>link</strong>, <strong>kode</strong>, <strong>blockquote</strong>, dan berbagai macam <strong>format teks</strong>.</p>
+    <!-- ========= 1. GAMBAR ========= -->
+    <h2>🖼️ 1. Gambar</h2>
+    <img src="https://placehold.co/600x300/f0f9ff/3b82f6?text=Contoh+Gambar+Responsif" alt="Contoh gambar belajar HTML">
+    <div class="demo-code">
+        &lt;img src="https://placehold.co/600x300/...?text=Contoh+Gambar" alt="deskripsi"&gt;
+    </div>
+    <p>Gunakan <code>&lt;img&gt;</code> dengan atribut <code>src</code> (URL gambar) dan <code>alt</code> (teks alternatif).</p>
 
-    <!-- ========== 1. GAMBAR ========== -->
-    <h2>🖼️ Gambar</h2>
-    <img src="https://via.placeholder.com/300x200?text=Contoh+Gambar" alt="Contoh gambar placeholder">
-    <p>Gunakan tag <code>&lt;img src="url_gambar" alt="deskripsi"&gt;</code>.</p>
+    <!-- ========= 2. URL / LINK ========= -->
+    <h2>🔗 2. Link / URL</h2>
+    <p>Contoh link: <a href="https://www.google.com" target="_blank">Kunjungi Google (buka tab baru)</a></p>
+    <div class="demo-code">
+        &lt;a href="https://www.google.com" target="_blank"&gt;Kunjungi Google&lt;/a&gt;
+    </div>
 
-    <!-- ========== 2. URL / LINK ========== -->
-    <h2>🔗 URL / Link</h2>
-    <p>Kunjungi <a href="https://www.google.com" target="_blank">Google</a> menggunakan tag <code>&lt;a&gt;</code>.</p>
+    <!-- ========= 3. INLINE CODE ========= -->
+    <h2>✨ 3. Inline Code Highlights</h2>
+    <p>Di dalam paragraf, kamu bisa menulis kode seperti <code>console.log("Halo Dunia")</code> menggunakan tag <code>&lt;code&gt;</code>.</p>
+    <div class="demo-code">
+        &lt;code&gt;console.log("Halo Dunia")&lt;/code&gt;
+    </div>
 
-    <!-- ========== 3. INLINE CODE HIGHLIGHTS ========== -->
-    <h2>✨ Inline Code Highlights</h2>
-    <p>Untuk menandai potongan kode di dalam teks, gunakan tag <code>&lt;code&gt;</code>. Contoh: fungsi <code>console.log("Halo")</code> akan mencetak pesan.</p>
-
-    <!-- ========== 4. BLOCK CODE ========== -->
-    <h2>📦 Block Code</h2>
+    <!-- ========= 4. BLOCK CODE (Multi-baris) ========= -->
+    <h2>📦 4. Block Code (Pre + Code)</h2>
     <pre><code>
-// Contoh block code dalam HTML/CSS/JS
+// Ini contoh block code
 function sapa(nama) {
     return `Halo, ${nama}!`;
 }
-console.log(sapa("Dunia"));
+console.log(sapa("Belajar HTML"));
     </code></pre>
-    <p>Gunakan <code>&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code> untuk menampilkan kode multi-baris.</p>
-
-    <!-- ========== 5. BLOCKQUOTE ========== -->
-    <h2>💬 Blockquote</h2>
-    <blockquote>
-        "Kutipan ini menunjukkan penggunaan blockquote. Biasanya digunakan untuk mengutip pernyataan dari sumber lain."
-        <footer>— Seseorang Bijak</footer>
-    </blockquote>
-    <p>Gunakan tag <code>&lt;blockquote&gt;</code> untuk membuat kutipan panjang.</p>
-
-    <!-- ========== 6. FORMAT TEKS (TAMBAHAN) ========== -->
-    <h2>✍️ Format Teks: Tebal, Miring, Underline, dan Lainnya</h2>
-    <div class="demo-format">
-        <p><strong>Teks tebal (strong)</strong> — menggunakan tag <code>&lt;strong&gt;</code> atau <code>&lt;b&gt;</code>.</p>
-        <p><em>Teks miring (emphasized)</em> — menggunakan tag <code>&lt;em&gt;</code> atau <code>&lt;i&gt;</code>.</p>
-        <p><u>Teks bergaris bawah (underline)</u> — menggunakan tag <code>&lt;u&gt;</code>.</p>
-        <p><mark>Teks ditandai (highlight)</mark> — menggunakan tag <code>&lt;mark&gt;</code>.</p>
-        <p><small>Teks kecil (small)</small> — menggunakan tag <code>&lt;small&gt;</code>.</p>
-        <p><del>Teks dicoret (deleted)</del> — menggunakan tag <code>&lt;del&gt;</code>.</p>
-        <p><ins>Teks bergaris bawah sebagai sisipan (inserted)</ins> — menggunakan tag <code>&lt;ins&gt;</code>.</p>
-        <p>Contoh <sup>superscript</sup> (pangkat) seperti E = mc<sup>2</sup> — tag <code>&lt;sup&gt;</code>.</p>
-        <p>Contoh <sub>subscript</sub> (bawah) seperti H<sub>2</sub>O — tag <code>&lt;sub&gt;</code>.</p>
-        <p>Kombinasi: <strong><em><u>Tebal, miring, dan bergaris bawah</u></em></strong>.</p>
+    <div class="demo-code">
+        &lt;pre&gt;&lt;code&gt; ... kode di sini ... &lt;/code&gt;&lt;/pre&gt;
     </div>
 
-    <!-- ========== 7. DAFTAR (LIST) ========== -->
-    <h2>📋 Daftar (List)</h2>
-    <p>Daftar tidak berurutan (<code>&lt;ul&gt;</code>):</p>
-    <ul>
-        <li>Item pertama</li>
-        <li>Item kedua</li>
-        <li>Item ketiga</li>
-    </ul>
-    <p>Daftar berurutan (<code>&lt;ol&gt;</code>):</p>
-    <ol>
-        <li>Langkah pertama</li>
-        <li>Langkah kedua</li>
-        <li>Langkah ketiga</li>
-    </ol>
-    <p>Daftar definisi (<code>&lt;dl&gt;</code>):</p>
-    <dl>
-        <dt>HTML</dt>
-        <dd>HyperText Markup Language, kerangka halaman web.</dd>
-        <dt>CSS</dt>
-        <dd>Cascading Style Sheets, untuk tampilan.</dd>
-        <dt>JavaScript</dt>
-        <dd>Bahasa pemrograman untuk interaktivitas.</dd>
-    </dl>
+    <!-- ========= 5. BLOCKQUOTE ========= -->
+    <h2>💬 5. Blockquote</h2>
+    <blockquote>
+        "Ini adalah kutipan panjang. Biasanya digunakan untuk mengambil teks dari sumber lain. Belajar HTML itu menyenangkan!"
+        <footer>— Dari seorang pelajar</footer>
+    </blockquote>
+    <div class="demo-code">
+        &lt;blockquote&gt; ... teks kutipan ... &lt;footer&gt;— sumber&lt;/footer&gt;&lt;/blockquote&gt;
+    </div>
 
-    <!-- ========== 8. TABEL SEDERHANA (OPSIONAL) ========== -->
-    <h2>📊 Tabel Sederhana</h2>
-    <table border="1" cellpadding="8" style="border-collapse: collapse;">
+    <!-- ========= 6. FORMAT TEKS LENGKAP + CONTOH HASIL & CARA NULIS ========= -->
+    <h2>✍️ 6. Format Teks (Tebal, Miring, Underline, dll)</h2>
+    <p>Setiap contoh di bawah menunjukkan <strong>hasil yang terlihat</strong> dan di bawahnya ada <strong>cara penulisan kode</strong>.</p>
+    
+    <div class="card-demo">
+        <div class="demo-item">
+            <div class="demo-label">🔤 Tebal (Strong / B)</div>
+            <div class="demo-result"><strong>Ini teks tebal yang penting</strong></div>
+            <div class="demo-code">&lt;strong&gt;Ini teks tebal yang penting&lt;/strong&gt; atau &lt;b&gt;...&lt;/b&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">📖 Miring (Em / I)</div>
+            <div class="demo-result"><em>Teks miring untuk penekanan</em></div>
+            <div class="demo-code">&lt;em&gt;Teks miring untuk penekanan&lt;/em&gt; atau &lt;i&gt;...&lt;/i&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">✍️ Underline (Garis Bawah)</div>
+            <div class="demo-result"><u>Teks ini bergaris bawah</u></div>
+            <div class="demo-code">&lt;u&gt;Teks ini bergaris bawah&lt;/u&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">🟨 Highlight (Mark)</div>
+            <div class="demo-result"><mark>Teks yang disorot seperti stabilo</mark></div>
+            <div class="demo-code">&lt;mark&gt;Teks yang disorot seperti stabilo&lt;/mark&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">🔻 Teks Kecil (Small)</div>
+            <div class="demo-result"><small>Catatan kecil atau disclaimer</small></div>
+            <div class="demo-code">&lt;small&gt;Catatan kecil atau disclaimer&lt;/small&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">❌ Teks Dicoret (Del)</div>
+            <div class="demo-result"><del>Harga lama Rp 200.000</del> Harga baru Rp 150.000</div>
+            <div class="demo-code">&lt;del&gt;Harga lama Rp 200.000&lt;/del&gt; Harga baru Rp 150.000</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">➕ Teks Sisipan (Ins)</div>
+            <div class="demo-result"><ins>Ini teks yang ditambahkan kemudian</ins></div>
+            <div class="demo-code">&lt;ins&gt;Ini teks yang ditambahkan kemudian&lt;/ins&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">🔢 Superscript (Pangkat)</div>
+            <div class="demo-result">Rumus luas: m<sup>2</sup> , E = mc<sup>2</sup></div>
+            <div class="demo-code">m&lt;sup&gt;2&lt;/sup&gt; dan E = mc&lt;sup&gt;2&lt;/sup&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">⬇️ Subscript (Subskrip)</div>
+            <div class="demo-result">Air = H<sub>2</sub>O , CO<sub>2</sub></div>
+            <div class="demo-code">H&lt;sub&gt;2&lt;/sub&gt;O dan CO&lt;sub&gt;2&lt;/sub&gt;</div>
+        </div>
+        <div class="demo-item">
+            <div class="demo-label">🎨 Kombinasi</div>
+            <div class="demo-result"><strong><em><u>Tebal, miring, dan garis bawah sekaligus</u></em></strong></div>
+            <div class="demo-code">&lt;strong&gt;&lt;em&gt;&lt;u&gt;Tebal, miring, dan garis bawah&lt;/u&gt;&lt;/em&gt;&lt;/strong&gt;</div>
+        </div>
+    </div>
+
+    <!-- ========= 7. DAFTAR (LIST) ========= -->
+    <h2>📋 7. Daftar (List)</h2>
+    <p><strong>Unordered List (bullet)</strong> pakai &lt;ul&gt; &lt;li&gt;</p>
+    <ul>
+        <li>Belajar HTML</li>
+        <li>Belajar CSS</li>
+        <li>Belajar JavaScript</li>
+    </ul>
+    <div class="demo-code">
+        &lt;ul&gt;&lt;li&gt;Belajar HTML&lt;/li&gt;&lt;li&gt;Belajar CSS&lt;/li&gt;&lt;/ul&gt;
+    </div>
+
+    <p><strong>Ordered List (angka)</strong> pakai &lt;ol&gt; &lt;li&gt;</p>
+    <ol>
+        <li>Langkah 1: Buka editor</li>
+        <li>Langkah 2: Tulis HTML</li>
+        <li>Langkah 3: Simpan .html</li>
+    </ol>
+    <div class="demo-code">
+        &lt;ol&gt;&lt;li&gt;Langkah 1...&lt;/li&gt;&lt;li&gt;Langkah 2...&lt;/li&gt;&lt;/ol&gt;
+    </div>
+
+    <!-- ========= 8. TABEL SEDERHANA ========= -->
+    <h2>📊 8. Tabel</h2>
+    <table>
         <thead>
-            <tr><th>Tag</th><th>Fungsi</th></tr>
+            <tr><th>Tag</th><th>Fungsi</th><th>Contoh Hasil</th></tr>
         </thead>
         <tbody>
-            <tr><td><code>&lt;strong&gt;</code></td><td>Tebal (penting)</td></tr>
-            <tr><td><code>&lt;em&gt;</code></td><td>Miring (penekanan)</td></tr>
-            <tr><td><code>&lt;u&gt;</code></td><td>Garis bawah</td></tr>
-            <tr><td><code>&lt;mark&gt;</code></td><td>Menyorot teks</td></tr>
+            <tr><td><code>&lt;strong&gt;</code></td><td>Tebal (penting)</td><td><strong>tebal</strong></td></tr>
+            <tr><td><code>&lt;em&gt;</code></td><td>Miring</td><td><em>miring</em></td></tr>
+            <tr><td><code>&lt;u&gt;</code></td><td>Garis bawah</td><td><u>underline</u></td></tr>
+            <tr><td><code>&lt;mark&gt;</code></td><td>Highlight</td><td><mark>mark</mark></td></tr>
         </tbody>
     </table>
 
     <hr>
-    <p><strong>Tips:</strong> Coba gabungkan berbagai tag untuk melihat hasilnya. Selamat belajar HTML! 🎉</p>
-
+    <p>✅ <strong>Tips untuk mobile:</strong> Halaman ini sudah pakai <code>viewport</code> dan ukuran font yang nyaman di HP. Setiap contoh memperlihatkan <strong>hasil</strong> dan <strong>kode penulisan</strong> yang benar. Selamat belajar membuat website!</p>
+    <p style="text-align: center; color: #475569;">© 2025 — Contoh HTML Lengkap untuk Pemula</p>
+</div>
 </body>
 </html>
