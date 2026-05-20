@@ -2,481 +2,395 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Belajar HTML SUPER LENGKAP | Contoh + Kode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Klasik - Link Static</title>
     <style>
-        /* RESET & GLOBAL RESPONSIF */
+        :root {
+            --bg: #ffffff;
+            --header-bg: #cee3f8;
+            --header-border: #5f99cf;
+            --text: #222;
+            --meta: #888;
+            --link: #0000ee;
+            --link-visited: #551a8b;
+            --domain: #888;
+            --vote-color: #c6c6c6;
+            --border: #e0e0e0;
+            --hover-bg: #f5f5f5;
+            --button-bg: #eff7ff;
+            --button-border: #c3d9f0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #eef2f5;
-            padding: 16px;
-            line-height: 1.5;
-            color: #0f172a;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 28px;
-            padding: 24px 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        /* Ukuran font nyaman di mobile */
-        html {
-            font-size: 16px;
-        }
-        @media (max-width: 640px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 16px;
-            }
-            h1 { font-size: 1.6rem; }
-            h2 { font-size: 1.3rem; }
-        }
-        h1, h2, h3 {
-            margin: 1.2em 0 0.6em 0;
-            font-weight: 600;
-        }
-        h1 {
-            margin-top: 0;
-            background: linear-gradient(135deg, #1e293b, #2d3a5e);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            border-left: 5px solid #3b82f6;
-            padding-left: 15px;
-        }
-        h2 {
-            border-bottom: 3px solid #cbd5e1;
-            padding-bottom: 8px;
-            margin-top: 1.8em;
-        }
-        h3 {
-            margin: 1em 0 0.5em;
-            color: #2563eb;
-        }
-        /* Kode styling */
-        code, .inline-code {
-            background: #eef2ff;
-            padding: 0.2rem 0.4rem;
-            border-radius: 8px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.85em;
-            color: #0f172a;
-        }
-        pre {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 14px;
-            border-radius: 16px;
-            overflow-x: auto;
-            margin: 12px 0;
-        }
-        pre code {
-            background: none;
-            color: inherit;
-            padding: 0;
-            font-size: 0.8rem;
-        }
-        /* Kartu contoh */
-        .demo-card {
-            background: #f9fafb;
-            border-radius: 20px;
-            margin: 24px 0;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-        }
-        .demo-result {
-            padding: 18px;
-            background: white;
-            border-bottom: 1px dashed #cbd5e1;
-        }
-        .demo-code {
-            padding: 12px 16px;
-            background: #f1f5f9;
-            font-family: monospace;
-            font-size: 0.85rem;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-        .label-badge {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-        }
-        img, video, audio, iframe {
-            max-width: 100%;
-            border-radius: 12px;
-            margin: 8px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 12px 0;
-        }
-        th, td {
-            border: 1px solid #cbd5e1;
-            padding: 8px;
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background: #e2e8f0;
-        }
-        form input, form select, form textarea, form button {
-            padding: 8px 12px;
-            margin: 5px 0;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 300px;
-        }
-        button {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .grid-2 {
+            background-color: #f0f0f0;
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text);
             display: flex;
-            gap: 16px;
+            justify-content: center;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background-color: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 4px rgba(0,0,0,0.05);
+        }
+
+        /* Header ala Reddit */
+        .header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--header-border);
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
         }
-        hr {
-            margin: 24px 0;
+
+        .header .logo {
+            font-weight: bold;
+            font-size: 18px;
+            color: #336699;
+            text-decoration: none;
+            letter-spacing: -0.5px;
         }
-        footer {
+
+        .header .subreddit-bar {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            margin-left: 8px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 8px;
+            font-size: 11px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .header .nav-links a {
+            color: #336699;
+            text-decoration: none;
+            padding: 2px 4px;
+        }
+        .header .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tab menu */
+        .tabmenu {
+            display: flex;
+            list-style: none;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ccc;
+            padding: 0 10px;
+            gap: 0;
+            font-size: 12px;
+        }
+        .tabmenu li {
+            border: 1px solid #ccc;
+            border-bottom: none;
+            margin-bottom: -1px;
+            background-color: #fff;
+        }
+        .tabmenu li.selected {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            font-weight: bold;
+        }
+        .tabmenu a {
+            display: block;
+            padding: 4px 10px;
+            color: #336699;
+            text-decoration: none;
+        }
+        .tabmenu a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Link list */
+        .link-list {
+            list-style: none;
+            padding: 0;
+            flex: 1;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.1s;
+        }
+
+        .link-item:hover {
+            background-color: var(--hover-bg);
+        }
+
+        /* Vote box */
+        .vote-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 40px;
+            flex-shrink: 0;
+            color: var(--vote-color);
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .arrow {
+            font-size: 16px;
+            cursor: default;
+            color: #bbb;
+            user-select: none;
+        }
+        .arrow.up:hover {
+            color: #ff4500;
+        }
+        .arrow.down:hover {
+            color: #9494ff;
+        }
+
+        .vote-count {
+            font-size: 13px;
+            color: #666;
+            margin: 2px 0;
+        }
+
+        /* Konten */
+        .entry {
+            flex: 1;
+            min-width: 0;
+        }
+        .entry .title {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        .entry .title a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        .entry .title a:visited {
+            color: var(--link-visited);
+        }
+        .entry .title a:hover {
+            text-decoration: underline;
+        }
+        .entry .domain {
+            font-size: 11px;
+            color: var(--domain);
+            margin-left: 4px;
+        }
+        .entry .tagline {
+            font-size: 11px;
+            color: var(--meta);
+            margin-top: 1px;
+        }
+        .entry .tagline a {
+            color: var(--meta);
+            text-decoration: none;
+        }
+        .entry .tagline a:hover {
+            text-decoration: underline;
+        }
+        .entry .tagline .subreddit {
+            color: #336699;
+            font-weight: bold;
+        }
+        .entry .tagline .subreddit:hover {
+            text-decoration: underline;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 50px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            flex-shrink: 0;
+            margin-left: 4px;
+            overflow: hidden;
+        }
+
+        .footer {
             text-align: center;
-            margin-top: 32px;
-            padding-top: 16px;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.85rem;
+            padding: 12px;
+            font-size: 11px;
+            color: #888;
+            border-top: 1px solid #ccc;
+            margin-top: auto;
+        }
+        .footer a {
+            color: #336699;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .vote-box {
+                min-width: 32px;
+                font-size: 12px;
+            }
+            .entry .title {
+                font-size: 12px;
+            }
+            .thumbnail {
+                width: 50px;
+                height: 36px;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>🌟 Belajar HTML Super Lengkap</h1>
-    <p>Halaman ini berisi <strong>40+ contoh elemen HTML</strong> lengkap dengan <strong>hasil yang terlihat</strong> dan <strong>kode penulisan</strong> di bawahnya. Cocok untuk pemula yang ingin langsung praktek.</p>
-
-    <!-- ================= 1. FORMAT TEKS DASAR ================= -->
-    <h2>📝 1. Format Teks Dasar</h2>
-    
-    <div class="demo-card">
-        <div class="demo-result">
-            <strong>Teks tebal (strong)</strong> — <b>tebal versi b</b><br>
-            <em>Teks miring (em)</em> — <i>miring versi i</i><br>
-            <u>Garis bawah (underline)</u><br>
-            <mark>Highlight kuning (mark)</mark><br>
-            <small>Teks kecil (small)</small><br>
-            <del>Teks dicoret (del)</del> — <ins>Teks sisipan (ins)</ins><br>
-            Contoh pangkat: x<sup>2</sup> + y<sup>2</sup> <br>
-            Contoh subskrip: H<sub>2</sub>O , CO<sub>2</sub>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="#" class="logo">reddit</a>
+            <span class="subreddit-bar">r/indonesia</span>
+            <span class="nav-links">
+                <a href="#">hot</a>
+                <a href="#">new</a>
+                <a href="#">rising</a>
+                <a href="#">controversial</a>
+                <a href="#">top</a>
+            </span>
         </div>
-        <div class="demo-code">
-            &lt;strong&gt;Teks tebal&lt;/strong&gt; &lt;b&gt;tebal&lt;/b&gt;<br>
-            &lt;em&gt;miring&lt;/em&gt; &lt;i&gt;miring&lt;/i&gt;<br>
-            &lt;u&gt;garis bawah&lt;/u&gt;<br>
-            &lt;mark&gt;highlight&lt;/mark&gt;<br>
-            &lt;small&gt;teks kecil&lt;/small&gt;<br>
-            &lt;del&gt;coret&lt;/del&gt; &lt;ins&gt;sisipan&lt;/ins&gt;<br>
-            x&lt;sup&gt;2&lt;/sup&gt; , H&lt;sub&gt;2&lt;/sub&gt;O
+
+        <!-- Tab menu komentar/terkait -->
+        <ul class="tabmenu">
+            <li class="selected"><a href="#">komentar</a></li>
+            <li><a href="#">terkait</a></li>
+            <li><a href="#">lainnya</a></li>
+        </ul>
+
+        <!-- Daftar post -->
+        <ul class="link-list">
+            <!-- Post 1 -->
+            <li class="link-item">
+                <div class="vote-box">
+                    <span class="arrow up">▲</span>
+                    <span class="vote-count">247</span>
+                    <span class="arrow down">▼</span>
+                </div>
+                <div class="entry">
+                    <div class="title">
+                        <a href="#">Cara membangun startup dari nol dengan modal minim</a>
+                        <span class="domain">(medium.com)</span>
+                    </div>
+                    <div class="tagline">
+                        submitted 4 jam lalu by <a href="#">kodekreator</a> to <a href="#" class="subreddit">r/startup</a> • <a href="#">87 komentar</a>
+                    </div>
+                </div>
+                <div class="thumbnail">gambar</div>
+            </li>
+
+            <!-- Post 2 -->
+            <li class="link-item">
+                <div class="vote-box">
+                    <span class="arrow up">▲</span>
+                    <span class="vote-count">182</span>
+                    <span class="arrow down">▼</span>
+                </div>
+                <div class="entry">
+                    <div class="title">
+                        <a href="#">Perbandingan framework CSS: Tailwind vs Bootstrap vs Vanilla</a>
+                        <span class="domain">(css-tricks.com)</span>
+                    </div>
+                    <div class="tagline">
+                        submitted 7 jam lalu by <a href="#">frontend_dev</a> to <a href="#" class="subreddit">r/webdev</a> • <a href="#">54 komentar</a>
+                    </div>
+                </div>
+                <div class="thumbnail">gambar</div>
+            </li>
+
+            <!-- Post 3 -->
+            <li class="link-item">
+                <div class="vote-box">
+                    <span class="arrow up">▲</span>
+                    <span class="vote-count">96</span>
+                    <span class="arrow down">▼</span>
+                </div>
+                <div class="entry">
+                    <div class="title">
+                        <a href="#">Kenapa air putih penting bagi produktivitas programmer</a>
+                        <span class="domain">(self.productivity)</span>
+                    </div>
+                    <div class="tagline">
+                        submitted 2 jam lalu by <a href="#">devhealth</a> to <a href="#" class="subreddit">r/productivity</a> • <a href="#">31 komentar</a>
+                    </div>
+                </div>
+                <div class="thumbnail">gambar</div>
+            </li>
+
+            <!-- Post 4 -->
+            <li class="link-item">
+                <div class="vote-box">
+                    <span class="arrow up">▲</span>
+                    <span class="vote-count">342</span>
+                    <span class="arrow down">▼</span>
+                </div>
+                <div class="entry">
+                    <div class="title">
+                        <a href="#">UI/UX gratis: kumpulan layout statis ala HN, Reddit, Lobsters</a>
+                        <span class="domain">(github.com)</span>
+                    </div>
+                    <div class="tagline">
+                        submitted 12 jam lalu by <a href="#">opensource_ui</a> to <a href="#" class="subreddit">r/web_design</a> • <a href="#">120 komentar</a>
+                    </div>
+                </div>
+                <div class="thumbnail">gambar</div>
+            </li>
+
+            <!-- Post 5 -->
+            <li class="link-item">
+                <div class="vote-box">
+                    <span class="arrow up">▲</span>
+                    <span class="vote-count">58</span>
+                    <span class="arrow down">▼</span>
+                </div>
+                <div class="entry">
+                    <div class="title">
+                        <a href="#">Review kopi nusantara: dari Aceh sampai Papua</a>
+                        <span class="domain">(kopisenja.com)</span>
+                    </div>
+                    <div class="tagline">
+                        submitted 5 jam lalu by <a href="#">coffeelover</a> to <a href="#" class="subreddit">r/indonesia</a> • <a href="#">22 komentar</a>
+                    </div>
+                </div>
+                <div class="thumbnail">gambar</div>
+            </li>
+        </ul>
+
+        <!-- Footer -->
+        <div class="footer">
+            <a href="#">about</a> • <a href="#">blog</a> • <a href="#">mobile</a> • <a href="#">reddit gold</a><br>
+            <span>Halaman statis bergaya Reddit Klasik — tidak ada penyimpanan.</span>
         </div>
     </div>
-
-    <!-- ================= 2. GAMBAR, LINK, IFRAME ================= -->
-    <h2>🖼️ 2. Gambar, Link, Iframe</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <img src="https://placehold.co/500x200/3b82f6/white?text=Contoh+Gambar" alt="contoh gambar" style="max-width:100%">
-            <br>
-            <a href="https://www.google.com" target="_blank">Klik link ini ke Google (buka tab baru)</a>
-            <br><br>
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="demo-code">
-            &lt;img src="url_gambar" alt="deskripsi"&gt;<br>
-            &lt;a href="https://google.com" target="_blank"&gt;teks link&lt;/a&gt;<br>
-            &lt;iframe src="https://youtu.be/..." width="100%" height="200"&gt;&lt;/iframe&gt;
-        </div>
-    </div>
-
-    <!-- ================= 3. LIST (UL, OL, DL, NESTED) ================= -->
-    <h2>📋 3. Daftar (List)</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <p><strong>Unordered List (bullet)</strong></p>
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-            </ul>
-            <p><strong>Ordered List (angka)</strong></p>
-            <ol>
-                <li>Langkah pertama</li>
-                <li>Langkah kedua</li>
-                <li>Langkah ketiga</li>
-            </ol>
-            <p><strong>Nested List (list di dalam list)</strong></p>
-            <ul>
-                <li>Frontend
-                    <ul>
-                        <li>React</li>
-                        <li>Vue</li>
-                    </ul>
-                </li>
-                <li>Backend
-                    <ul>
-                        <li>Node.js</li>
-                        <li>Python</li>
-                    </ul>
-                </li>
-            </ul>
-            <p><strong>Definition List (dl, dt, dd)</strong></p>
-            <dl>
-                <dt>HTML</dt>
-                <dd>HyperText Markup Language (kerangka web)</dd>
-                <dt>CSS</dt>
-                <dd>Cascading Style Sheets (tampilan)</dd>
-            </dl>
-        </div>
-        <div class="demo-code">
-            &lt;ul&gt;&lt;li&gt;item&lt;/li&gt;&lt;/ul&gt;<br>
-            &lt;ol&gt;&lt;li&gt;langkah&lt;/li&gt;&lt;/ol&gt;<br>
-            &lt;ul&gt;&lt;li&gt;Level 1&lt;ul&gt;&lt;li&gt;Level 2&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;<br>
-            &lt;dl&gt;&lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;penjelasan&lt;/dd&gt;&lt;/dl&gt;
-        </div>
-    </div>
-
-    <!-- ================= 4. TABEL ================= -->
-    <h2>📊 4. Tabel</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <table>
-                <thead>
-                    <tr><th>Nama Tag</th><th>Fungsi</th><th>Contoh</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>&lt;strong&gt;</td><td>tebal</td><td><strong>tebal</strong></td></tr>
-                    <tr><td>&lt;em&gt;</td><td>miring</td><td><em>miring</em></td></tr>
-                    <tr><td colspan="3">Tabel bisa juga punya colspan</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="demo-code">
-            &lt;table border="1"&gt;<br>
-            &nbsp;&nbsp;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Header&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;<br>
-            &nbsp;&nbsp;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;<br>
-            &lt;/table&gt;
-        </div>
-    </div>
-
-    <!-- ================= 5. FORMULIR (INPUT, SELECT, TEXTAREA, BUTTON) ================= -->
-    <h2>📝 5. Formulir (Form)</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <form onsubmit="alert('Contoh submit: data terkirim (demo)'); return false;">
-                <label>Nama:</label><br>
-                <input type="text" placeholder="Masukkan nama"><br><br>
-                <label>Email:</label><br>
-                <input type="email" placeholder="email@contoh.com"><br><br>
-                <label>Jenis kelamin:</label><br>
-                <input type="radio" name="gender" value="laki"> Laki
-                <input type="radio" name="gender" value="perempuan"> Perempuan<br><br>
-                <label>Hobi:</label><br>
-                <input type="checkbox" value="membaca"> Membaca
-                <input type="checkbox" value="coding"> Coding<br><br>
-                <label>Pilih kota:</label><br>
-                <select>
-                    <option>Jakarta</option>
-                    <option>Surabaya</option>
-                    <option>Bandung</option>
-                </select><br><br>
-                <label>Pesan:</label><br>
-                <textarea rows="3" placeholder="Tulis sesuatu..."></textarea><br><br>
-                <button type="submit">Kirim (demo)</button>
-            </form>
-        </div>
-        <div class="demo-code">
-            &lt;form&gt;<br>
-            &nbsp;&nbsp;&lt;input type="text"&gt;<br>
-            &nbsp;&nbsp;&lt;input type="radio"&gt; &lt;input type="checkbox"&gt;<br>
-            &nbsp;&nbsp;&lt;select&gt;&lt;option&gt;...&lt;/option&gt;&lt;/select&gt;<br>
-            &nbsp;&nbsp;&lt;textarea&gt;&lt;/textarea&gt;<br>
-            &nbsp;&nbsp;&lt;button&gt;Kirim&lt;/button&gt;<br>
-            &lt;/form&gt;
-        </div>
-    </div>
-
-    <!-- ================= 6. AUDIO DAN VIDEO ================= -->
-    <h2>🎵 6. Audio & Video (Media)</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <p><strong>Audio contoh (suara beep)</strong></p>
-            <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Audio tidak support</audio>
-            <p><strong>Video contoh (YouTube langsung via iframe sudah di atas, ini video HTML5)</strong></p>
-            <video width="100%" controls poster="https://placehold.co/400x200/000/fff?text=Video+Preview">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Browser tidak support video.
-            </video>
-        </div>
-        <div class="demo-code">
-            &lt;audio controls src="url_audio.mp3"&gt;&lt;/audio&gt;<br>
-            &lt;video controls width="100%"&gt;&lt;source src="url_video.mp4" type="video/mp4"&gt;&lt;/video&gt;
-        </div>
-    </div>
-
-    <!-- ================= 7. BLOCKCODE, BLOCKQUOTE, PRE ================= -->
-    <h2>💬 7. Blockquote & Preformatted</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <blockquote>
-                "Ini adalah contoh blockquote untuk kutipan panjang. Biasanya digunakan untuk mengutip pernyataan dari sumber lain."
-                <footer>— Penulis Kreatif</footer>
-            </blockquote>
-            <pre>
-  Teks dengan   spasi   dan indentasi
-  akan tetap terjaga oleh tag &lt;pre&gt;
-            </pre>
-        </div>
-        <div class="demo-code">
-            &lt;blockquote&gt; kutipan &lt;footer&gt;sumber&lt;/footer&gt; &lt;/blockquote&gt;<br>
-            &lt;pre&gt; teks dengan spasi &lt;/pre&gt;
-        </div>
-    </div>
-
-    <!-- ================= 8. ENTITAS KARAKTER (HTML ENTITIES) ================= -->
-    <h2>🔣 8. Entitas Karakter (HTML Entities)</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            &lt; &gt; &amp; &quot; &apos; &copy; &reg; &euro; &yen; <br>
-            Contoh: 5 &lt; 10 , 10 &gt; 5 , Harga: 100 &euro;
-        </div>
-        <div class="demo-code">
-            &amp;lt; = &lt; <br>
-            &amp;gt; = &gt; <br>
-            &amp;copy; = © <br>
-            &amp;euro; = €
-        </div>
-    </div>
-
-    <!-- ================= 9. SEMANTIC HTML (header, nav, main, section, article, aside, footer) ================= -->
-    <h2>🧱 9. Semantic HTML</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <header style="background:#e2e8f0; padding:8px; border-radius:12px;">
-                <h3 style="margin:0;">&lt;header&gt; - Bagian Kepala</h3>
-            </header>
-            <nav style="background:#cbd5e1; padding:6px; margin:8px 0; border-radius:12px;">
-                🔗 &lt;nav&gt;: <a href="#">Home</a> | <a href="#">About</a>
-            </nav>
-            <main style="background:#f8fafc; padding:8px; border-radius:12px;">
-                &lt;main&gt;: Konten utama halaman.
-                <section>&lt;section&gt;: Kelompok topik</section>
-                <article>&lt;article&gt;: Artikel mandiri</article>
-            </main>
-            <aside style="background:#e2e8f0; padding:6px; border-radius:12px; margin-top:8px;">
-                &lt;aside&gt;: sidebar atau informasi tambahan
-            </aside>
-            <footer style="background:#cbd5e1; padding:6px; border-radius:12px; margin-top:8px;">
-                &lt;footer&gt;: footer hak cipta
-            </footer>
-        </div>
-        <div class="demo-code">
-            &lt;header&gt; ... &lt;/header&gt;<br>
-            &lt;nav&gt; ... &lt;/nav&gt;<br>
-            &lt;main&gt; &lt;section&gt; &lt;article&gt; &lt;/main&gt;<br>
-            &lt;aside&gt; &lt;footer&gt;
-        </div>
-    </div>
-
-    <!-- ================= 10. DIV & SPAN, CSS INLINE ================= -->
-    <h2>🎨 10. Div, Span & Styling Inline</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <div style="background:#dbeafe; padding:10px; border-radius:12px;">
-                Ini adalah &lt;div&gt; (block element)
-                <span style="background:#fecaca; padding:4px;">Ini &lt;span&gt; (inline)</span> di dalam div.
-            </div>
-        </div>
-        <div class="demo-code">
-            &lt;div style="background:blue;"&gt; blok &lt;span style="color:red;"&gt; teks merah &lt;/span&gt; &lt;/div&gt;
-        </div>
-    </div>
-
-    <!-- ================= 11. HORIZONTAL RULE & LINE BREAK ================= -->
-    <h2>📏 11. Garis Horizontal & Baris Baru</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            Teks sebelum garis<hr>Garis horizontal di atas<br>
-            Kalimat ini pake &lt;br&gt; untuk pindah baris.
-        </div>
-        <div class="demo-code">
-            &lt;hr&gt; untuk garis horizontal<br>
-            &lt;br&gt; untuk baris baru
-        </div>
-    </div>
-
-    <!-- ================= 12. BUTTON & INTERAKSI SEDERHANA ================= -->
-    <h2>🖱️ 12. Tombol (Button) & Event</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <button onclick="alert('Kamu menekan tombol!')">Klik Saya</button>
-            <button disabled>Tombol Nonaktif</button>
-        </div>
-        <div class="demo-code">
-            &lt;button onclick="alert('Halo')"&gt;Klik&lt;/button&gt;
-        </div>
-    </div>
-
-    <!-- ================= 13. PROGRESS & METER ================= -->
-    <h2>📈 13. Progress & Meter</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <label>Progress belajar: </label>
-            <progress value="70" max="100">70%</progress><br>
-            <label>Meter (storage): </label>
-            <meter value="0.6" min="0" max="1">60%</meter>
-        </div>
-        <div class="demo-code">
-            &lt;progress value="70" max="100"&gt;&lt;/progress&gt;<br>
-            &lt;meter value="0.6" min="0" max="1"&gt;&lt;/meter&gt;
-        </div>
-    </div>
-
-    <!-- ================= 14. DETAILS & SUMMARY ================= -->
-    <h2>📁 14. Details & Summary (spoiler)</h2>
-    <div class="demo-card">
-        <div class="demo-result">
-            <details>
-                <summary>Klik untuk lihat jawaban</summary>
-                <p>Ini adalah konten tersembunyi yang muncul saat diklik. Cocok untuk FAQ.</p>
-            </details>
-        </div>
-        <div class="demo-code">
-            &lt;details&gt;&lt;summary&gt;Judul&lt;/summary&gt; isi tersembunyi &lt;/details&gt;
-        </div>
-    </div>
-
-    <hr>
-    <footer>
-        🎉 <strong>Selamat!</strong> Kamu sudah belajar 40+ contoh elemen HTML. <br>
-        Setiap contoh menampilkan <strong>hasil</strong> dan <strong>cara menulis kode</strong>. <br>
-        Simpan file ini (.html) dan buka di HP atau PC. Kembangkan terus!
-    </footer>
-</div>
 </body>
 </html>
