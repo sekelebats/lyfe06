@@ -3,302 +3,480 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Belajar HTML Lengkap | Gambar, Link, Code, Format Teks</title>
+    <title>Belajar HTML SUPER LENGKAP | Contoh + Kode</title>
     <style>
-        /* Reset & dasar responsif */
+        /* RESET & GLOBAL RESPONSIF */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f5f7fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f5;
             padding: 16px;
             line-height: 1.5;
+            color: #0f172a;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
-            border-radius: 24px;
-            padding: 20px 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 28px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
-        /* Ukuran font lebih besar di mobile */
+        /* Ukuran font nyaman di mobile */
         html {
             font-size: 16px;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             body {
-                padding: 12px;
+                padding: 10px;
             }
             .container {
                 padding: 16px;
             }
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.4rem; margin-top: 1.2em; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
         }
         h1, h2, h3 {
-            margin-top: 1.2em;
-            margin-bottom: 0.5em;
-            color: #1e293b;
+            margin: 1.2em 0 0.6em 0;
+            font-weight: 600;
         }
-        h1 { margin-top: 0; font-size: 1.9rem; border-left: 5px solid #3b82f6; padding-left: 12px; }
-        h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-        
-        /* Kode */
+        h1 {
+            margin-top: 0;
+            background: linear-gradient(135deg, #1e293b, #2d3a5e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border-left: 5px solid #3b82f6;
+            padding-left: 15px;
+        }
+        h2 {
+            border-bottom: 3px solid #cbd5e1;
+            padding-bottom: 8px;
+            margin-top: 1.8em;
+        }
+        h3 {
+            margin: 1em 0 0.5em;
+            color: #2563eb;
+        }
+        /* Kode styling */
         code, .inline-code {
-            background-color: #f1f5f9;
+            background: #eef2ff;
             padding: 0.2rem 0.4rem;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #0f172a;
         }
         pre {
-            background-color: #0f172a;
+            background: #0f172a;
             color: #e2e8f0;
             padding: 14px;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow-x: auto;
-            margin: 16px 0;
+            margin: 12px 0;
         }
         pre code {
             background: none;
             color: inherit;
             padding: 0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
-        blockquote {
-            border-left: 4px solid #94a3b8;
-            background: #f8fafc;
-            padding: 12px 20px;
-            margin: 16px 0;
-            border-radius: 12px;
-            font-style: normal;
-            color: #334155;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 16px;
-            display: block;
-            margin: 12px 0;
-            border: 1px solid #e2e8f0;
-        }
-        /* Kartu contoh format teks */
-        .card-demo {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+        /* Kartu contoh */
+        .demo-card {
+            background: #f9fafb;
             border-radius: 20px;
-            padding: 16px;
-            margin: 20px 0;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-        }
-        .demo-item {
-            background: #f8fafc;
-            padding: 12px;
-            border-radius: 14px;
-            margin-bottom: 12px;
-        }
-        .demo-label {
-            font-weight: 600;
-            color: #3b82f6;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin: 24px 0;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
         }
         .demo-result {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            padding: 18px;
+            background: white;
+            border-bottom: 1px dashed #cbd5e1;
         }
         .demo-code {
-            background: #eef2ff;
-            padding: 8px 10px;
-            border-radius: 12px;
+            padding: 12px 16px;
+            background: #f1f5f9;
             font-family: monospace;
             font-size: 0.85rem;
-            word-break: break-all;
-            color: #1e293b;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .label-badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        img, video, audio, iframe {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 8px 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 0.9rem;
+            margin: 12px 0;
         }
         th, td {
             border: 1px solid #cbd5e1;
-            padding: 10px 8px;
+            padding: 8px;
             text-align: left;
             vertical-align: top;
         }
         th {
-            background: #f1f5f9;
+            background: #e2e8f0;
+        }
+        form input, form select, form textarea, form button {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .grid-2 {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
         hr {
             margin: 24px 0;
-            border: none;
-            height: 1px;
-            background: #e2e8f0;
         }
-        a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>📘 Belajar HTML: Contoh Langsung + Cara Nulis</h1>
-    <p>Halaman ini dirancang <strong>responsif untuk HP & PC</strong>. Setiap fitur ditampilkan <strong>hasilnya</strong> diikuti dengan <strong>kode HTML</strong> yang ditulis. Jadi kamu bisa lihat dan langsung tiru!</p>
+    <h1>🌟 Belajar HTML Super Lengkap</h1>
+    <p>Halaman ini berisi <strong>40+ contoh elemen HTML</strong> lengkap dengan <strong>hasil yang terlihat</strong> dan <strong>kode penulisan</strong> di bawahnya. Cocok untuk pemula yang ingin langsung praktek.</p>
 
-    <!-- ========= 1. GAMBAR ========= -->
-    <h2>🖼️ 1. Gambar</h2>
-    <img src="https://placehold.co/600x300/f0f9ff/3b82f6?text=Contoh+Gambar+Responsif" alt="Contoh gambar belajar HTML">
-    <div class="demo-code">
-        &lt;img src="https://placehold.co/600x300/...?text=Contoh+Gambar" alt="deskripsi"&gt;
-    </div>
-    <p>Gunakan <code>&lt;img&gt;</code> dengan atribut <code>src</code> (URL gambar) dan <code>alt</code> (teks alternatif).</p>
-
-    <!-- ========= 2. URL / LINK ========= -->
-    <h2>🔗 2. Link / URL</h2>
-    <p>Contoh link: <a href="https://www.google.com" target="_blank">Kunjungi Google (buka tab baru)</a></p>
-    <div class="demo-code">
-        &lt;a href="https://www.google.com" target="_blank"&gt;Kunjungi Google&lt;/a&gt;
-    </div>
-
-    <!-- ========= 3. INLINE CODE ========= -->
-    <h2>✨ 3. Inline Code Highlights</h2>
-    <p>Di dalam paragraf, kamu bisa menulis kode seperti <code>console.log("Halo Dunia")</code> menggunakan tag <code>&lt;code&gt;</code>.</p>
-    <div class="demo-code">
-        &lt;code&gt;console.log("Halo Dunia")&lt;/code&gt;
-    </div>
-
-    <!-- ========= 4. BLOCK CODE (Multi-baris) ========= -->
-    <h2>📦 4. Block Code (Pre + Code)</h2>
-    <pre><code>
-// Ini contoh block code
-function sapa(nama) {
-    return `Halo, ${nama}!`;
-}
-console.log(sapa("Belajar HTML"));
-    </code></pre>
-    <div class="demo-code">
-        &lt;pre&gt;&lt;code&gt; ... kode di sini ... &lt;/code&gt;&lt;/pre&gt;
-    </div>
-
-    <!-- ========= 5. BLOCKQUOTE ========= -->
-    <h2>💬 5. Blockquote</h2>
-    <blockquote>
-        "Ini adalah kutipan panjang. Biasanya digunakan untuk mengambil teks dari sumber lain. Belajar HTML itu menyenangkan!"
-        <footer>— Dari seorang pelajar</footer>
-    </blockquote>
-    <div class="demo-code">
-        &lt;blockquote&gt; ... teks kutipan ... &lt;footer&gt;— sumber&lt;/footer&gt;&lt;/blockquote&gt;
-    </div>
-
-    <!-- ========= 6. FORMAT TEKS LENGKAP + CONTOH HASIL & CARA NULIS ========= -->
-    <h2>✍️ 6. Format Teks (Tebal, Miring, Underline, dll)</h2>
-    <p>Setiap contoh di bawah menunjukkan <strong>hasil yang terlihat</strong> dan di bawahnya ada <strong>cara penulisan kode</strong>.</p>
+    <!-- ================= 1. FORMAT TEKS DASAR ================= -->
+    <h2>📝 1. Format Teks Dasar</h2>
     
-    <div class="card-demo">
-        <div class="demo-item">
-            <div class="demo-label">🔤 Tebal (Strong / B)</div>
-            <div class="demo-result"><strong>Ini teks tebal yang penting</strong></div>
-            <div class="demo-code">&lt;strong&gt;Ini teks tebal yang penting&lt;/strong&gt; atau &lt;b&gt;...&lt;/b&gt;</div>
+    <div class="demo-card">
+        <div class="demo-result">
+            <strong>Teks tebal (strong)</strong> — <b>tebal versi b</b><br>
+            <em>Teks miring (em)</em> — <i>miring versi i</i><br>
+            <u>Garis bawah (underline)</u><br>
+            <mark>Highlight kuning (mark)</mark><br>
+            <small>Teks kecil (small)</small><br>
+            <del>Teks dicoret (del)</del> — <ins>Teks sisipan (ins)</ins><br>
+            Contoh pangkat: x<sup>2</sup> + y<sup>2</sup> <br>
+            Contoh subskrip: H<sub>2</sub>O , CO<sub>2</sub>
         </div>
-        <div class="demo-item">
-            <div class="demo-label">📖 Miring (Em / I)</div>
-            <div class="demo-result"><em>Teks miring untuk penekanan</em></div>
-            <div class="demo-code">&lt;em&gt;Teks miring untuk penekanan&lt;/em&gt; atau &lt;i&gt;...&lt;/i&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">✍️ Underline (Garis Bawah)</div>
-            <div class="demo-result"><u>Teks ini bergaris bawah</u></div>
-            <div class="demo-code">&lt;u&gt;Teks ini bergaris bawah&lt;/u&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">🟨 Highlight (Mark)</div>
-            <div class="demo-result"><mark>Teks yang disorot seperti stabilo</mark></div>
-            <div class="demo-code">&lt;mark&gt;Teks yang disorot seperti stabilo&lt;/mark&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">🔻 Teks Kecil (Small)</div>
-            <div class="demo-result"><small>Catatan kecil atau disclaimer</small></div>
-            <div class="demo-code">&lt;small&gt;Catatan kecil atau disclaimer&lt;/small&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">❌ Teks Dicoret (Del)</div>
-            <div class="demo-result"><del>Harga lama Rp 200.000</del> Harga baru Rp 150.000</div>
-            <div class="demo-code">&lt;del&gt;Harga lama Rp 200.000&lt;/del&gt; Harga baru Rp 150.000</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">➕ Teks Sisipan (Ins)</div>
-            <div class="demo-result"><ins>Ini teks yang ditambahkan kemudian</ins></div>
-            <div class="demo-code">&lt;ins&gt;Ini teks yang ditambahkan kemudian&lt;/ins&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">🔢 Superscript (Pangkat)</div>
-            <div class="demo-result">Rumus luas: m<sup>2</sup> , E = mc<sup>2</sup></div>
-            <div class="demo-code">m&lt;sup&gt;2&lt;/sup&gt; dan E = mc&lt;sup&gt;2&lt;/sup&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">⬇️ Subscript (Subskrip)</div>
-            <div class="demo-result">Air = H<sub>2</sub>O , CO<sub>2</sub></div>
-            <div class="demo-code">H&lt;sub&gt;2&lt;/sub&gt;O dan CO&lt;sub&gt;2&lt;/sub&gt;</div>
-        </div>
-        <div class="demo-item">
-            <div class="demo-label">🎨 Kombinasi</div>
-            <div class="demo-result"><strong><em><u>Tebal, miring, dan garis bawah sekaligus</u></em></strong></div>
-            <div class="demo-code">&lt;strong&gt;&lt;em&gt;&lt;u&gt;Tebal, miring, dan garis bawah&lt;/u&gt;&lt;/em&gt;&lt;/strong&gt;</div>
+        <div class="demo-code">
+            &lt;strong&gt;Teks tebal&lt;/strong&gt; &lt;b&gt;tebal&lt;/b&gt;<br>
+            &lt;em&gt;miring&lt;/em&gt; &lt;i&gt;miring&lt;/i&gt;<br>
+            &lt;u&gt;garis bawah&lt;/u&gt;<br>
+            &lt;mark&gt;highlight&lt;/mark&gt;<br>
+            &lt;small&gt;teks kecil&lt;/small&gt;<br>
+            &lt;del&gt;coret&lt;/del&gt; &lt;ins&gt;sisipan&lt;/ins&gt;<br>
+            x&lt;sup&gt;2&lt;/sup&gt; , H&lt;sub&gt;2&lt;/sub&gt;O
         </div>
     </div>
 
-    <!-- ========= 7. DAFTAR (LIST) ========= -->
-    <h2>📋 7. Daftar (List)</h2>
-    <p><strong>Unordered List (bullet)</strong> pakai &lt;ul&gt; &lt;li&gt;</p>
-    <ul>
-        <li>Belajar HTML</li>
-        <li>Belajar CSS</li>
-        <li>Belajar JavaScript</li>
-    </ul>
-    <div class="demo-code">
-        &lt;ul&gt;&lt;li&gt;Belajar HTML&lt;/li&gt;&lt;li&gt;Belajar CSS&lt;/li&gt;&lt;/ul&gt;
+    <!-- ================= 2. GAMBAR, LINK, IFRAME ================= -->
+    <h2>🖼️ 2. Gambar, Link, Iframe</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <img src="https://placehold.co/500x200/3b82f6/white?text=Contoh+Gambar" alt="contoh gambar" style="max-width:100%">
+            <br>
+            <a href="https://www.google.com" target="_blank">Klik link ini ke Google (buka tab baru)</a>
+            <br><br>
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="demo-code">
+            &lt;img src="url_gambar" alt="deskripsi"&gt;<br>
+            &lt;a href="https://google.com" target="_blank"&gt;teks link&lt;/a&gt;<br>
+            &lt;iframe src="https://youtu.be/..." width="100%" height="200"&gt;&lt;/iframe&gt;
+        </div>
     </div>
 
-    <p><strong>Ordered List (angka)</strong> pakai &lt;ol&gt; &lt;li&gt;</p>
-    <ol>
-        <li>Langkah 1: Buka editor</li>
-        <li>Langkah 2: Tulis HTML</li>
-        <li>Langkah 3: Simpan .html</li>
-    </ol>
-    <div class="demo-code">
-        &lt;ol&gt;&lt;li&gt;Langkah 1...&lt;/li&gt;&lt;li&gt;Langkah 2...&lt;/li&gt;&lt;/ol&gt;
+    <!-- ================= 3. LIST (UL, OL, DL, NESTED) ================= -->
+    <h2>📋 3. Daftar (List)</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <p><strong>Unordered List (bullet)</strong></p>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <p><strong>Ordered List (angka)</strong></p>
+            <ol>
+                <li>Langkah pertama</li>
+                <li>Langkah kedua</li>
+                <li>Langkah ketiga</li>
+            </ol>
+            <p><strong>Nested List (list di dalam list)</strong></p>
+            <ul>
+                <li>Frontend
+                    <ul>
+                        <li>React</li>
+                        <li>Vue</li>
+                    </ul>
+                </li>
+                <li>Backend
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Python</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Definition List (dl, dt, dd)</strong></p>
+            <dl>
+                <dt>HTML</dt>
+                <dd>HyperText Markup Language (kerangka web)</dd>
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheets (tampilan)</dd>
+            </dl>
+        </div>
+        <div class="demo-code">
+            &lt;ul&gt;&lt;li&gt;item&lt;/li&gt;&lt;/ul&gt;<br>
+            &lt;ol&gt;&lt;li&gt;langkah&lt;/li&gt;&lt;/ol&gt;<br>
+            &lt;ul&gt;&lt;li&gt;Level 1&lt;ul&gt;&lt;li&gt;Level 2&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;<br>
+            &lt;dl&gt;&lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;penjelasan&lt;/dd&gt;&lt;/dl&gt;
+        </div>
     </div>
 
-    <!-- ========= 8. TABEL SEDERHANA ========= -->
-    <h2>📊 8. Tabel</h2>
-    <table>
-        <thead>
-            <tr><th>Tag</th><th>Fungsi</th><th>Contoh Hasil</th></tr>
-        </thead>
-        <tbody>
-            <tr><td><code>&lt;strong&gt;</code></td><td>Tebal (penting)</td><td><strong>tebal</strong></td></tr>
-            <tr><td><code>&lt;em&gt;</code></td><td>Miring</td><td><em>miring</em></td></tr>
-            <tr><td><code>&lt;u&gt;</code></td><td>Garis bawah</td><td><u>underline</u></td></tr>
-            <tr><td><code>&lt;mark&gt;</code></td><td>Highlight</td><td><mark>mark</mark></td></tr>
-        </tbody>
-    </table>
+    <!-- ================= 4. TABEL ================= -->
+    <h2>📊 4. Tabel</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <table>
+                <thead>
+                    <tr><th>Nama Tag</th><th>Fungsi</th><th>Contoh</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>&lt;strong&gt;</td><td>tebal</td><td><strong>tebal</strong></td></tr>
+                    <tr><td>&lt;em&gt;</td><td>miring</td><td><em>miring</em></td></tr>
+                    <tr><td colspan="3">Tabel bisa juga punya colspan</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="demo-code">
+            &lt;table border="1"&gt;<br>
+            &nbsp;&nbsp;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Header&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;<br>
+            &nbsp;&nbsp;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;<br>
+            &lt;/table&gt;
+        </div>
+    </div>
+
+    <!-- ================= 5. FORMULIR (INPUT, SELECT, TEXTAREA, BUTTON) ================= -->
+    <h2>📝 5. Formulir (Form)</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <form onsubmit="alert('Contoh submit: data terkirim (demo)'); return false;">
+                <label>Nama:</label><br>
+                <input type="text" placeholder="Masukkan nama"><br><br>
+                <label>Email:</label><br>
+                <input type="email" placeholder="email@contoh.com"><br><br>
+                <label>Jenis kelamin:</label><br>
+                <input type="radio" name="gender" value="laki"> Laki
+                <input type="radio" name="gender" value="perempuan"> Perempuan<br><br>
+                <label>Hobi:</label><br>
+                <input type="checkbox" value="membaca"> Membaca
+                <input type="checkbox" value="coding"> Coding<br><br>
+                <label>Pilih kota:</label><br>
+                <select>
+                    <option>Jakarta</option>
+                    <option>Surabaya</option>
+                    <option>Bandung</option>
+                </select><br><br>
+                <label>Pesan:</label><br>
+                <textarea rows="3" placeholder="Tulis sesuatu..."></textarea><br><br>
+                <button type="submit">Kirim (demo)</button>
+            </form>
+        </div>
+        <div class="demo-code">
+            &lt;form&gt;<br>
+            &nbsp;&nbsp;&lt;input type="text"&gt;<br>
+            &nbsp;&nbsp;&lt;input type="radio"&gt; &lt;input type="checkbox"&gt;<br>
+            &nbsp;&nbsp;&lt;select&gt;&lt;option&gt;...&lt;/option&gt;&lt;/select&gt;<br>
+            &nbsp;&nbsp;&lt;textarea&gt;&lt;/textarea&gt;<br>
+            &nbsp;&nbsp;&lt;button&gt;Kirim&lt;/button&gt;<br>
+            &lt;/form&gt;
+        </div>
+    </div>
+
+    <!-- ================= 6. AUDIO DAN VIDEO ================= -->
+    <h2>🎵 6. Audio & Video (Media)</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <p><strong>Audio contoh (suara beep)</strong></p>
+            <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Audio tidak support</audio>
+            <p><strong>Video contoh (YouTube langsung via iframe sudah di atas, ini video HTML5)</strong></p>
+            <video width="100%" controls poster="https://placehold.co/400x200/000/fff?text=Video+Preview">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Browser tidak support video.
+            </video>
+        </div>
+        <div class="demo-code">
+            &lt;audio controls src="url_audio.mp3"&gt;&lt;/audio&gt;<br>
+            &lt;video controls width="100%"&gt;&lt;source src="url_video.mp4" type="video/mp4"&gt;&lt;/video&gt;
+        </div>
+    </div>
+
+    <!-- ================= 7. BLOCKCODE, BLOCKQUOTE, PRE ================= -->
+    <h2>💬 7. Blockquote & Preformatted</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <blockquote>
+                "Ini adalah contoh blockquote untuk kutipan panjang. Biasanya digunakan untuk mengutip pernyataan dari sumber lain."
+                <footer>— Penulis Kreatif</footer>
+            </blockquote>
+            <pre>
+  Teks dengan   spasi   dan indentasi
+  akan tetap terjaga oleh tag &lt;pre&gt;
+            </pre>
+        </div>
+        <div class="demo-code">
+            &lt;blockquote&gt; kutipan &lt;footer&gt;sumber&lt;/footer&gt; &lt;/blockquote&gt;<br>
+            &lt;pre&gt; teks dengan spasi &lt;/pre&gt;
+        </div>
+    </div>
+
+    <!-- ================= 8. ENTITAS KARAKTER (HTML ENTITIES) ================= -->
+    <h2>🔣 8. Entitas Karakter (HTML Entities)</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            &lt; &gt; &amp; &quot; &apos; &copy; &reg; &euro; &yen; <br>
+            Contoh: 5 &lt; 10 , 10 &gt; 5 , Harga: 100 &euro;
+        </div>
+        <div class="demo-code">
+            &amp;lt; = &lt; <br>
+            &amp;gt; = &gt; <br>
+            &amp;copy; = © <br>
+            &amp;euro; = €
+        </div>
+    </div>
+
+    <!-- ================= 9. SEMANTIC HTML (header, nav, main, section, article, aside, footer) ================= -->
+    <h2>🧱 9. Semantic HTML</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <header style="background:#e2e8f0; padding:8px; border-radius:12px;">
+                <h3 style="margin:0;">&lt;header&gt; - Bagian Kepala</h3>
+            </header>
+            <nav style="background:#cbd5e1; padding:6px; margin:8px 0; border-radius:12px;">
+                🔗 &lt;nav&gt;: <a href="#">Home</a> | <a href="#">About</a>
+            </nav>
+            <main style="background:#f8fafc; padding:8px; border-radius:12px;">
+                &lt;main&gt;: Konten utama halaman.
+                <section>&lt;section&gt;: Kelompok topik</section>
+                <article>&lt;article&gt;: Artikel mandiri</article>
+            </main>
+            <aside style="background:#e2e8f0; padding:6px; border-radius:12px; margin-top:8px;">
+                &lt;aside&gt;: sidebar atau informasi tambahan
+            </aside>
+            <footer style="background:#cbd5e1; padding:6px; border-radius:12px; margin-top:8px;">
+                &lt;footer&gt;: footer hak cipta
+            </footer>
+        </div>
+        <div class="demo-code">
+            &lt;header&gt; ... &lt;/header&gt;<br>
+            &lt;nav&gt; ... &lt;/nav&gt;<br>
+            &lt;main&gt; &lt;section&gt; &lt;article&gt; &lt;/main&gt;<br>
+            &lt;aside&gt; &lt;footer&gt;
+        </div>
+    </div>
+
+    <!-- ================= 10. DIV & SPAN, CSS INLINE ================= -->
+    <h2>🎨 10. Div, Span & Styling Inline</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <div style="background:#dbeafe; padding:10px; border-radius:12px;">
+                Ini adalah &lt;div&gt; (block element)
+                <span style="background:#fecaca; padding:4px;">Ini &lt;span&gt; (inline)</span> di dalam div.
+            </div>
+        </div>
+        <div class="demo-code">
+            &lt;div style="background:blue;"&gt; blok &lt;span style="color:red;"&gt; teks merah &lt;/span&gt; &lt;/div&gt;
+        </div>
+    </div>
+
+    <!-- ================= 11. HORIZONTAL RULE & LINE BREAK ================= -->
+    <h2>📏 11. Garis Horizontal & Baris Baru</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            Teks sebelum garis<hr>Garis horizontal di atas<br>
+            Kalimat ini pake &lt;br&gt; untuk pindah baris.
+        </div>
+        <div class="demo-code">
+            &lt;hr&gt; untuk garis horizontal<br>
+            &lt;br&gt; untuk baris baru
+        </div>
+    </div>
+
+    <!-- ================= 12. BUTTON & INTERAKSI SEDERHANA ================= -->
+    <h2>🖱️ 12. Tombol (Button) & Event</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <button onclick="alert('Kamu menekan tombol!')">Klik Saya</button>
+            <button disabled>Tombol Nonaktif</button>
+        </div>
+        <div class="demo-code">
+            &lt;button onclick="alert('Halo')"&gt;Klik&lt;/button&gt;
+        </div>
+    </div>
+
+    <!-- ================= 13. PROGRESS & METER ================= -->
+    <h2>📈 13. Progress & Meter</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <label>Progress belajar: </label>
+            <progress value="70" max="100">70%</progress><br>
+            <label>Meter (storage): </label>
+            <meter value="0.6" min="0" max="1">60%</meter>
+        </div>
+        <div class="demo-code">
+            &lt;progress value="70" max="100"&gt;&lt;/progress&gt;<br>
+            &lt;meter value="0.6" min="0" max="1"&gt;&lt;/meter&gt;
+        </div>
+    </div>
+
+    <!-- ================= 14. DETAILS & SUMMARY ================= -->
+    <h2>📁 14. Details & Summary (spoiler)</h2>
+    <div class="demo-card">
+        <div class="demo-result">
+            <details>
+                <summary>Klik untuk lihat jawaban</summary>
+                <p>Ini adalah konten tersembunyi yang muncul saat diklik. Cocok untuk FAQ.</p>
+            </details>
+        </div>
+        <div class="demo-code">
+            &lt;details&gt;&lt;summary&gt;Judul&lt;/summary&gt; isi tersembunyi &lt;/details&gt;
+        </div>
+    </div>
 
     <hr>
-    <p>✅ <strong>Tips untuk mobile:</strong> Halaman ini sudah pakai <code>viewport</code> dan ukuran font yang nyaman di HP. Setiap contoh memperlihatkan <strong>hasil</strong> dan <strong>kode penulisan</strong> yang benar. Selamat belajar membuat website!</p>
-    <p style="text-align: center; color: #475569;">© 2025 — Contoh HTML Lengkap untuk Pemula</p>
+    <footer>
+        🎉 <strong>Selamat!</strong> Kamu sudah belajar 40+ contoh elemen HTML. <br>
+        Setiap contoh menampilkan <strong>hasil</strong> dan <strong>cara menulis kode</strong>. <br>
+        Simpan file ini (.html) dan buka di HP atau PC. Kembangkan terus!
+    </footer>
 </div>
 </body>
 </html>
