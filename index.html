@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit Klasik - Link Static</title>
+    <title>ZINE EDISI #3 · Layout Tebal-Tipis</title>
     <style>
         :root {
-            --bg: #ffffff;
-            --header-bg: #cee3f8;
-            --header-border: #5f99cf;
-            --text: #222;
-            --meta: #888;
-            --link: #0000ee;
-            --link-visited: #551a8b;
-            --domain: #888;
-            --vote-color: #c6c6c6;
-            --border: #e0e0e0;
-            --hover-bg: #f5f5f5;
-            --button-bg: #eff7ff;
-            --button-border: #c3d9f0;
+            --bg: #f4f4f0;
+            --paper: #ffffff;
+            --ink: #111;
+            --accent: #d32f2f;
+            --border: #222;
+            --meta: #555;
+            --light: #f0f0f0;
+            --font-heading: 'Arial Black', 'Impact', 'Helvetica Neue', sans-serif;
+            --font-body: 'Courier New', 'IBM Plex Mono', monospace;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
@@ -28,369 +25,351 @@
         }
 
         body {
-            background-color: #f0f0f0;
-            font-family: Verdana, Arial, sans-serif;
+            background: #e8e8e0;
+            font-family: var(--font-body);
             font-size: 13px;
-            line-height: 1.4;
-            color: var(--text);
+            line-height: 1.5;
+            color: var(--ink);
             display: flex;
             justify-content: center;
-            padding: 10px;
+            padding: 20px 10px;
             min-height: 100vh;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
-        .container {
+        .zine {
+            max-width: 800px;
             width: 100%;
-            max-width: 850px;
-            background-color: var(--bg);
-            min-height: 100vh;
+            background: var(--paper);
+            border: 3px solid var(--border);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 4px rgba(0,0,0,0.05);
+            padding: 0;
         }
 
-        /* Header ala Reddit */
-        .header {
-            background-color: var(--header-bg);
-            border-bottom: 1px solid var(--header-border);
-            padding: 6px 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+        /* ===== HEADER MASTHEAD ===== */
+        .masthead {
+            background: var(--ink);
+            color: #fff;
+            padding: 16px 20px;
+            border-bottom: 4px solid var(--accent);
+            text-align: center;
         }
-
-        .header .logo {
-            font-weight: bold;
-            font-size: 18px;
-            color: #336699;
-            text-decoration: none;
-            letter-spacing: -0.5px;
+        .masthead h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 0;
         }
-
-        .header .subreddit-bar {
-            font-size: 14px;
-            font-weight: bold;
-            color: #000;
-            margin-left: 8px;
-        }
-
-        .header .nav-links {
-            display: flex;
-            gap: 8px;
-            font-size: 11px;
-            margin-left: auto;
-            flex-wrap: wrap;
-        }
-
-        .header .nav-links a {
-            color: #336699;
-            text-decoration: none;
-            padding: 2px 4px;
-        }
-        .header .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Tab menu */
-        .tabmenu {
-            display: flex;
-            list-style: none;
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #ccc;
-            padding: 0 10px;
-            gap: 0;
+        .masthead .sub {
+            font-family: var(--font-body);
             font-size: 12px;
-        }
-        .tabmenu li {
-            border: 1px solid #ccc;
-            border-bottom: none;
-            margin-bottom: -1px;
-            background-color: #fff;
-        }
-        .tabmenu li.selected {
-            background-color: #fff;
-            border-bottom: 1px solid #fff;
-            font-weight: bold;
-        }
-        .tabmenu a {
-            display: block;
-            padding: 4px 10px;
-            color: #336699;
-            text-decoration: none;
-        }
-        .tabmenu a:hover {
-            background-color: #e0e0e0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            color: #ccc;
         }
 
-        /* Link list */
-        .link-list {
+        /* ===== BAGIAN UTAMA ===== */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 0;
+        }
+
+        /* Kolom kiri: fitur utama */
+        .feature {
+            flex: 1 1 55%;
+            padding: 12px;
+            border-right: 2px dashed #ccc;
+        }
+        /* Kolom kanan: sidebar pendek */
+        .sidebar {
+            flex: 1 1 35%;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* ===== ARTIKEL ===== */
+        .article {
+            margin-bottom: 28px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 16px;
+        }
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        /* Headline kapital tebal */
+        .headline {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            color: var(--ink);
+            display: block;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .headline:hover {
+            color: var(--accent);
+        }
+        .headline.small {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .headline.italic {
+            font-style: italic;
+            text-transform: none;
+            font-weight: 800;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* Byline & meta */
+        .byline {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--meta);
+            margin: 4px 0 8px;
+            font-weight: 600;
+        }
+        .byline span {
+            font-weight: 400;
+            color: #777;
+        }
+
+        /* Body text tipis */
+        .body-text {
+            font-family: var(--font-body);
+            font-size: 12px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+        .body-text strong {
+            font-weight: 700;
+            background: #ff0;
+            padding: 0 2px;
+        }
+        .body-text em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Link dalam teks */
+        .body-text a {
+            color: #000;
+            font-weight: 700;
+            text-decoration: underline wavy #d32f2f 1px;
+            text-underline-offset: 3px;
+        }
+        .body-text a:hover {
+            background: #ff0;
+            text-decoration: none;
+        }
+
+        /* Blok quote */
+        .quote {
+            border-left: 6px solid var(--accent);
+            padding: 8px 14px;
+            margin: 10px 0;
+            background: #fafafa;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #444;
+        }
+
+        /* ===== BOX SIDEBAR ===== */
+        .box {
+            border: 2px solid #000;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 4px 4px 0 #ccc;
+        }
+        .box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        .box ul {
             list-style: none;
             padding: 0;
-            flex: 1;
         }
-
-        .link-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            padding: 8px 10px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.1s;
+        .box li {
+            font-family: var(--font-body);
+            font-size: 11px;
+            margin-bottom: 6px;
+            line-height: 1.4;
         }
-
-        .link-item:hover {
-            background-color: var(--hover-bg);
-        }
-
-        /* Vote box */
-        .vote-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 40px;
-            flex-shrink: 0;
-            color: var(--vote-color);
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.2;
-        }
-
-        .arrow {
-            font-size: 16px;
-            cursor: default;
-            color: #bbb;
-            user-select: none;
-        }
-        .arrow.up:hover {
-            color: #ff4500;
-        }
-        .arrow.down:hover {
-            color: #9494ff;
-        }
-
-        .vote-count {
-            font-size: 13px;
-            color: #666;
-            margin: 2px 0;
-        }
-
-        /* Konten */
-        .entry {
-            flex: 1;
-            min-width: 0;
-        }
-        .entry .title {
-            font-size: 14px;
-            margin-bottom: 2px;
-        }
-        .entry .title a {
-            color: var(--link);
+        .box li a {
+            color: #000;
+            font-weight: 700;
             text-decoration: none;
+            border-bottom: 1px dotted #888;
         }
-        .entry .title a:visited {
-            color: var(--link-visited);
+        .box li a:hover {
+            background: #ff0;
+            border-bottom: 1px solid #000;
         }
-        .entry .title a:hover {
-            text-decoration: underline;
-        }
-        .entry .domain {
-            font-size: 11px;
-            color: var(--domain);
-            margin-left: 4px;
-        }
-        .entry .tagline {
-            font-size: 11px;
-            color: var(--meta);
-            margin-top: 1px;
-        }
-        .entry .tagline a {
-            color: var(--meta);
-            text-decoration: none;
-        }
-        .entry .tagline a:hover {
-            text-decoration: underline;
-        }
-        .entry .tagline .subreddit {
-            color: #336699;
-            font-weight: bold;
-        }
-        .entry .tagline .subreddit:hover {
-            text-decoration: underline;
-        }
-
-        .thumbnail {
-            width: 70px;
-            height: 50px;
-            background-color: #eee;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #aaa;
-            flex-shrink: 0;
-            margin-left: 4px;
-            overflow: hidden;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 12px;
-            font-size: 11px;
+        .box .small-meta {
+            font-size: 9px;
             color: #888;
-            border-top: 1px solid #ccc;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 16px;
+            text-align: center;
+            font-family: var(--font-body);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 4px solid var(--accent);
             margin-top: auto;
         }
         .footer a {
-            color: #336699;
+            color: #ff0;
             text-decoration: none;
+            font-weight: 700;
         }
         .footer a:hover {
-            text-decoration: underline;
+            background: #fff;
+            color: #000;
         }
 
-        @media (max-width: 600px) {
-            .vote-box {
-                min-width: 32px;
-                font-size: 12px;
+        /* Responsive */
+        @media (max-width: 650px) {
+            .content {
+                flex-direction: column;
             }
-            .entry .title {
-                font-size: 12px;
+            .feature {
+                border-right: none;
+                border-bottom: 2px dashed #ccc;
             }
-            .thumbnail {
-                width: 50px;
-                height: 36px;
+            .zine {
+                box-shadow: none;
+            }
+            .headline {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <a href="#" class="logo">reddit</a>
-            <span class="subreddit-bar">r/indonesia</span>
-            <span class="nav-links">
-                <a href="#">hot</a>
-                <a href="#">new</a>
-                <a href="#">rising</a>
-                <a href="#">controversial</a>
-                <a href="#">top</a>
-            </span>
+    <div class="zine">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>VOLT ZINE</h1>
+            <div class="sub">edisi #3 · musim semi 2025 · harga: seikhlasnya</div>
+        </header>
+
+        <div class="content">
+            <!-- Kolom Fitur -->
+            <main class="feature">
+                <!-- Artikel Utama 1 -->
+                <article class="article">
+                    <a href="https://brutalistwebsites.com" class="headline" target="_blank" rel="noopener">
+                        BRUTALISME WEB BUKAN HANYA GAYA, TAPI SIKAP
+                    </a>
+                    <div class="byline">oleh <strong>Maya K.</strong> · <span>12 menit baca</span></div>
+                    <p class="body-text">
+                        Desain web brutalist mengingatkan kita bahwa <strong>konten adalah raja</strong>. Tanpa dekorasi berlebihan, situs seperti 
+                        <a href="https://motherfuckingwebsite.com" target="_blank">motherfuckingwebsite.com</a> 
+                        membuktikan bahwa <em>kecepatan</em> dan <em>aksesibilitas</em> lebih penting daripada estetika semu.
+                    </p>
+                    <div class="quote">
+                        "Situs web yang baik adalah yang langsung bisa dibaca, tanpa menunggu JavaScript loading." — anonim.
+                    </div>
+                </article>
+
+                <!-- Artikel Utama 2 -->
+                <article class="article">
+                    <a href="https://www.are.na" class="headline small" target="_blank" rel="noopener">
+                        MENGUMPULKAN REFERENSI TANPA ALGORITMA
+                    </a>
+                    <div class="byline">kolom tamu · <span>are.na & kurasi manual</span></div>
+                    <p class="body-text">
+                        Platform <strong>Are.na</strong> adalah ruang bebas algoritma untuk menyusun ide. 
+                        Di era banjir konten, kembali ke <em>metode kurasi manual</em> seperti membuat zine fisik adalah 
+                        tindakan <strong>radikal</strong>. Coba <a href="https://www.are.na" target="_blank">mulai channel</a> kamu sendiri.
+                    </p>
+                </article>
+
+                <!-- Artikel Utama 3: tipografi campur -->
+                <article class="article">
+                    <a href="https://eyeondesign.aiga.org" class="headline italic" target="_blank" rel="noopener">
+                        Tipografi yang Berteriak & Berbisik
+                    </a>
+                    <div class="byline">esai visual · <span>AIGA Eye on Design</span></div>
+                    <p class="body-text">
+                        <strong>FONT TEBAL UNTUK JUDUL</strong> dan <span style="font-weight:300;">light 300 untuk body text</span> 
+                        menciptakan hirarki dramatis. Zine punk 90-an memakai huruf kapital semua karena mesin tik mereka hanya punya 
+                        satu ukuran. Kini kita punya pilihan, tapi semangatnya tetap sama.
+                    </p>
+                </article>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="box">
+                    <h3>📡 Sinyal</h3>
+                    <ul>
+                        <li>
+                            <a href="https://buttondown.email" target="_blank">Newsletter pilihan</a>
+                            <span class="small-meta">buttondown · bebas iklan</span>
+                        </li>
+                        <li>
+                            <a href="https://gemini.circumlunar.space" target="_blank">Protokol Gemini</a>
+                            <span class="small-meta">web kecil · alternatif HTTP</span>
+                        </li>
+                        <li>
+                            <a href="https://solar.lowtechmagazine.com" target="_blank">Low Tech Magazine</a>
+                            <span class="small-meta">website bertenaga surya</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>🗞️ ACARA</h3>
+                    <ul>
+                        <li><strong>22 Juni</strong> – Pasar Zine Independen, Bandung</li>
+                        <li><strong>3 Juli</strong> – Workshop Risografi dasar</li>
+                        <li><strong>12 Agustus</strong> – Pameran poster tipografi</li>
+                    </ul>
+                </div>
+
+                <div class="box" style="background:#ff0; border:3px solid #000;">
+                    <p style="font-family: 'Arial Black'; font-size:16px; margin:0; text-align:center;">
+                        📢 KIRIM KARYAMU KE VOLTZINE@PROTON.ME
+                    </p>
+                </div>
+            </aside>
         </div>
 
-        <!-- Tab menu komentar/terkait -->
-        <ul class="tabmenu">
-            <li class="selected"><a href="#">komentar</a></li>
-            <li><a href="#">terkait</a></li>
-            <li><a href="#">lainnya</a></li>
-        </ul>
-
-        <!-- Daftar post -->
-        <ul class="link-list">
-            <!-- Post 1 -->
-            <li class="link-item">
-                <div class="vote-box">
-                    <span class="arrow up">▲</span>
-                    <span class="vote-count">247</span>
-                    <span class="arrow down">▼</span>
-                </div>
-                <div class="entry">
-                    <div class="title">
-                        <a href="#">Cara membangun startup dari nol dengan modal minim</a>
-                        <span class="domain">(medium.com)</span>
-                    </div>
-                    <div class="tagline">
-                        submitted 4 jam lalu by <a href="#">kodekreator</a> to <a href="#" class="subreddit">r/startup</a> • <a href="#">87 komentar</a>
-                    </div>
-                </div>
-                <div class="thumbnail">gambar</div>
-            </li>
-
-            <!-- Post 2 -->
-            <li class="link-item">
-                <div class="vote-box">
-                    <span class="arrow up">▲</span>
-                    <span class="vote-count">182</span>
-                    <span class="arrow down">▼</span>
-                </div>
-                <div class="entry">
-                    <div class="title">
-                        <a href="#">Perbandingan framework CSS: Tailwind vs Bootstrap vs Vanilla</a>
-                        <span class="domain">(css-tricks.com)</span>
-                    </div>
-                    <div class="tagline">
-                        submitted 7 jam lalu by <a href="#">frontend_dev</a> to <a href="#" class="subreddit">r/webdev</a> • <a href="#">54 komentar</a>
-                    </div>
-                </div>
-                <div class="thumbnail">gambar</div>
-            </li>
-
-            <!-- Post 3 -->
-            <li class="link-item">
-                <div class="vote-box">
-                    <span class="arrow up">▲</span>
-                    <span class="vote-count">96</span>
-                    <span class="arrow down">▼</span>
-                </div>
-                <div class="entry">
-                    <div class="title">
-                        <a href="#">Kenapa air putih penting bagi produktivitas programmer</a>
-                        <span class="domain">(self.productivity)</span>
-                    </div>
-                    <div class="tagline">
-                        submitted 2 jam lalu by <a href="#">devhealth</a> to <a href="#" class="subreddit">r/productivity</a> • <a href="#">31 komentar</a>
-                    </div>
-                </div>
-                <div class="thumbnail">gambar</div>
-            </li>
-
-            <!-- Post 4 -->
-            <li class="link-item">
-                <div class="vote-box">
-                    <span class="arrow up">▲</span>
-                    <span class="vote-count">342</span>
-                    <span class="arrow down">▼</span>
-                </div>
-                <div class="entry">
-                    <div class="title">
-                        <a href="#">UI/UX gratis: kumpulan layout statis ala HN, Reddit, Lobsters</a>
-                        <span class="domain">(github.com)</span>
-                    </div>
-                    <div class="tagline">
-                        submitted 12 jam lalu by <a href="#">opensource_ui</a> to <a href="#" class="subreddit">r/web_design</a> • <a href="#">120 komentar</a>
-                    </div>
-                </div>
-                <div class="thumbnail">gambar</div>
-            </li>
-
-            <!-- Post 5 -->
-            <li class="link-item">
-                <div class="vote-box">
-                    <span class="arrow up">▲</span>
-                    <span class="vote-count">58</span>
-                    <span class="arrow down">▼</span>
-                </div>
-                <div class="entry">
-                    <div class="title">
-                        <a href="#">Review kopi nusantara: dari Aceh sampai Papua</a>
-                        <span class="domain">(kopisenja.com)</span>
-                    </div>
-                    <div class="tagline">
-                        submitted 5 jam lalu by <a href="#">coffeelover</a> to <a href="#" class="subreddit">r/indonesia</a> • <a href="#">22 komentar</a>
-                    </div>
-                </div>
-                <div class="thumbnail">gambar</div>
-            </li>
-        </ul>
-
-        <!-- Footer -->
-        <div class="footer">
-            <a href="#">about</a> • <a href="#">blog</a> • <a href="#">mobile</a> • <a href="#">reddit gold</a><br>
-            <span>Halaman statis bergaya Reddit Klasik — tidak ada penyimpanan.</span>
-        </div>
+        <footer class="footer">
+            <p>diecetak dengan tinta hemat · <a href="#">arsip</a> · <a href="#">kontak</a> · semua konten bebas dibagikan</p>
+        </footer>
     </div>
 </body>
 </html>
