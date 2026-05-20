@@ -88,6 +88,53 @@
             font-weight: 500;
         }
 
+        /* ===== BOARD BERITA TIPIS ===== */
+        .news-board {
+            background: var(--white-card);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .news-board h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--info-color);
+            padding-left: 0.75rem;
+            color: #222;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+
+        .news-list .tag {
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--info-color);
+            margin-right: 0.5rem;
+            background: #f0ede6;
+            padding: 0.1em 0.5em;
+            border-radius: 3px;
+        }
+
         h2 {
             font-size: 1.3rem;
             font-weight: 600;
@@ -171,7 +218,7 @@
             text-align: center;
             font-size: 0.95rem;
             letter-spacing: 0.03em;
-            animation: none !important; /* Pastikan tidak ada animasi */
+            animation: none !important;
         }
 
         .status-champion {
@@ -226,9 +273,21 @@
 
         <!-- NAVIGASI CEPAT -->
         <div class="quick-nav">
+            <a href="#berita">📰 Berita</a>
             <a href="#premier">🏴 Premier League</a>
             <a href="#klasemen">📊 Klasemen</a>
             <a href="#ucl">🏆 Liga Champions</a>
+        </div>
+
+        <!-- BOARD BERITA SINGKAT -->
+        <div class="news-board" id="berita">
+            <h2>📰 Berita Singkat</h2>
+            <ul class="news-list">
+                <li><span class="tag">Timnas</span> Indonesia U-23 kalahkan Thailand 2-1 di laga uji coba, gol dicetak oleh Marselino dan Rafael.</li>
+                <li><span class="tag">Premier</span> Pep Guardiola sebut kegagalan juara musim ini karena inkonsistensi di lini belakang.</li>
+                <li><span class="tag">UCL</span> PSG siap tampil dengan skuad penuh di final, Mbappé dan kawan-kawan optimis bawa pulang trofi.</li>
+                <li><span class="tag">Timnas</span> Shin Tae-yong panggil 26 pemain untuk persiapan Kualifikasi Piala Dunia, termasuk dua pemain abroad baru.</li>
+            </ul>
         </div>
 
         <!-- Premier League Matchday 37 -->
@@ -253,14 +312,6 @@
                         <td><span class="score">2 - 1</span></td>
                         <td>⚠️ <span class="status-danger">Spurs gemetar.</span> Nasib di ujung tanduk.</td>
                     </tr>
-                    <!-- Contoh jika ada pertandingan LIVE -->
-                    <!--
-                    <tr>
-                        <td>Liverpool vs Aston Villa</td>
-                        <td><span class="live-badge">LIVE 67'</span></td>
-                        <td>🔴 Pertandingan sedang berlangsung. Skor sementara 1-0.</td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
         </div>
