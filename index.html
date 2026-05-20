@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PapanSkor — Hasil Pertandingan</title>
+
+    <!-- Favicon SVG Bola (tanpa file eksternal) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -12,21 +16,20 @@
         }
 
         :root {
-            --hero-color: #e6b422;   /* Kuning vintage untuk skor */
-            --danger-color: #c44536; /* Merah bata untuk degradasi */
-            --info-color: #2c3e50;   /* Biru diam untuk info */
-
-            /* === PALET KERTAS BARU === */
-            --bg-paper: #faf9f6;      /* Warna dasar kertas (agak krem) */
-            --white-card: #ffffff;    /* Warna putih untuk kartu/tabel */
-            --text-primary: #1a1a1a;  /* Hitam lembut */
-            --border-light: #e4e1da;  /* Garis tepi sewarna kertas tua */
-            --table-stripe: #f5f2eb;  /* Belang tabel yang senada */
+            --hero-color: #e6b422;
+            --danger-color: #c44536;
+            --live-color: #cc0000;
+            --info-color: #2c3e50;
+            --bg-paper: #faf9f6;
+            --white-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --border-light: #e4e1da;
+            --table-stripe: #f5f2eb;
         }
 
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-paper); /* TERAPKAN WARNA KERTAS */
+            background-color: var(--bg-paper);
             color: var(--text-primary);
             line-height: 1.5;
             padding: 1.5rem 1rem;
@@ -38,15 +41,25 @@
             margin: 0 auto;
         }
 
-        /* Header utama */
+        /* ===== HEADLINE UTAMA ALA KORAN ===== */
+        .headline {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px double #333;
+            color: #000;
+        }
+
         .main-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: #111;
             margin-bottom: 0.25rem;
-            border-bottom: 2px solid var(--border-light);
-            padding-bottom: 0.5rem;
         }
 
         .update-time {
@@ -57,25 +70,43 @@
             display: block;
         }
 
+        /* ===== NAVIGASI CEPAT ===== */
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+        .quick-nav a {
+            text-decoration: none;
+            color: var(--info-color);
+            background: var(--white-card);
+            padding: 0.4em 0.8em;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
         h2 {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             margin-bottom: 0.8rem;
             color: #222;
             border-left: 4px solid var(--hero-color);
             padding-left: 0.75rem;
         }
 
-        /* Tabel wrapper - SEKARANG PUTIH AGAR KONTRAS DI ATAS KERTAS */
+        /* Tabel */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            background-color: var(--white-card); /* Biar tabel seperti tercetak */
+            background-color: var(--white-card);
             border: 1px solid var(--border-light);
-            border-radius: 4px; /* Kurangi kebulatan biar lebih cetak */
+            border-radius: 4px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02); /* Bayangan sangat tipis */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
         table {
@@ -87,11 +118,11 @@
         }
 
         th {
-            background-color: #f5f3ef; /* Sedikit lebih gelap dari kertas */
+            background-color: #f5f3ef;
             font-weight: 600;
             text-align: left;
             padding: 0.75rem 1rem;
-            border-bottom: 2px solid #cbc6b8; /* Garis tegas alami */
+            border-bottom: 2px solid #cbc6b8;
             font-size: 0.95rem;
             color: #333;
             text-transform: uppercase;
@@ -109,12 +140,11 @@
             border-bottom: none;
         }
 
-        /* Zebra halus */
         tbody tr:nth-child(even) {
             background-color: var(--table-stripe);
         }
 
-        /* Skor khas hitam-kuning */
+        /* Skor Hitam-Kuning */
         .score {
             font-family: "Courier New", Courier, monospace;
             font-weight: 700;
@@ -129,9 +159,23 @@
             letter-spacing: 0.05em;
         }
 
-        /* Status khusus */
+        /* Status LIVE */
+        .live-badge {
+            background-color: var(--live-color);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.2em 0.6em;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 4em;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            animation: none !important; /* Pastikan tidak ada animasi */
+        }
+
         .status-champion {
-            color: #b89b1a; /* Kuning lebih gelap biar terbaca di kertas */
+            color: #b89b1a;
             font-weight: 600;
         }
         .status-danger {
@@ -139,9 +183,8 @@
             font-weight: 600;
         }
 
-        /* Kotak info kecil */
         .info-box {
-            background: var(--white-card); /* Putih */
+            background: var(--white-card);
             border-left: 3px solid #b0a999;
             padding: 0.75rem 1rem;
             font-size: 0.9rem;
@@ -150,12 +193,10 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
-
         .info-box strong {
             color: #111;
         }
 
-        /* Footer */
         .site-footer {
             margin-top: 2rem;
             font-size: 0.8rem;
@@ -164,33 +205,34 @@
             padding-top: 1rem;
         }
 
-        /* Responsif */
         @media (max-width: 500px) {
-            body {
-                padding: 1rem;
-            }
-            .main-title {
-                font-size: 1.6rem;
-            }
-            td, th {
-                padding: 0.6rem 0.75rem;
-                font-size: 0.9rem;
-            }
+            body { padding: 1rem; }
+            .headline { font-size: 1.3rem; }
+            .main-title { font-size: 1.5rem; }
+            td, th { padding: 0.6rem 0.75rem; font-size: 0.9rem; }
         }
 
-        /* Tidak ada animasi / transisi */
-        tr, td, th, a, .score {
+        tr, td, th, a, .score, .live-badge {
             transition: none !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADLINE UTAMA HARI INI -->
+        <div class="headline">🏆 ARSENAL RESMI JUARA PREMIER LEAGUE 2025/2026</div>
         <h1 class="main-title">⚽ PapanSkor</h1>
         <span class="update-time">🕒 Update terakhir: 21 Mei 2026, 23:45 WIB</span>
 
+        <!-- NAVIGASI CEPAT -->
+        <div class="quick-nav">
+            <a href="#premier">🏴 Premier League</a>
+            <a href="#klasemen">📊 Klasemen</a>
+            <a href="#ucl">🏆 Liga Champions</a>
+        </div>
+
         <!-- Premier League Matchday 37 -->
-        <h2>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League — Pekan 37</h2>
+        <h2 id="premier">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League — Pekan 37</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -211,6 +253,14 @@
                         <td><span class="score">2 - 1</span></td>
                         <td>⚠️ <span class="status-danger">Spurs gemetar.</span> Nasib di ujung tanduk.</td>
                     </tr>
+                    <!-- Contoh jika ada pertandingan LIVE -->
+                    <!--
+                    <tr>
+                        <td>Liverpool vs Aston Villa</td>
+                        <td><span class="live-badge">LIVE 67'</span></td>
+                        <td>🔴 Pertandingan sedang berlangsung. Skor sementara 1-0.</td>
+                    </tr>
+                    -->
                 </tbody>
             </table>
         </div>
@@ -221,7 +271,7 @@
         </div>
 
         <!-- Klasemen 5 Besar -->
-        <h2>📊 Klasemen Sementara (5 Besar)</h2>
+        <h2 id="klasemen">📊 Klasemen Sementara (5 Besar)</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -262,7 +312,7 @@
         </div>
 
         <!-- Liga Champions Final -->
-        <h2>🏆 Liga Champions — Final</h2>
+        <h2 id="ucl">🏆 Liga Champions — Final</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -287,7 +337,8 @@
         </div>
 
         <div class="site-footer">
-            © PapanSkor — Cepat, Bersih, Tanpa Gangguan.
+            © PapanSkor — Cepat, Bersih, Tanpa Gangguan.<br>
+            ⏰ Update setiap malam pukul 23:00 WIB.
         </div>
     </div>
 </body>
