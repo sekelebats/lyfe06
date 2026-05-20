@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Pertandingan</title>
+    <title>PapanSkor — Hasil Pertandingan</title>
     <style>
-        /* Atur ulang margin/padding bawaan */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        :root {
+            --hero-color: #e6b422;   /* Kuning vintage untuk skor */
+            --danger-color: #c44536; /* Merah bata untuk degradasi */
+            --info-color: #2c3e50;   /* Biru diam untuk info */
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --border-light: #e0e0e0;
+            --table-stripe: #fafafa;
+        }
+
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.5;
-            padding: 1rem;
-            /* Tidak ada animasi, transisi, atau transform */
+            padding: 1.5rem 1rem;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -27,14 +35,23 @@
             margin: 0 auto;
         }
 
-        h1 {
-            font-size: 1.8rem;
+        /* Header utama */
+        .main-title {
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             color: #111;
-            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 0.25rem;
+            border-bottom: 2px solid var(--border-light);
             padding-bottom: 0.5rem;
+        }
+
+        .update-time {
+            font-size: 0.85rem;
+            color: var(--info-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         h2 {
@@ -43,22 +60,24 @@
             margin-top: 2rem;
             margin-bottom: 0.8rem;
             color: #222;
+            border-left: 4px solid var(--hero-color);
+            padding-left: 0.75rem;
         }
 
-        /* Wadah tabel agar bisa di-scroll horizontal di HP */
+        /* Tabel wrapper */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             border: 1px solid #d4d4d4;
             border-radius: 6px;
-            /* Tanpa shadow untuk kesan ringan */
+            margin-bottom: 1.5rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 1rem;
-            min-width: 500px; /* Agar tabel tidak terlalu menyempit */
+            min-width: 550px;
             white-space: nowrap;
         }
 
@@ -70,43 +89,73 @@
             border-bottom: 2px solid #b0b0b0;
             font-size: 0.95rem;
             color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         td {
             padding: 0.75rem 1rem;
             border-bottom: 1px solid #e8e8e8;
-            vertical-align: top;
+            vertical-align: middle;
+            color: #222;
         }
 
-        /* Baris terakhir tabel tidak perlu border-bottom */
         tr:last-child td {
             border-bottom: none;
         }
 
-        /* Skor dibuat tebal */
+        /* Zebra halus, bukan animasi */
+        tbody tr:nth-child(even) {
+            background-color: var(--table-stripe);
+        }
+
+        /* Skor dengan monospace + tema hitam-kuning khas */
         .score {
+            font-family: "Courier New", Courier, monospace;
             font-weight: 700;
             font-size: 1.05rem;
-        }
-
-        /* Catatan kecil */
-        .note {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #555;
-            background: #fafafa;
-            padding: 0.75rem;
-            border-left: 3px solid #999;
+            background-color: #000;
+            color: var(--hero-color);
+            padding: 0.2em 0.6em;
             border-radius: 4px;
+            display: inline-block;
+            min-width: 4em;
+            text-align: center;
+            letter-spacing: 0.05em;
         }
 
-        /* Responsif: padding lebih kecil di layar sempit */
+        /* Status khusus */
+        .status-champion {
+            color: var(--hero-color);
+            font-weight: 600;
+        }
+        .status-danger {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        /* Kotak info kecil */
+        .info-box {
+            background: #fafafa;
+            border-left: 3px solid #999;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: #444;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box strong {
+            color: #111;
+        }
+
+        /* Responsif */
         @media (max-width: 500px) {
             body {
-                padding: 0.75rem;
+                padding: 1rem;
             }
-            h1 {
-                font-size: 1.5rem;
+            .main-title {
+                font-size: 1.6rem;
             }
             td, th {
                 padding: 0.6rem 0.75rem;
@@ -114,76 +163,118 @@
             }
         }
 
-        /* Hapus semua dekorasi hover, tidak ada animasi */
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        tr, td, th {
+        /* Tidak ada animasi / transisi */
+        tr, td, th, a, .score {
             transition: none !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>⚽ Hasil Pertandingan</h1>
+        <h1 class="main-title">⚽ PapanSkor</h1>
+        <span class="update-time">🕒 Update terakhir: 21 Mei 2026, 23:45 WIB</span>
 
-        <!-- Liga Inggris Pekan 37 -->
-        <h2>Premier League — Pekan 37 (20 Mei 2026)</h2>
+        <!-- Premier League Matchday 37 -->
+        <h2>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League — Pekan 37</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
                         <th>Pertandingan</th>
                         <th>Skor</th>
-                        <th>Keterangan</th>
+                        <th>Cerita Singkat</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Bournemouth vs Manchester City</td>
-                        <td class="score">1 - 1</td>
-                        <td>Man City gagal kejar poin Arsenal → Arsenal juara!</td>
+                        <td><span class="score">1 - 1</span></td>
+                        <td>🏆 <span class="status-champion">Arsenal juara!</span> City tak sanggup mengejar, pesta di Emirates.</td>
                     </tr>
                     <tr>
                         <td>Chelsea vs Tottenham Hotspur</td>
-                        <td class="score">2 - 1</td>
-                        <td>Chelsea amankan tiket Eropa, Spurs masih terancam degradasi</td>
+                        <td><span class="score">2 - 1</span></td>
+                        <td>⚠️ <span class="status-danger">Spurs gemetar.</span> 90 menit terakhir penentu nasib di zona merah.</td>
                     </tr>
-                    <!-- Kamu bisa tambah baris lain di sini -->
                 </tbody>
             </table>
         </div>
-        <div class="note">
-            🏆 Arsenal resmi juara Premier League 2025/2026 dengan 82 poin.<br>
-            ⚠️ Tottenham Hotspur (peringkat 16) hanya unggul 2 poin dari zona degradasi.
+
+        <div class="info-box">
+            <strong>🏆 Arsenal</strong> resmi kunci gelar Premier League 2025/2026 dengan 82 poin.<br>
+            <strong>⚠️ Tottenham Hotspur</strong> (peringkat 16, 38 poin) hanya unggul 2 poin dari degradasi.
+        </div>
+
+        <!-- Klasemen 5 Besar -->
+        <h2>📊 Klasemen Sementara (5 Besar)</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Tim</th>
+                        <th>Poin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 🏆</td>
+                        <td><strong>Arsenal</strong></td>
+                        <td>82</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Manchester City</td>
+                        <td>78</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Manchester United</td>
+                        <td>68</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Liverpool</td>
+                        <td>66</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Chelsea</td>
+                        <td>64</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- Liga Champions Final -->
-        <h2>Liga Champions — Final</h2>
+        <h2>🏆 Liga Champions — Final</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
                         <th>Pertandingan</th>
                         <th>Skor</th>
-                        <th>Jadwal / Info</th>
+                        <th>Info</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Arsenal vs Paris Saint-Germain</td>
-                        <td class="score">-</td>
-                        <td>Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
+                        <td><span class="score">-</span></td>
+                        <td>📅 Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="note">
-            Final belum dimainkan. Data akan diperbarui setelah pertandingan selesai.
+
+        <div class="info-box">
+            <strong>🏟️ Final belum dimulai.</strong> Data akan diperbarui begitu laga usai.
         </div>
 
-        <!-- Kamu bisa menambah bagian klasemen dengan struktur serupa -->
+        <!-- Footer kecil sebagai tanda tangan -->
+        <div style="margin-top: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid #e0e0e0; padding-top: 1rem;">
+            © PapanSkor — Cepat, Bersih, Tanpa Gangguan.
+        </div>
     </div>
 </body>
 </html>
