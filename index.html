@@ -1,127 +1,189 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚀 Segera Hadir - My Awesome SaaS</title>
-  <!-- Font tulisan tangan dari Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pertandingan</title>
+    <style>
+        /* Atur ulang margin/padding bawaan */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Caveat', cursive; /* Font tulisan tangan */
-      padding: 1.5rem;
-    }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
+            padding: 1rem;
+            /* Tidak ada animasi, transisi, atau transform */
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .card {
-      background: white;
-      max-width: 500px;
-      width: 100%;
-      border-radius: 1.5rem;
-      padding: 3rem 2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .emoji-icon {
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-    }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: #111;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
 
-    h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: #2d2d2d;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-    }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: #222;
+        }
 
-    .tagline {
-      font-size: 1.8rem;
-      color: #555;
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
+        /* Wadah tabel agar bisa di-scroll horizontal di HP */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            /* Tanpa shadow untuk kesan ringan */
+        }
 
-    .description {
-      font-size: 1.3rem;
-      color: #4a4a4a;
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            min-width: 500px; /* Agar tabel tidak terlalu menyempit */
+            white-space: nowrap;
+        }
 
-    .notify-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid #b0b0b0;
+            font-size: 0.95rem;
+            color: #333;
+        }
 
-    .email-input {
-      padding: 0.9rem 1.2rem;
-      font-size: 1.3rem;
-      font-family: 'Caveat', cursive; /* font tulisan tangan di input */
-      border: 2px dashed #bbb;
-      border-radius: 3rem;
-      outline: none;
-      text-align: center;
-      transition: border 0.3s;
-      background: #fefefe;
-    }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e8e8e8;
+            vertical-align: top;
+        }
 
-    .email-input:focus {
-      border-color: #e07a5f;
-    }
+        /* Baris terakhir tabel tidak perlu border-bottom */
+        tr:last-child td {
+            border-bottom: none;
+        }
 
-    .btn {
-      background: #e07a5f;
-      border: none;
-      color: white;
-      font-size: 1.8rem;
-      font-family: 'Caveat', cursive; /* font tulisan tangan di tombol */
-      font-weight: 700;
-      padding: 0.8rem;
-      border-radius: 3rem;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 6px 12px rgba(224, 122, 95, 0.3);
-    }
+        /* Skor dibuat tebal */
+        .score {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
 
-    .btn:hover {
-      background: #c96a4f;
-      transform: translateY(-2px);
-    }
+        /* Catatan kecil */
+        .note {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+            background: #fafafa;
+            padding: 0.75rem;
+            border-left: 3px solid #999;
+            border-radius: 4px;
+        }
 
-    .footer-note {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      color: #999;
-    }
-  </style>
+        /* Responsif: padding lebih kecil di layar sempit */
+        @media (max-width: 500px) {
+            body {
+                padding: 0.75rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            td, th {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hapus semua dekorasi hover, tidak ada animasi */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        tr, td, th {
+            transition: none !important;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <div class="emoji-icon">✍️</div>
-    <h1>My Awesome SaaS</h1>
-    <p class="tagline">Tulis ide, wujudkan karya.</p>
-    <p class="description">
-      Kami sedang menyiapkan sesuatu yang istimewa untukmu.
-      Bergabunglah sebagai pendengar pertama dan dapatkan akses awal.
-    </p>
-    <form class="notify-form" onsubmit="alert('🎉 Kamu sudah terdaftar! Nantikan kabar dari kami.'); return false;">
-      <input type="email" class="email-input" placeholder="Masukkan email kamu..." required>
-      <button type="submit" class="btn">🔥 Beri Tahu Saya</button>
-    </form>
-    <p class="footer-note">Segera hadir di Product Hunt 🚀</p>
-  </div>
+    <div class="container">
+        <h1>⚽ Hasil Pertandingan</h1>
+
+        <!-- Liga Inggris Pekan 37 -->
+        <h2>Premier League — Pekan 37 (20 Mei 2026)</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pertandingan</th>
+                        <th>Skor</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bournemouth vs Manchester City</td>
+                        <td class="score">1 - 1</td>
+                        <td>Man City gagal kejar poin Arsenal → Arsenal juara!</td>
+                    </tr>
+                    <tr>
+                        <td>Chelsea vs Tottenham Hotspur</td>
+                        <td class="score">2 - 1</td>
+                        <td>Chelsea amankan tiket Eropa, Spurs masih terancam degradasi</td>
+                    </tr>
+                    <!-- Kamu bisa tambah baris lain di sini -->
+                </tbody>
+            </table>
+        </div>
+        <div class="note">
+            🏆 Arsenal resmi juara Premier League 2025/2026 dengan 82 poin.<br>
+            ⚠️ Tottenham Hotspur (peringkat 16) hanya unggul 2 poin dari zona degradasi.
+        </div>
+
+        <!-- Liga Champions Final -->
+        <h2>Liga Champions — Final</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pertandingan</th>
+                        <th>Skor</th>
+                        <th>Jadwal / Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arsenal vs Paris Saint-Germain</td>
+                        <td class="score">-</td>
+                        <td>Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="note">
+            Final belum dimainkan. Data akan diperbarui setelah pertandingan selesai.
+        </div>
+
+        <!-- Kamu bisa menambah bagian klasemen dengan struktur serupa -->
+    </div>
 </body>
 </html>
