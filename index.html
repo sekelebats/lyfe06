@@ -15,16 +15,19 @@
             --hero-color: #e6b422;   /* Kuning vintage untuk skor */
             --danger-color: #c44536; /* Merah bata untuk degradasi */
             --info-color: #2c3e50;   /* Biru diam untuk info */
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --border-light: #e0e0e0;
-            --table-stripe: #fafafa;
+
+            /* === PALET KERTAS BARU === */
+            --bg-paper: #faf9f6;      /* Warna dasar kertas (agak krem) */
+            --white-card: #ffffff;    /* Warna putih untuk kartu/tabel */
+            --text-primary: #1a1a1a;  /* Hitam lembut */
+            --border-light: #e4e1da;  /* Garis tepi sewarna kertas tua */
+            --table-stripe: #f5f2eb;  /* Belang tabel yang senada */
         }
 
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-paper); /* TERAPKAN WARNA KERTAS */
+            color: var(--text-primary);
             line-height: 1.5;
             padding: 1.5rem 1rem;
             -webkit-font-smoothing: antialiased;
@@ -64,13 +67,15 @@
             padding-left: 0.75rem;
         }
 
-        /* Tabel wrapper */
+        /* Tabel wrapper - SEKARANG PUTIH AGAR KONTRAS DI ATAS KERTAS */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            border: 1px solid #d4d4d4;
-            border-radius: 6px;
+            background-color: var(--white-card); /* Biar tabel seperti tercetak */
+            border: 1px solid var(--border-light);
+            border-radius: 4px; /* Kurangi kebulatan biar lebih cetak */
             margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02); /* Bayangan sangat tipis */
         }
 
         table {
@@ -82,11 +87,11 @@
         }
 
         th {
-            background-color: #f5f5f5;
+            background-color: #f5f3ef; /* Sedikit lebih gelap dari kertas */
             font-weight: 600;
             text-align: left;
             padding: 0.75rem 1rem;
-            border-bottom: 2px solid #b0b0b0;
+            border-bottom: 2px solid #cbc6b8; /* Garis tegas alami */
             font-size: 0.95rem;
             color: #333;
             text-transform: uppercase;
@@ -95,7 +100,7 @@
 
         td {
             padding: 0.75rem 1rem;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid var(--border-light);
             vertical-align: middle;
             color: #222;
         }
@@ -104,12 +109,12 @@
             border-bottom: none;
         }
 
-        /* Zebra halus, bukan animasi */
+        /* Zebra halus */
         tbody tr:nth-child(even) {
             background-color: var(--table-stripe);
         }
 
-        /* Skor dengan monospace + tema hitam-kuning khas */
+        /* Skor khas hitam-kuning */
         .score {
             font-family: "Courier New", Courier, monospace;
             font-weight: 700;
@@ -126,7 +131,7 @@
 
         /* Status khusus */
         .status-champion {
-            color: var(--hero-color);
+            color: #b89b1a; /* Kuning lebih gelap biar terbaca di kertas */
             font-weight: 600;
         }
         .status-danger {
@@ -136,17 +141,27 @@
 
         /* Kotak info kecil */
         .info-box {
-            background: #fafafa;
-            border-left: 3px solid #999;
+            background: var(--white-card); /* Putih */
+            border-left: 3px solid #b0a999;
             padding: 0.75rem 1rem;
             font-size: 0.9rem;
             color: #444;
             border-radius: 4px;
             margin-bottom: 1.5rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
 
         .info-box strong {
             color: #111;
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1rem;
         }
 
         /* Responsif */
@@ -189,12 +204,12 @@
                     <tr>
                         <td>Bournemouth vs Manchester City</td>
                         <td><span class="score">1 - 1</span></td>
-                        <td>🏆 <span class="status-champion">Arsenal juara!</span> City tak sanggup mengejar, pesta di Emirates.</td>
+                        <td>🏆 <span class="status-champion">Arsenal juara!</span> City tak sanggup mengejar.</td>
                     </tr>
                     <tr>
                         <td>Chelsea vs Tottenham Hotspur</td>
                         <td><span class="score">2 - 1</span></td>
-                        <td>⚠️ <span class="status-danger">Spurs gemetar.</span> 90 menit terakhir penentu nasib di zona merah.</td>
+                        <td>⚠️ <span class="status-danger">Spurs gemetar.</span> Nasib di ujung tanduk.</td>
                     </tr>
                 </tbody>
             </table>
@@ -271,8 +286,7 @@
             <strong>🏟️ Final belum dimulai.</strong> Data akan diperbarui begitu laga usai.
         </div>
 
-        <!-- Footer kecil sebagai tanda tangan -->
-        <div style="margin-top: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid #e0e0e0; padding-top: 1rem;">
+        <div class="site-footer">
             © PapanSkor — Cepat, Bersih, Tanpa Gangguan.
         </div>
     </div>
