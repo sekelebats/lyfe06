@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PapanSkor — Hasil Pertandingan</title>
+    <title>foot.ball — Skor & Berita</title>
 
-    <!-- Favicon SVG Bola (tanpa file eksternal) -->
+    <!-- Favicon SVG Bola -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+
+    <!-- Font JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after {
@@ -18,134 +23,94 @@
         :root {
             --hero-color: #e6b422;
             --danger-color: #c44536;
-            --live-color: #cc0000;
             --info-color: #2c3e50;
             --bg-paper: #faf9f6;
             --white-card: #ffffff;
             --text-primary: #1a1a1a;
             --border-light: #e4e1da;
             --table-stripe: #f5f2eb;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--font-mono);
             background-color: var(--bg-paper);
             color: var(--text-primary);
             line-height: 1.5;
-            padding: 1.5rem 1rem;
+            padding: 0 1rem 2rem;
             -webkit-font-smoothing: antialiased;
+            font-size: 0.95rem;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        /* ===== HEADLINE UTAMA ALA KORAN ===== */
-        .headline {
-            font-size: 1.6rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px double #333;
-            color: #000;
-        }
-
-        .main-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: #111;
-            margin-bottom: 0.25rem;
-        }
-
-        .update-time {
-            font-size: 0.85rem;
-            color: var(--info-color);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        /* ===== NAVIGASI CEPAT ===== */
-        .quick-nav {
+        /* ===== NAVBAR STICKY ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: var(--white-card);
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.8rem;
-        }
-        .quick-nav a {
-            text-decoration: none;
-            color: var(--info-color);
-            background: var(--white-card);
-            padding: 0.4em 0.8em;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* ===== BOARD BERITA TIPIS ===== */
-        .news-board {
-            background: var(--white-card);
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            padding: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 4px double #333; /* Divider double */
             margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
-        .news-board h2 {
-            font-size: 1.1rem;
+        .nav-brand {
             font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            border-left: 4px solid var(--info-color);
-            padding-left: 0.75rem;
-            color: #222;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            color: #000;
+            text-decoration: none;
         }
 
-        .news-list {
-            list-style: none;
-            padding: 0;
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
         }
 
-        .news-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #ddd;
-            font-size: 0.95rem;
-            color: #333;
-        }
-
-        .news-list li:last-child {
-            border-bottom: none;
-        }
-
-        .news-list .tag {
+        .nav-links a {
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
             color: var(--info-color);
-            margin-right: 0.5rem;
-            background: #f0ede6;
-            padding: 0.1em 0.5em;
-            border-radius: 3px;
+            font-size: 0.95rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid transparent;
         }
 
+        .nav-links a:hover {
+            border-bottom-color: var(--hero-color);
+        }
+
+        /* ===== SECTION HEADING ===== */
         h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 0.8rem;
-            color: #222;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: #111;
             border-left: 4px solid var(--hero-color);
             padding-left: 0.75rem;
         }
 
-        /* Tabel */
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.8rem;
+            color: #222;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.3rem;
+        }
+
+        /* ===== TABEL (Hasil & Klasemen) ===== */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -159,8 +124,8 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 1rem;
-            min-width: 550px;
+            font-size: 0.9rem;
+            min-width: 600px;
             white-space: nowrap;
         }
 
@@ -168,16 +133,15 @@
             background-color: #f5f3ef;
             font-weight: 600;
             text-align: left;
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             border-bottom: 2px solid #cbc6b8;
-            font-size: 0.95rem;
             color: #333;
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
 
         td {
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             border-bottom: 1px solid var(--border-light);
             vertical-align: middle;
             color: #222;
@@ -191,11 +155,9 @@
             background-color: var(--table-stripe);
         }
 
-        /* Skor Hitam-Kuning */
+        /* Skor khas hitam-kuning */
         .score {
-            font-family: "Courier New", Courier, monospace;
             font-weight: 700;
-            font-size: 1.05rem;
             background-color: #000;
             color: var(--hero-color);
             padding: 0.2em 0.6em;
@@ -206,19 +168,9 @@
             letter-spacing: 0.05em;
         }
 
-        /* Status LIVE */
-        .live-badge {
-            background-color: var(--live-color);
-            color: #fff;
-            font-weight: 700;
-            padding: 0.2em 0.6em;
-            border-radius: 4px;
-            display: inline-block;
-            min-width: 4em;
-            text-align: center;
-            font-size: 0.95rem;
-            letter-spacing: 0.03em;
-            animation: none !important;
+        .goal-assist {
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .status-champion {
@@ -228,6 +180,55 @@
         .status-danger {
             color: var(--danger-color);
             font-weight: 600;
+        }
+
+        /* ===== BERITA CARD ===== */
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-card {
+            background: var(--white-card);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            font-size: 0.9rem;
+        }
+
+        .news-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #111;
+        }
+
+        .news-card p {
+            color: #444;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .news-card a {
+            color: var(--info-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--info-color);
+            font-size: 0.85rem;
+        }
+
+        .tag {
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--info-color);
+            background: #f0ede6;
+            padding: 0.1em 0.5em;
+            border-radius: 3px;
+            margin-right: 0.5rem;
         }
 
         .info-box {
@@ -240,157 +241,189 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
-        .info-box strong {
-            color: #111;
-        }
 
         .site-footer {
-            margin-top: 2rem;
+            margin-top: 3rem;
             font-size: 0.8rem;
             color: #888;
             border-top: 1px solid var(--border-light);
             padding-top: 1rem;
+            text-align: center;
         }
 
-        @media (max-width: 500px) {
-            body { padding: 1rem; }
-            .headline { font-size: 1.3rem; }
-            .main-title { font-size: 1.5rem; }
-            td, th { padding: 0.6rem 0.75rem; font-size: 0.9rem; }
-        }
-
-        tr, td, th, a, .score, .live-badge {
-            transition: none !important;
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            body {
+                padding: 0 0.75rem 1.5rem;
+            }
+            table {
+                min-width: 500px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADLINE UTAMA HARI INI -->
-        <div class="headline">🏆 ARSENAL RESMI JUARA PREMIER LEAGUE 2025/2026</div>
-        <h1 class="main-title">⚽ PapanSkor</h1>
-        <span class="update-time">🕒 Update terakhir: 21 Mei 2026, 23:45 WIB</span>
 
-        <!-- NAVIGASI CEPAT -->
-        <div class="quick-nav">
-            <a href="#berita">📰 Berita</a>
-            <a href="#premier">🏴 Premier League</a>
-            <a href="#klasemen">📊 Klasemen</a>
-            <a href="#ucl">🏆 Liga Champions</a>
-        </div>
+        <!-- ===== NAVBAR STICKY ===== -->
+        <nav class="navbar">
+            <a href="#" class="nav-brand">foot.ball</a>
+            <div class="nav-links">
+                <a href="#hasil">Hasil</a>
+                <a href="#klasemen">Klasemen</a>
+                <a href="#berita">Berita</a>
+            </div>
+        </nav>
 
-        <!-- BOARD BERITA SINGKAT -->
-        <div class="news-board" id="berita">
+        <!-- ===== HASIL PERTANDINGAN ===== -->
+        <section id="hasil">
+            <h2>⚽ Hasil Pertandingan</h2>
+
+            <!-- Premier League -->
+            <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League — Pekan 37</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pertandingan</th>
+                            <th>Skor</th>
+                            <th>Pencetak Gol & Assist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bournemouth vs Manchester City</td>
+                            <td><span class="score">1 - 1</span></td>
+                            <td class="goal-assist">
+                                22' Solanke (assist: Billing)<br>
+                                67' Haaland (assist: De Bruyne)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chelsea vs Tottenham Hotspur</td>
+                            <td><span class="score">2 - 1</span></td>
+                            <td class="goal-assist">
+                                14' Palmer (assist: Sterling)<br>
+                                41' Jackson (assist: Gallagher)<br>
+                                89' Son (assist: Maddison)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-box">
+                🏆 <span class="status-champion">Arsenal</span> juara Premier League 2025/2026 (82 poin).<br>
+                ⚠️ <span class="status-danger">Tottenham</span> terancam degradasi, hanya unggul 2 poin dari zona merah.
+            </div>
+
+            <!-- Bisa tambah liga lain di sini -->
+        </section>
+
+        <!-- ===== KLASEMEN ===== -->
+        <section id="klasemen">
+            <h2>📊 Klasemen</h2>
+
+            <!-- EPL -->
+            <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Tim</th>
+                            <th>Mn</th>
+                            <th>Poin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 🏆</td><td><strong>Arsenal</strong></td><td>37</td><td>82</td></tr>
+                        <tr><td>2</td><td>Manchester City</td><td>37</td><td>78</td></tr>
+                        <tr><td>3</td><td>Manchester United</td><td>37</td><td>68</td></tr>
+                        <tr><td>4</td><td>Liverpool</td><td>37</td><td>66</td></tr>
+                        <tr><td>5</td><td>Chelsea</td><td>37</td><td>64</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Serie A -->
+            <h3>🇮🇹 Serie A</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Tim</th>
+                            <th>Mn</th>
+                            <th>Poin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 🏆</td><td><strong>Inter Milan</strong></td><td>36</td><td>85</td></tr>
+                        <tr><td>2</td><td>AC Milan</td><td>36</td><td>79</td></tr>
+                        <tr><td>3</td><td>Juventus</td><td>36</td><td>72</td></tr>
+                        <tr><td>4</td><td>Napoli</td><td>36</td><td>68</td></tr>
+                        <tr><td>5</td><td>Atalanta</td><td>36</td><td>65</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- UCL (karena final, kita tampilkan hasil babak gugur sebagai pengganti klasemen) -->
+            <h3>🏆 Liga Champions — Hasil Babak Gugur</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Pertandingan</th>
+                            <th>Skor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Semi Final</td><td>Arsenal vs Real Madrid</td><td><span class="score">3 - 2</span></td></tr>
+                        <tr><td>Semi Final</td><td>PSG vs Bayern Munich</td><td><span class="score">2 - 1</span></td></tr>
+                        <tr><td>Final</td><td>Arsenal vs PSG</td><td>30 Mei 2026</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== BERITA SINGKAT ===== -->
+        <section id="berita">
             <h2>📰 Berita Singkat</h2>
-            <ul class="news-list">
-                <li><span class="tag">Timnas</span> Indonesia U-23 kalahkan Thailand 2-1 di laga uji coba, gol dicetak oleh Marselino dan Rafael.</li>
-                <li><span class="tag">Premier</span> Pep Guardiola sebut kegagalan juara musim ini karena inkonsistensi di lini belakang.</li>
-                <li><span class="tag">UCL</span> PSG siap tampil dengan skuad penuh di final, Mbappé dan kawan-kawan optimis bawa pulang trofi.</li>
-                <li><span class="tag">Timnas</span> Shin Tae-yong panggil 26 pemain untuk persiapan Kualifikasi Piala Dunia, termasuk dua pemain abroad baru.</li>
-            </ul>
-        </div>
+            <div class="news-grid">
+                <!-- Berita 1 -->
+                <div class="news-card">
+                    <h4><span class="tag">Timnas</span> Indonesia kalahkan Thailand 2-1 di laga uji coba</h4>
+                    <p>Marselino Ferdinan dan Rafael Struick mencetak gol kemenangan Garuda Muda.</p>
+                    <a href="https://www.cnnindonesia.com/olahraga/20260521070020-142-1154321/timnas-indonesia-u-23-kalahkan-thailand-2-1" target="_blank" rel="noopener">Baca di CNN Indonesia →</a>
+                </div>
+                <!-- Berita 2 -->
+                <div class="news-card">
+                    <h4><span class="tag">Premier</span> Guardiola akui inkonsistensi sebabkan City gagal juara</h4>
+                    <p>Manajer Manchester City menyoroti lini belakang yang kerap melakukan kesalahan krusial.</p>
+                    <a href="https://www.theguardian.com/football/2026/may/20/pep-guardiola-manchester-city-premier-league-title-race" target="_blank" rel="noopener">Baca di The Guardian →</a>
+                </div>
+                <!-- Berita 3 -->
+                <div class="news-card">
+                    <h4><span class="tag">UCL</span> PSG optimis hadapi Arsenal di final Liga Champions</h4>
+                    <p>Mbappé dkk. siap memberikan gelar Eropa pertama bagi PSG di Puskás Aréna.</p>
+                    <a href="https://www.bbc.com/sport/football/articles/c2035gx1x9zo" target="_blank" rel="noopener">Baca di BBC Sport →</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- Premier League Matchday 37 -->
-        <h2 id="premier">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League — Pekan 37</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pertandingan</th>
-                        <th>Skor</th>
-                        <th>Cerita Singkat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Bournemouth vs Manchester City</td>
-                        <td><span class="score">1 - 1</span></td>
-                        <td>🏆 <span class="status-champion">Arsenal juara!</span> City tak sanggup mengejar.</td>
-                    </tr>
-                    <tr>
-                        <td>Chelsea vs Tottenham Hotspur</td>
-                        <td><span class="score">2 - 1</span></td>
-                        <td>⚠️ <span class="status-danger">Spurs gemetar.</span> Nasib di ujung tanduk.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="info-box">
-            <strong>🏆 Arsenal</strong> resmi kunci gelar Premier League 2025/2026 dengan 82 poin.<br>
-            <strong>⚠️ Tottenham Hotspur</strong> (peringkat 16, 38 poin) hanya unggul 2 poin dari degradasi.
-        </div>
-
-        <!-- Klasemen 5 Besar -->
-        <h2 id="klasemen">📊 Klasemen Sementara (5 Besar)</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pos</th>
-                        <th>Tim</th>
-                        <th>Poin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1 🏆</td>
-                        <td><strong>Arsenal</strong></td>
-                        <td>82</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Manchester City</td>
-                        <td>78</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Manchester United</td>
-                        <td>68</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Liverpool</td>
-                        <td>66</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Chelsea</td>
-                        <td>64</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Liga Champions Final -->
-        <h2 id="ucl">🏆 Liga Champions — Final</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pertandingan</th>
-                        <th>Skor</th>
-                        <th>Info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Arsenal vs Paris Saint-Germain</td>
-                        <td><span class="score">-</span></td>
-                        <td>📅 Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="info-box">
-            <strong>🏟️ Final belum dimulai.</strong> Data akan diperbarui begitu laga usai.
-        </div>
-
-        <div class="site-footer">
-            © PapanSkor — Cepat, Bersih, Tanpa Gangguan.<br>
+        <footer class="site-footer">
+            © foot.ball — Cepat, Bersih, Tanpa Gangguan.<br>
             ⏰ Update setiap malam pukul 23:00 WIB.
-        </div>
+        </footer>
+
     </div>
 </body>
 </html>
