@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>foot.ball — Skor & Berita</title>
-
-    <!-- Favicon SVG Bola -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
-
-    <!-- Font JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -51,7 +46,7 @@
             margin: 0 auto;
         }
 
-        /* ===== NAVBAR STICKY ===== */
+        /* Navbar sticky */
         .navbar {
             position: sticky;
             top: 0;
@@ -61,7 +56,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 0;
-            border-bottom: 4px double #333; /* Divider double */
+            border-bottom: 4px double #333;
             margin-bottom: 1.5rem;
         }
 
@@ -91,7 +86,6 @@
             border-bottom-color: var(--hero-color);
         }
 
-        /* ===== SECTION HEADING ===== */
         h2 {
             font-size: 1.4rem;
             font-weight: 700;
@@ -110,7 +104,6 @@
             padding-bottom: 0.3rem;
         }
 
-        /* ===== TABEL (Hasil & Klasemen) ===== */
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -125,7 +118,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            min-width: 600px;
+            min-width: 700px; /* Lebih lebar karena tambahan kolom */
             white-space: nowrap;
         }
 
@@ -155,7 +148,6 @@
             background-color: var(--table-stripe);
         }
 
-        /* Skor khas hitam-kuning */
         .score {
             font-weight: 700;
             background-color: #000;
@@ -182,7 +174,7 @@
             font-weight: 600;
         }
 
-        /* ===== BERITA CARD ===== */
+        /* Berita card */
         .news-grid {
             display: flex;
             flex-direction: column;
@@ -251,20 +243,62 @@
             text-align: center;
         }
 
+        /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 600px) {
+            body {
+                font-size: 0.85rem; /* Lebih kecil satu tingkat */
+                padding: 0 0.75rem 1.5rem;
+            }
+
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
             }
+
             .nav-links {
                 gap: 1rem;
             }
-            body {
-                padding: 0 0.75rem 1.5rem;
+
+            .nav-brand {
+                font-size: 1.4rem;
             }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
             table {
-                min-width: 500px;
+                font-size: 0.8rem;
+                min-width: 600px;
+            }
+
+            th, td {
+                padding: 0.5rem 0.7rem;
+            }
+
+            .score {
+                font-size: 0.8rem;
+                min-width: 3.5em;
+                padding: 0.15em 0.4em;
+            }
+
+            .goal-assist {
+                font-size: 0.75rem;
+            }
+
+            .news-card {
+                font-size: 0.85rem;
+            }
+            .news-card h4 {
+                font-size: 0.9rem;
+            }
+            .news-card a {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -294,26 +328,25 @@
                         <tr>
                             <th>Pertandingan</th>
                             <th>Skor</th>
-                            <th>Pencetak Gol & Assist</th>
+                            <th>Gol & Assist (Kandang)</th>
+                            <th>Gol & Assist (Tandang)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Bournemouth vs Manchester City</td>
                             <td><span class="score">1 - 1</span></td>
-                            <td class="goal-assist">
-                                22' Solanke (assist: Billing)<br>
-                                67' Haaland (assist: De Bruyne)
-                            </td>
+                            <td class="goal-assist">22' Solanke (assist: Billing)</td>
+                            <td class="goal-assist">67' Haaland (assist: De Bruyne)</td>
                         </tr>
                         <tr>
                             <td>Chelsea vs Tottenham Hotspur</td>
                             <td><span class="score">2 - 1</span></td>
                             <td class="goal-assist">
                                 14' Palmer (assist: Sterling)<br>
-                                41' Jackson (assist: Gallagher)<br>
-                                89' Son (assist: Maddison)
+                                41' Jackson (assist: Gallagher)
                             </td>
+                            <td class="goal-assist">89' Son (assist: Maddison)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -323,14 +356,49 @@
                 ⚠️ <span class="status-danger">Tottenham</span> terancam degradasi, hanya unggul 2 poin dari zona merah.
             </div>
 
-            <!-- Bisa tambah liga lain di sini -->
+            <!-- Liga Champions (Hasil) -->
+            <h3>🏆 Liga Champions — Semifinal & Final</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pertandingan</th>
+                            <th>Skor</th>
+                            <th>Gol & Assist (Kandang)</th>
+                            <th>Gol & Assist (Tandang)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Arsenal vs Real Madrid</td>
+                            <td><span class="score">3 - 2</span></td>
+                            <td class="goal-assist">12' Saka (assist: Ødegaard)<br>34' Martinelli<br>78' Gabriel Jesus</td>
+                            <td class="goal-assist">22' Vinícius Jr.<br>90+1' Bellingham (assist: Modrić)</td>
+                        </tr>
+                        <tr>
+                            <td>PSG vs Bayern Munich</td>
+                            <td><span class="score">2 - 1</span></td>
+                            <td class="goal-assist">8' Mbappé (assist: Dembélé)<br>56' Kolo Muani</td>
+                            <td class="goal-assist">73' Kane (pen.)</td>
+                        </tr>
+                        <tr>
+                            <td>Arsenal vs PSG (Final)</td>
+                            <td><span class="score">-</span></td>
+                            <td colspan="2">📅 Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-box">
+                🏟️ <strong>Final UCL</strong> akan mempertemukan Arsenal vs PSG. Data akan diperbarui setelah laga usai.
+            </div>
         </section>
 
         <!-- ===== KLASEMEN ===== -->
         <section id="klasemen">
             <h2>📊 Klasemen</h2>
 
-            <!-- EPL -->
+            <!-- Premier League -->
             <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</h3>
             <div class="table-wrapper">
                 <table>
@@ -373,46 +441,24 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- UCL (karena final, kita tampilkan hasil babak gugur sebagai pengganti klasemen) -->
-            <h3>🏆 Liga Champions — Hasil Babak Gugur</h3>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fase</th>
-                            <th>Pertandingan</th>
-                            <th>Skor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Semi Final</td><td>Arsenal vs Real Madrid</td><td><span class="score">3 - 2</span></td></tr>
-                        <tr><td>Semi Final</td><td>PSG vs Bayern Munich</td><td><span class="score">2 - 1</span></td></tr>
-                        <tr><td>Final</td><td>Arsenal vs PSG</td><td>30 Mei 2026</td></tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
 
         <!-- ===== BERITA SINGKAT ===== -->
         <section id="berita">
             <h2>📰 Berita Singkat</h2>
             <div class="news-grid">
-                <!-- Berita 1 -->
                 <div class="news-card">
-                    <h4><span class="tag">Timnas</span> Indonesia kalahkan Thailand 2-1 di laga uji coba</h4>
+                    <h4><span class="tag">Timnas</span> Indonesia kalahkan Thailand 2-1</h4>
                     <p>Marselino Ferdinan dan Rafael Struick mencetak gol kemenangan Garuda Muda.</p>
                     <a href="https://www.cnnindonesia.com/olahraga/20260521070020-142-1154321/timnas-indonesia-u-23-kalahkan-thailand-2-1" target="_blank" rel="noopener">Baca di CNN Indonesia →</a>
                 </div>
-                <!-- Berita 2 -->
                 <div class="news-card">
                     <h4><span class="tag">Premier</span> Guardiola akui inkonsistensi sebabkan City gagal juara</h4>
                     <p>Manajer Manchester City menyoroti lini belakang yang kerap melakukan kesalahan krusial.</p>
                     <a href="https://www.theguardian.com/football/2026/may/20/pep-guardiola-manchester-city-premier-league-title-race" target="_blank" rel="noopener">Baca di The Guardian →</a>
                 </div>
-                <!-- Berita 3 -->
                 <div class="news-card">
-                    <h4><span class="tag">UCL</span> PSG optimis hadapi Arsenal di final Liga Champions</h4>
+                    <h4><span class="tag">UCL</span> PSG optimis hadapi Arsenal di final</h4>
                     <p>Mbappé dkk. siap memberikan gelar Eropa pertama bagi PSG di Puskás Aréna.</p>
                     <a href="https://www.bbc.com/sport/football/articles/c2035gx1x9zo" target="_blank" rel="noopener">Baca di BBC Sport →</a>
                 </div>
