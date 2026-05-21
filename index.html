@@ -46,12 +46,12 @@
             margin: 0 auto;
         }
 
-        /* Navbar sticky */
+        /* Navbar sticky - SEKARANG WARNA KERTAS */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 10;
-            background-color: var(--white-card);
+            background-color: var(--bg-paper);  /* disamakan dengan latar */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -118,8 +118,13 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            min-width: 700px; /* Lebih lebar karena tambahan kolom */
+            min-width: 600px;
             white-space: nowrap;
+        }
+
+        /* Tabel klasemen pakai fixed layout biar kolom seragam */
+        table.fixed {
+            table-layout: fixed;
         }
 
         th {
@@ -163,6 +168,7 @@
         .goal-assist {
             font-size: 0.85rem;
             line-height: 1.4;
+            white-space: normal; /* biar turun ke bawah kalau panjang */
         }
 
         .status-champion {
@@ -246,7 +252,7 @@
         /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 600px) {
             body {
-                font-size: 0.85rem; /* Lebih kecil satu tingkat */
+                font-size: 0.85rem;
                 padding: 0 0.75rem 1.5rem;
             }
 
@@ -274,7 +280,7 @@
 
             table {
                 font-size: 0.8rem;
-                min-width: 600px;
+                min-width: 550px;
             }
 
             th, td {
@@ -306,7 +312,7 @@
 <body>
     <div class="container">
 
-        <!-- ===== NAVBAR STICKY ===== -->
+        <!-- ===== NAVBAR STICKY (warna kertas) ===== -->
         <nav class="navbar">
             <a href="#" class="nav-brand">foot.ball</a>
             <div class="nav-links">
@@ -328,25 +334,25 @@
                         <tr>
                             <th>Pertandingan</th>
                             <th>Skor</th>
-                            <th>Gol & Assist (Kandang)</th>
-                            <th>Gol & Assist (Tandang)</th>
+                            <th>Pencetak Gol & Assist</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Bournemouth vs Manchester City</td>
                             <td><span class="score">1 - 1</span></td>
-                            <td class="goal-assist">22' Solanke (assist: Billing)</td>
-                            <td class="goal-assist">67' Haaland (assist: De Bruyne)</td>
+                            <td class="goal-assist">
+                                <strong>Bournemouth:</strong> 22' Solanke (assist: Billing)<br>
+                                <strong>Man City:</strong> 67' Haaland (assist: De Bruyne)
+                            </td>
                         </tr>
                         <tr>
                             <td>Chelsea vs Tottenham Hotspur</td>
                             <td><span class="score">2 - 1</span></td>
                             <td class="goal-assist">
-                                14' Palmer (assist: Sterling)<br>
-                                41' Jackson (assist: Gallagher)
+                                <strong>Chelsea:</strong> 14' Palmer (assist: Sterling), 41' Jackson (assist: Gallagher)<br>
+                                <strong>Tottenham:</strong> 89' Son (assist: Maddison)
                             </td>
-                            <td class="goal-assist">89' Son (assist: Maddison)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -364,27 +370,30 @@
                         <tr>
                             <th>Pertandingan</th>
                             <th>Skor</th>
-                            <th>Gol & Assist (Kandang)</th>
-                            <th>Gol & Assist (Tandang)</th>
+                            <th>Pencetak Gol & Assist</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Arsenal vs Real Madrid</td>
                             <td><span class="score">3 - 2</span></td>
-                            <td class="goal-assist">12' Saka (assist: Ødegaard)<br>34' Martinelli<br>78' Gabriel Jesus</td>
-                            <td class="goal-assist">22' Vinícius Jr.<br>90+1' Bellingham (assist: Modrić)</td>
+                            <td class="goal-assist">
+                                <strong>Arsenal:</strong> 12' Saka (assist: Ødegaard), 34' Martinelli, 78' Gabriel Jesus<br>
+                                <strong>Real Madrid:</strong> 22' Vinícius Jr., 90+1' Bellingham (assist: Modrić)
+                            </td>
                         </tr>
                         <tr>
                             <td>PSG vs Bayern Munich</td>
                             <td><span class="score">2 - 1</span></td>
-                            <td class="goal-assist">8' Mbappé (assist: Dembélé)<br>56' Kolo Muani</td>
-                            <td class="goal-assist">73' Kane (pen.)</td>
+                            <td class="goal-assist">
+                                <strong>PSG:</strong> 8' Mbappé (assist: Dembélé), 56' Kolo Muani<br>
+                                <strong>Bayern:</strong> 73' Kane (pen.)
+                            </td>
                         </tr>
                         <tr>
                             <td>Arsenal vs PSG (Final)</td>
                             <td><span class="score">-</span></td>
-                            <td colspan="2">📅 Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
+                            <td>📅 Sabtu, 30 Mei 2026 — Puskás Aréna, Budapest</td>
                         </tr>
                     </tbody>
                 </table>
@@ -401,7 +410,13 @@
             <!-- Premier League -->
             <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</h3>
             <div class="table-wrapper">
-                <table>
+                <table class="fixed">
+                    <colgroup>
+                        <col style="width: 12%">
+                        <col style="width: 53%">
+                        <col style="width: 15%">
+                        <col style="width: 20%">
+                    </colgroup>
                     <thead>
                         <tr>
                             <th>Pos</th>
@@ -423,7 +438,13 @@
             <!-- Serie A -->
             <h3>🇮🇹 Serie A</h3>
             <div class="table-wrapper">
-                <table>
+                <table class="fixed">
+                    <colgroup>
+                        <col style="width: 12%">
+                        <col style="width: 53%">
+                        <col style="width: 15%">
+                        <col style="width: 20%">
+                    </colgroup>
                     <thead>
                         <tr>
                             <th>Pos</th>
