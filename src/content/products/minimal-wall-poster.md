@@ -4,6 +4,7 @@ slug: "minimal-wall-poster"
 price: 120000
 description: "Poster dekoratif minimalis dengan tipografi sederhana untuk ruang kerja dan area pribadi."
 excerpt: "Dekorasi sederhana dengan pesan visual yang tenang dan tidak berlebihan."
+image: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - cetak
   - dekorasi
