@@ -1,4 +1,3 @@
-
 ---
 name: "Minimal Wall Poster"
 slug: "minimal-wall-poster"
