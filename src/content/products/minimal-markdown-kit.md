@@ -4,6 +4,7 @@ slug: "minimal-markdown-kit"
 price: 49000
 description: "Template Markdown minimalis untuk mengelola catatan, dokumentasi, dan tulisan secara terstruktur."
 excerpt: "Satu set template Markdown sederhana untuk workflow menulis yang lebih terorganisasi."
+image: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - digital
   - template
