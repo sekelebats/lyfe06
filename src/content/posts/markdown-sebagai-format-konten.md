@@ -5,6 +5,7 @@ date: 2026-11-15
 draft: false
 description: "Mengenal Markdown sebagai format penulisan yang sederhana, portabel, mudah dibaca, dan cocok untuk static website."
 excerpt: "Konten seharusnya tetap sederhana, mudah dibaca, dan tidak bergantung pada satu aplikasi."
+cover: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - markdown
   - writing
