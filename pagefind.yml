@@ -1,0 +1,13 @@
+# Pagefind hanya mengindeks isi utama yang diberi data-pagefind-body.
+site: public
+output_subdir: pagefind
+root_selector: "[data-pagefind-body]"
+exclude_selectors:
+  - "[data-pagefind-ignore]"
+  - "script"
+  - "style"
+  - "nav"
+  - "footer"
+  - ".share-tools"
+  - ".search-ui"
+force_language: id
