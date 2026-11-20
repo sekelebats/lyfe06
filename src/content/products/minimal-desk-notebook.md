@@ -4,6 +4,7 @@ slug: "minimal-desk-notebook"
 price: 85000
 description: "Notebook sederhana dengan layout bersih untuk mencatat ide, pekerjaan, dan aktivitas sehari-hari."
 excerpt: "Ruang kosong yang cukup untuk menuangkan ide tanpa distraksi."
+image: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - aksesoris
   - stationery
