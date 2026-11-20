@@ -63,11 +63,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  background: hsl(var(--bg));
+  transition: background-color .2s ease, color .2s ease;
+}
+
 body {
   min-width: 20rem;
   margin: 0;
   background: hsl(var(--bg));
   color: hsl(var(--fg));
+  transition: background-color .2s ease, color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
   font-family: var(--font);
   font-size: var(--text-base);
   font-weight: var(--weight-normal);
@@ -119,6 +126,7 @@ a:hover { text-decoration-thickness: .12em; }
    Navigation
 ========================================================= */
 .site-nav {
+  transition: background-color .2s ease, border-color .2s ease;
   position: sticky;
   z-index: 30;
   top: 0;
@@ -190,6 +198,7 @@ a:hover { text-decoration-thickness: .12em; }
 }
 
 .icon-button {
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease;
   display: grid;
   width: 2.35rem;
   height: 2.35rem;
@@ -206,6 +215,9 @@ a:hover { text-decoration-thickness: .12em; }
 }
 .icon-button svg { display: block; }
 .menu-toggle { display: none; }
+.theme-toggle svg,
+.menu-toggle svg { display: block; transition: transform .22s ease, opacity .18s ease; }
+.menu-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
 
 /* =========================================================
    Shared layout and small typography
@@ -766,6 +778,7 @@ a:hover { text-decoration-thickness: .12em; }
    Footer — rendered globally by layout() on every page
 ========================================================= */
 .site-footer {
+  transition: background-color .2s ease, border-color .2s ease;
   margin-top: 2rem;
   border-top: 1px solid hsl(var(--line));
 }
@@ -892,25 +905,46 @@ a:hover { text-decoration-thickness: .12em; }
   .footer-inner { padding-block: 3rem; }
 }
 
-/* Mobile navigation */
+/* =========================================================
+   Mobile navigation — animated without display toggling
+========================================================= */
 @media (max-width: 41.999rem) {
   .nav-inner { min-height: 3.8rem; }
   .menu-toggle { display: grid; }
   .nav-panel {
     position: absolute;
+    z-index: 31;
     top: calc(100% + 1px);
     right: 0;
     left: 0;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-.45rem);
+    border-bottom: 1px solid transparent;
+    background: hsl(var(--bg) / .98);
+    box-shadow: none;
+    transition: max-height .28s ease, padding .28s ease, opacity .2s ease,
+      transform .22s ease, visibility 0s linear .28s, box-shadow .22s ease;
+  }
+  .nav-panel.is-open {
+    max-height: 20rem;
     padding: .45rem 1rem .8rem;
-    border-bottom: 1px solid hsl(var(--line));
-    background: hsl(var(--bg));
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
+    border-bottom-color: hsl(var(--line));
     box-shadow: var(--shadow);
   }
-  .nav-panel.is-open { display: flex; }
   .nav-panel .nav-link {
     min-height: 2.8rem;
     padding: .55rem .15rem;
@@ -948,3 +982,8 @@ a:hover { text-decoration-thickness: .12em; }
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Back links use the same inline Lucide-style SVG system as other icons. */
+.back-link { display: inline-flex; align-items: center; gap: .45rem; margin-bottom: 1.25rem; color: hsl(var(--muted)); font-size: .8125rem; text-decoration: underline; text-underline-offset: .22em; transition: color .18s ease; }
+.back-link:hover { color: hsl(var(--fg)); }
+.back-link svg { display: block; flex: 0 0 auto; }
