@@ -5,6 +5,7 @@ date: 2026-11-18
 draft: false
 description: "Mengapa website statis, HTML sederhana, dan sedikit dependency menjadi pilihan menarik untuk website jangka panjang."
 excerpt: "Website tidak harus kompleks untuk menjadi cepat, mudah dirawat, dan dapat bertahan lama."
+cover: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - static-site
   - web-development
