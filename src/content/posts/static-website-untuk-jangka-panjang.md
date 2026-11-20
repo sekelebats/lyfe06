@@ -1,9 +1,9 @@
 ---
-title: "VOC, The Dutch Trading Company That Ruled the Archipelago for Nearly 200 Years"
+title: "VOC The Dutch Trading Company That Ruled the Archipelago for Nearly 200 Years"
 slug: "static-website-untuk-jangka-panjang"
 date: 2026-11-18
 draft: false
-description: "The VOC, or Vereenigde Oostindische Compagnie (often called "the Company" in Indonesian), was a Dutch trading company founded in 1602. The VOC was not just an ordinary company; it was a merger of several small Dutch trading companies that had previously competed with one another for spices from the Indonesian archipelago."
+description: "The VOC, or Vereenigde Oostindische Compagnie (often called "the Company" in Indonesian), was a Dutch trading company founded in 1602."
 excerpt: "Website tidak harus kompleks untuk menjadi cepat, mudah dirawat, dan dapat bertahan lama."
 cover: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
