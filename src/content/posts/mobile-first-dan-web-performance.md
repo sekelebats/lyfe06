@@ -1,4 +1,3 @@
-
 ---
 title: "Mobile First dan Web Performance"
 slug: "mobile-first-dan-web-performance"
