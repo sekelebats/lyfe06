@@ -1,30 +1,31 @@
 ---
-name: "Minimal Desk Mat"
-slug: "minimal-desk-mat"
+name: Minimal Desk Mat
+slug: minimal-desk-mat
 price: 175000
-description: "Desk mat minimalis untuk membantu menjaga area kerja tetap rapi dan nyaman."
-excerpt: "Area kerja yang lebih terorganisasi dengan permukaan meja yang bersih."
-image: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
+description: Desk mat minimalis untuk membantu menjaga area kerja tetap rapi dan nyaman.
+excerpt: Area kerja yang lebih terorganisasi dengan permukaan meja yang bersih.
 tags:
-  - aksesoris
-  - workspace
+  - alat
+  - digital
+image: /media/products/9.webp
 available: true
 order: 4
 ---
-
 # Minimal Desk Mat
 
 Desk mat untuk melengkapi setup meja kerja dengan tampilan yang sederhana.
 
 ## Spesifikasi
 
+
 | Detail | Informasi |
-|---|---|
+| ------------ | ---------- |
 | Ukuran | 80 × 30 cm |
 | Material | Fabric |
 | Permukaan | Smooth |
 | Bagian bawah | Anti-slip |
 | Warna | Charcoal |
+
 
 ## Fitur
 
