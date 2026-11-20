@@ -1,4 +1,3 @@
-
 ---
 title: "Membangun Static Website untuk Jangka Panjang"
 slug: "static-website-untuk-jangka-panjang"
