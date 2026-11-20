@@ -1,0 +1,103 @@
+media:
+  - name: products
+    label: Foto Produk
+    input: public/media/products
+    output: /media/products
+    rename: safe
+    extensions: [jpg, jpeg, png, webp, avif]
+  - name: posts
+    label: Gambar Blog
+    input: public/media/posts
+    output: /media/posts
+    rename: safe
+    extensions: [jpg, jpeg, png, webp, avif]
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/posts
+    filename: "{primary}.md"
+    view:
+      fields: [title, date, draft]
+    fields:
+      - name: title
+        label: Judul
+        type: string
+        required: true
+      - name: date
+        label: Tanggal
+        type: date
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+      - name: description
+        label: Ringkasan
+        type: text
+      - name: tags
+        label: Tag
+        type: string
+        list: true
+      - name: cover
+        label: Gambar Sampul
+        type: image
+        options:
+          media: posts
+      - name: body
+        label: Isi
+        type: rich-text
+
+  - name: products
+    label: Produk
+    type: collection
+    path: src/content/products
+    filename: "{primary}.md"
+    view:
+      fields: [name, price, tags, available]
+    fields:
+      - name: name
+        label: Nama Produk
+        type: string
+        required: true
+      - name: price
+        label: Harga (Rp)
+        type: number
+        required: true
+      - name: description
+        label: Deskripsi Singkat
+        type: text
+      - name: tags
+        label: Tag Filter
+        type: select
+        list: true
+        options:
+          values: [cetak, digital, alat, aksesoris]
+      - name: image
+        label: Foto
+        type: image
+        options:
+          media: products
+      - name: available
+        label: Tersedia
+        type: boolean
+        default: true
+      - name: order
+        label: Urutan
+        type: number
+      - name: body
+        label: Detail
+        type: rich-text
+
+  - name: pages
+    label: Halaman
+    type: collection
+    path: src/content/pages
+    fields:
+      - name: title
+        label: Judul
+        type: string
+        required: true
+      - name: body
+        label: Isi
+        type: rich-text
