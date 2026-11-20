@@ -1,13 +1,15 @@
+
 media:
   - name: products
     label: Foto Produk
-    input: public/media/products
+    input: src/images/original/products
     output: /media/products
     rename: safe
     extensions: [jpg, jpeg, png, webp, avif]
+
   - name: posts
     label: Gambar Blog
-    input: public/media/posts
+    input: src/images/original/posts
     output: /media/posts
     rename: safe
     extensions: [jpg, jpeg, png, webp, avif]
@@ -19,33 +21,51 @@ content:
     path: src/content/posts
     filename: "{primary}.md"
     view:
-      fields: [title, date, draft]
+      fields: [title, slug, date, draft]
     fields:
       - name: title
         label: Judul
         type: string
         required: true
+
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        description: "URL mandiri. Gunakan huruf kecil dan tanda hubung."
+
       - name: date
-        label: Tanggal
+        label: Tanggal publikasi
         type: date
+        required: true
+
       - name: draft
         label: Draft
         type: boolean
         default: false
+
       - name: description
-        label: Ringkasan
+        label: Meta description
         type: text
+        required: true
+
+      - name: excerpt
+        label: Ringkasan kartu
+        type: text
+
       - name: tags
         label: Tag
         type: string
         list: true
+
       - name: cover
-        label: Gambar Sampul
+        label: Gambar sampul
         type: image
         options:
           media: posts
+
       - name: body
-        label: Isi
+        label: Isi artikel
         type: rich-text
 
   - name: products
@@ -54,50 +74,54 @@ content:
     path: src/content/products
     filename: "{primary}.md"
     view:
-      fields: [name, price, tags, available]
+      fields: [name, slug, price, available]
     fields:
       - name: name
-        label: Nama Produk
+        label: Nama produk
         type: string
         required: true
+
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+
       - name: price
         label: Harga (Rp)
         type: number
         required: true
+
       - name: description
-        label: Deskripsi Singkat
+        label: Meta description
         type: text
+        required: true
+
+      - name: excerpt
+        label: Ringkasan kartu
+        type: text
+
       - name: tags
-        label: Tag Filter
+        label: Tag filter
         type: select
         list: true
         options:
           values: [cetak, digital, alat, aksesoris]
+
       - name: image
-        label: Foto
+        label: Foto produk
         type: image
         options:
           media: products
+
       - name: available
         label: Tersedia
         type: boolean
         default: true
+
       - name: order
         label: Urutan
         type: number
-      - name: body
-        label: Detail
-        type: rich-text
 
-  - name: pages
-    label: Halaman
-    type: collection
-    path: src/content/pages
-    fields:
-      - name: title
-        label: Judul
-        type: string
-        required: true
       - name: body
-        label: Isi
+        label: Detail produk
         type: rich-text
