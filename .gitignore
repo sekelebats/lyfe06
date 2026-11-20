@@ -1,0 +1,14 @@
+node_modules/
+public/fonts/
+public/media/
+public/*.html
+public/produk/
+public/blog/
+public/rss.xml
+public/sitemap.xml
+public/robots.txt
+public/_headers
+public/_redirects
+public/favicon.svg
+.DS_Store
+.wrangler/
