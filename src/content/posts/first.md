@@ -1,10 +1,13 @@
 ---
 title: "Menulis Tenang dengan Markdown"
+slug: "menulis-tenang-dengan-markdown"
 date: 2025-01-15
 draft: false
-description: "Kenapa Markdown adalah format terbaik untuk blog yang awet."
-tags: ["markdown", "menulis"]
-cover: "/media/posts/menulis-tenang.jpg"
+description: "Kenapa Markdown adalah format yang praktis untuk blog yang mudah dirawat."
+excerpt: "Markdown membuat proses menulis lebih ringan tanpa mengorbankan struktur konten."
+tags:
+  - markdown
+  - menulis
 ---
 
 Markdown membuat menulis terasa ringan. Tidak ada toolbar, tidak ada WYSIWYG yang berkedip.
@@ -23,3 +26,9 @@ Konten punya **hierarki** yang jelas. Setiap heading punya peran.
 
 ```javascript
 const tenang = (kata) => kata.trim().toLowerCase();
+console.log(tenang("Menulis Tenang"));
+```
+
+## Penutup
+
+Gunakan format yang sederhana, mudah dipindahkan, dan tetap terbaca dalam jangka panjang.
