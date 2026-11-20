@@ -5,6 +5,7 @@ date: 2026-11-08
 draft: false
 description: "Bagaimana Git membantu mengelola konten, melacak perubahan, dan membangun workflow publikasi website statis."
 excerpt: "Git bukan hanya alat untuk developer, tetapi juga sistem untuk menjaga riwayat dan konsistensi konten."
+cover: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - git
   - workflow
