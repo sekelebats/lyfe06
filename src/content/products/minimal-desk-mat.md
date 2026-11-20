@@ -4,6 +4,7 @@ slug: "minimal-desk-mat"
 price: 175000
 description: "Desk mat minimalis untuk membantu menjaga area kerja tetap rapi dan nyaman."
 excerpt: "Area kerja yang lebih terorganisasi dengan permukaan meja yang bersih."
+image: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - aksesoris
   - workspace
