@@ -1,4 +1,3 @@
-
 ---
 name: "Minimal Desk Mat"
 slug: "minimal-desk-mat"
