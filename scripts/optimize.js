@@ -1,33 +1,48 @@
+const fs = require('node:fs');
+const path = require('node:path');
 const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
 
 const WIDTHS = [400, 800, 1200];
 const JOBS = [
-  { input: './src/images/original/products', output: './public/media/products' },
-  { input: './src/images/original/posts', output: './public/media/posts' },
+  { input: 'src/images/original/products', output: 'public/media/products' },
+  { input: 'src/images/original/posts', output: 'public/media/posts' }
 ];
 
-async function optimize(inputPath, outputDir) {
+async function optimizeOne(inputPath, outputDir) {
   const name = path.basename(inputPath, path.extname(inputPath));
   fs.mkdirSync(outputDir, { recursive: true });
 
-  for (const w of WIDTHS) {
-    const resized = sharp(inputPath).resize(w, null, { withoutEnlargement: true });
-    await resized.clone().avif({ quality: 70, effort: 6 }).toFile(path.join(outputDir, `${name}-${w}.avif`));
-    await resized.clone().webp({ quality: 80 }).toFile(path.join(outputDir, `${name}-${w}.webp`));
-    await resized.clone().jpeg({ quality: 80, progressive: true, mozjpeg: true }).toFile(path.join(outputDir, `${name}-${w}.jpg`));
+  for (const width of WIDTHS) {
+    const pipeline = sharp(inputPath).rotate().resize({
+      width,
+      withoutEnlargement: true,
+      fit: 'inside'
+    });
+    await pipeline.clone().avif({ quality: 68, effort: 5 })
+      .toFile(path.join(outputDir, `${name}-${width}.avif`));
+    await pipeline.clone().webp({ quality: 78, effort: 5 })
+      .toFile(path.join(outputDir, `${name}-${width}.webp`));
+    await pipeline.clone().jpeg({ quality: 80, progressive: true, mozjpeg: true })
+      .toFile(path.join(outputDir, `${name}-${width}.jpg`));
   }
-  console.log(`✓ ${name}`);
+  console.log(`✓ Optimized ${path.basename(inputPath)}`);
 }
 
-async function run() {
-  for (const { input, output } of JOBS) {
-    if (!fs.existsSync(input)) continue;
-    for (const f of fs.readdirSync(input).filter(f => /\.(jpe?g|png|webp)$/i.test(f))) {
-      await optimize(path.join(input, f), output);
+async function main() {
+  let count = 0;
+  for (const job of JOBS) {
+    if (!fs.existsSync(job.input)) continue;
+    const files = fs.readdirSync(job.input)
+      .filter(file => /\.(jpe?g|png|webp|tiff?)$/i.test(file));
+    for (const file of files) {
+      await optimizeOne(path.join(job.input, file), job.output);
+      count++;
     }
   }
+  console.log(count ? `✓ ${count} image(s) optimized` : 'ℹ No original images found; skipping image optimization.');
 }
 
-run().catch(err => { console.error(err); process.exit(1); });
+main().catch(error => {
+  console.error('Image optimization failed:', error);
+  process.exitCode = 1;
+});
