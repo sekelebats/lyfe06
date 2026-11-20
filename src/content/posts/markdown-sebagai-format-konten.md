@@ -1,4 +1,3 @@
-
 ---
 title: "Markdown sebagai Format Konten"
 slug: "markdown-sebagai-format-konten"
