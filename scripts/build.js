@@ -3,7 +3,7 @@ const path = require('node:path');
 const matter = require('gray-matter');
 const { marked } = require('marked');
 
-const ROOT = process.cwd();
+const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'src/content');
 const PUBLIC = path.join(ROOT, 'public');
 const SITE_URL = (process.env.SITE_URL || 'https://awwra.id').replace(/\/+$/, '');
@@ -20,6 +20,8 @@ const slugify = value => String(value || '').trim().toLowerCase()
   .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
   .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const validSlug = value => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+const safeDate = value => { const date = new Date(value); return Number.isNaN(date.getTime()) ? new Date('2000-01-01T00:00:00Z') : date; };
+const displayDate = value => safeDate(value).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
 function readCollection(folder, type) {
   const dir = path.join(SRC, folder);
@@ -89,13 +91,13 @@ function nav() {
   <nav class="site-nav" aria-label="Navigasi utama" data-pagefind-ignore>
     <div class="nav-inner">
       <a class="brand" href="/" aria-label="${attr(SITE_NAME)} — Beranda">
-        <span class="brand-mark" aria-hidden="true">A</span><span>${esc(SITE_NAME)}</span>
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>${esc(SITE_NAME)}</span>
       </a>
-      <div class="nav-panel is-open" id="nav-panel">
-        <a href="/#karya" class="nav-link">Karya</a>
+      <div class="nav-panel" id="nav-panel" data-nav-panel>
+        <a href="/#karya" class="nav-link">Pendekatan</a>
         <a href="/produk/" class="nav-link">Produk</a>
         <a href="/blog/" class="nav-link">Blog</a>
-        <a href="/#kontak" class="nav-link">Kontak</a>
         <a href="/cari/" class="nav-link nav-search">${icon('search', 16)}<span>Cari</span></a>
       </div>
       <div class="nav-actions">
@@ -171,7 +173,7 @@ function productCard(product) {
 
 function postCard(post) {
   return `<article class="post-card">
-    <div class="post-meta"><time datetime="${attr(new Date(post.date).toISOString())}">${new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time>${(post.tags || []).slice(0, 2).map(tag => `<span>${esc(tag)}</span>`).join('')}</div>
+    <div class="post-meta"><time datetime="${attr(safeDate(post.date).toISOString())}">${displayDate(post.date)}</time>${(post.tags || []).slice(0, 2).map(tag => `<span>${esc(tag)}</span>`).join('')}</div>
     <h2 class="post-title"><a href="/blog/${attr(post.slug)}/">${esc(post.title)}</a></h2>
     <p class="post-excerpt">${esc(post.excerpt || post.description)}</p>
     <a class="text-link" href="/blog/${attr(post.slug)}/">Baca tulisan ${icon('arrow', 14)}</a>
@@ -179,37 +181,93 @@ function postCard(post) {
 }
 
 function home(products, posts) {
+  const approach = [
+    {
+      number: '01',
+      title: 'Markdown & Git',
+      text: 'Saya suka menulis dengan Markdown dan mengelola perubahan menggunakan Git. Konten tetap berupa teks yang sederhana, portabel, dan mudah dirawat.'
+    },
+    {
+      number: '02',
+      title: 'Static first',
+      text: 'Saya menyukai website statis: HTML yang sudah disiapkan saat build, runtime yang minimal, dan lebih sedikit hal yang perlu berjalan di browser.'
+    },
+    {
+      number: '03',
+      title: 'Minimal, fast & light',
+      text: 'Saya memilih stack seperlunya, menjaga halaman tetap cepat dan ringan, serta membangun dengan pendekatan mobile-first.'
+    }
+  ];
+
+  const approachCards = approach.map(item => `
+    <article class="approach-item">
+      <span class="approach-number">${item.number}</span>
+      <h3>${esc(item.title)}</h3>
+      <p>${esc(item.text)}</p>
+    </article>
+  `).join('');
+
+  const visibleProducts = products.slice(0, 3);
+  const visiblePosts = posts.slice(0, 3);
+
   const body = `<main id="main-content" class="page-shell">
     <div data-pagefind-body>
-      <header class="hero">
-        <p class="eyebrow">Independent digital studio</p>
-        <h1 class="hero-title" data-pagefind-meta="title">Membangun hal digital yang <em>berarti.</em></h1>
-        <p class="hero-copy">Ruang untuk karya, produk, dan tulisan tentang web yang cepat, tenang, serta mudah dirawat.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#karya">Jelajahi karya</a><a class="button button-quiet" href="/blog/">Baca tulisan ${icon('arrow', 15)}</a></div>
-        <p class="hero-note">Static-first · Thoughtful design · Built to last</p>
+      <header class="hero" aria-labelledby="home-title">
+        <p class="eyebrow">Static · Git · Markdown</p>
+        <h1 class="hero-title" id="home-title">I like simple things <span>built to last.</span></h1>
+        <div class="hero-copy">
+          <p>Saya suka Markdown, Git, dan website statis. Saya menikmati cara kerja yang sederhana: konten sebagai teks, perubahan tercatat, dan halaman yang sudah siap disajikan.</p>
+          <p>Saya menyukai stack yang minimalis, fast, light, dan built to last. Dengan pendekatan mobile-first, performa bukan tambahan, tetapi bagian dari desain sejak awal.</p>
+        </div>
+        <ul class="hero-principles" aria-label="Prinsip yang saya sukai">
+          <li>Minimal stack</li>
+          <li>Fast &amp; light</li>
+          <li>Static first</li>
+          <li>Mobile-first</li>
+        </ul>
       </header>
 
-      <section class="content-section" id="karya" aria-labelledby="karya-title">
-        <div class="section-heading"><div><p class="eyebrow">01 / Yang dikerjakan</p><h2 id="karya-title" class="section-title">Karya dengan tujuan.</h2></div><p class="section-intro">Dari ide sederhana menjadi pengalaman digital yang jelas dan fungsional.</p></div>
-        <div class="work-grid">
-          <article class="work-item"><span class="work-number">01</span><h3>Website &amp; Blog</h3><p>Website statis yang cepat, terstruktur, dan nyaman dibaca di berbagai ukuran layar.</p><a href="/blog/" class="text-link">Jelajahi tulisan ${icon('arrow', 14)}</a></article>
-          <article class="work-item"><span class="work-number">02</span><h3>Produk Digital</h3><p>Produk kecil dengan fungsi yang jelas, dibuat tanpa kompleksitas yang tidak diperlukan.</p><a href="/produk/" class="text-link">Lihat produk ${icon('arrow', 14)}</a></article>
-          <article class="work-item"><span class="work-number">03</span><h3>Eksperimen Web</h3><p>Eksplorasi desain, performa, dan teknologi web yang bisa dipakai dalam jangka panjang.</p><a href="/blog/" class="text-link">Baca catatan ${icon('arrow', 14)}</a></article>
+      <section class="content-section approach-section" id="karya" aria-labelledby="approach-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">My approach</p>
+            <h2 class="section-title" id="approach-title">Less complexity, more clarity.</h2>
+          </div>
+          <p class="section-intro">Prinsip sederhana yang memandu cara saya membuat dan merawat sesuatu di web.</p>
         </div>
+        <div class="approach-grid">${approachCards}</div>
       </section>
 
       <section class="content-section" id="produk" aria-labelledby="produk-title">
-        <div class="section-heading"><div><p class="eyebrow">02 / Katalog</p><h2 id="produk-title" class="section-title">Produk pilihan.</h2></div><a class="text-link" href="/produk/">Semua produk ${icon('arrow', 14)}</a></div>
-        <div class="product-grid">${products.slice(0, 3).map(productCard).join('') || '<p>Belum ada produk.</p>'}</div>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Selected products</p>
+            <h2 class="section-title" id="produk-title">Products.</h2>
+          </div>
+          <a class="text-link" href="/produk/">Semua produk ${icon('arrow', 14)}</a>
+        </div>
+        <div class="product-grid">${visibleProducts.map(productCard).join('') || '<p class="empty-state">Belum ada produk.</p>'}</div>
       </section>
 
-      <section class="content-section" id="tulisan" aria-labelledby="tulisan-title">
-        <div class="section-heading"><div><p class="eyebrow">03 / Catatan</p><h2 id="tulisan-title" class="section-title">Tulisan terbaru.</h2></div><a class="text-link" href="/blog/">Semua tulisan ${icon('arrow', 14)}</a></div>
-        <div class="post-list">${posts.slice(0, 3).map(postCard).join('') || '<p>Belum ada tulisan.</p>'}</div>
+      <section class="content-section" id="blog" aria-labelledby="blog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Writing &amp; notes</p>
+            <h2 class="section-title" id="blog-title">Latest writing.</h2>
+          </div>
+          <a class="text-link" href="/blog/">Semua tulisan ${icon('arrow', 14)}</a>
+        </div>
+        <div class="post-list">${visiblePosts.map(postCard).join('') || '<p class="empty-state">Belum ada tulisan.</p>'}</div>
       </section>
     </div>
   </main>`;
-  return layout({ title: `${SITE_NAME} — Studio Digital Independen`, description: SITE_DESC, canonical: `${SITE_URL}/`, body });
+
+  return layout({
+    title: `${SITE_NAME} — Static, Git & Markdown`,
+    description: 'Saya suka Markdown, Git, website statis, serta stack minimalis yang fast, light, mobile-first, dan built to last.',
+    canonical: `${SITE_URL}/`,
+    body
+  });
 }
 
 function productsPage(products) {
@@ -253,7 +311,7 @@ function blogPost(post) {
   const body = `<main id="main-content" class="page-shell">
     <div data-pagefind-body>
       <article class="article">
-        <header class="article-header"><a class="back-link" href="/blog/">← Semua tulisan</a><p class="eyebrow">Catatan / Awwra</p><h1 class="article-title" data-pagefind-meta="title">${esc(post.title)}</h1><div class="article-meta"><time datetime="${attr(new Date(post.date).toISOString())}">${new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</time>${(post.tags || []).map(tag => `<span>${esc(tag)}</span>`).join('')}</div><p class="article-description">${esc(post.excerpt || post.description)}</p>${post.cover ? `<div class="article-cover">${picture(post.cover, post.title, '(max-width: 800px) 100vw, 760px', 1200, 675)}</div>` : ''}</header>
+        <header class="article-header"><a class="back-link" href="/blog/">← Semua tulisan</a><p class="eyebrow">Catatan / Awwra</p><h1 class="article-title" data-pagefind-meta="title">${esc(post.title)}</h1><div class="article-meta"><time datetime="${attr(safeDate(post.date).toISOString())}">${displayDate(post.date)}</time>${(post.tags || []).map(tag => `<span>${esc(tag)}</span>`).join('')}</div><p class="article-description">${esc(post.excerpt || post.description)}</p>${post.cover ? `<div class="article-cover">${picture(post.cover, post.title, '(max-width: 800px) 100vw, 760px', 1200, 675)}</div>` : ''}</header>
         <div class="prose">${marked.parse(post.body || '')}</div>
         <div class="share-tools" data-pagefind-ignore><button class="share-button" type="button" data-share>${icon('share', 16)} Bagikan tulisan</button><span class="share-status" aria-live="polite"></span></div>
       </article>
@@ -301,7 +359,7 @@ function main() {
     console.warn('ℹ Inter font file not found. The system font fallback will be used.');
   }
   const products = readCollection('products', 'product').sort((a, b) => Number(a.order || 99) - Number(b.order || 99));
-  const posts = readCollection('posts', 'post').sort((a, b) => new Date(b.date) - new Date(a.date));
+  const posts = readCollection('posts', 'post').sort((a, b) => safeDate(b.date) - safeDate(a.date));
 
   write('index.html', home(products, posts));
   write('produk/index.html', productsPage(products));
