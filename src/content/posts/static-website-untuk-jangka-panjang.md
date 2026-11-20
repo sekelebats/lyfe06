@@ -1,5 +1,5 @@
 ---
-title: "VOC: The Dutch Trading Company That Ruled the Archipelago for Nearly 200 Years"
+title: "VOC, The Dutch Trading Company That Ruled the Archipelago for Nearly 200 Years"
 slug: "static-website-untuk-jangka-panjang"
 date: 2026-11-18
 draft: false
