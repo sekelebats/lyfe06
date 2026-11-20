@@ -1,14 +1,42 @@
+
+# Dependencies
 node_modules/
-public/fonts/
-public/media/
-public/*.html
-public/produk/
-public/blog/
-public/rss.xml
-public/sitemap.xml
-public/robots.txt
-public/_headers
-public/_redirects
-public/favicon.svg
-.DS_Store
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Netlify
+.netlify/
+
+# Cloudflare / Wrangler
 .wrangler/
+
+# Cache
+.cache/
+.parcel-cache/
+.npm/
+
+# Build artifacts
+coverage/
+dist/
+.tmp/
+temp/
+
+# Generated Pagefind index
+public/pagefind/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
