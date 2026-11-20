@@ -5,6 +5,7 @@ date: 2026-11-12
 draft: false
 description: "Memahami pendekatan mobile-first, performa website, optimasi aset, dan pentingnya pengalaman pengguna pada perangkat mobile."
 excerpt: "Website yang ringan bukan hanya tentang ukuran file, tetapi juga tentang pengalaman pengguna."
+cover: "https://fzhassets.netlify.app/images/mwc5z5el-h0jphhvp/640.avif"
 tags:
   - mobile-first
   - performance
