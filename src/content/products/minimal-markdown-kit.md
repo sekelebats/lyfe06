@@ -1,4 +1,3 @@
-
 ---
 name: "Minimal Markdown Kit"
 slug: "minimal-markdown-kit"
