@@ -1,4 +1,3 @@
-
 ---
 name: "Minimal Desk Notebook"
 slug: "minimal-desk-notebook"
