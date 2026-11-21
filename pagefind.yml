@@ -1,13 +1,17 @@
-# Pagefind hanya mengindeks isi utama yang diberi data-pagefind-body.
-site: public
+# Folder hasil build Eleventy
+site: _site
+
+# Folder hasil indeks pencarian
 output_subdir: pagefind
+
+# Indeks hanya elemen yang memiliki data-pagefind-body
 root_selector: "[data-pagefind-body]"
+
+# Elemen yang tidak perlu masuk indeks
 exclude_selectors:
   - "[data-pagefind-ignore]"
-  - "script"
-  - "style"
-  - "nav"
-  - "footer"
   - ".share-tools"
   - ".search-ui"
+
+# Paksa satu indeks bahasa Indonesia
 force_language: id
