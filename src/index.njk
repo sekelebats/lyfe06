@@ -28,12 +28,7 @@ permalink: /
     {% for post in collections.posts %}
       <article class="post" data-tag="{{ post.data.tag }}">
         <h2 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-        <div class="post-actions">
-          <time class="post-date" datetime="{{ post.date | dateIso }}">{{ post.date | dateDisplay }}</time>
-          <button class="share-button" type="button" data-share-url="{{ post.url }}" data-share-title="{{ post.data.title | escape }}" aria-label="Share {{ post.data.title | escape }}" title="Share">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"></path></svg>
-          </button>
-        </div>
+        <time class="post-date" datetime="{{ post.date | dateIso }}">{{ post.date | dateDisplay }}</time>
       </article>
     {% else %}
       <p class="empty">No writings yet.</p>
