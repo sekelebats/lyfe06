@@ -9,6 +9,7 @@
   <meta name="description" content="{{ description or site.description }}">
   <link rel="canonical" href="{{ (site.url + page.url) | escape }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
   <script>
     (() => {
@@ -36,24 +37,23 @@
   {% endif %}
 </head>
 <body>
-  <div class="container">
-    <header class="header">
+  <header class="header">
+    <div class="container header-inner">
       <a class="brand" href="/" aria-label="FZH Studio home">FZH Studio</a>
       <div class="header-actions">
-        <a class="icon-link search-shortcut" href="/#search" aria-label="Search writings" title="Search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
-        </a>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch color theme">
           <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
         </button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main id="main-content">
-      {{ content | safe }}
-    </main>
+  <main class="container" id="main-content">
+    {{ content | safe }}
+  </main>
 
-    <footer class="footer">
+  <footer class="footer">
+    <div class="container footer-inner">
       <span class="footer-copy">© {{ "" | currentYear }} FZH Studio</span>
       <nav class="footer-nav" aria-label="Footer">
         <a href="/feed.xml">RSS</a>
@@ -61,8 +61,8 @@
         <a href="/contact/">Contact</a>
         <a href="/policy/">Policy</a>
       </nav>
-    </footer>
-  </div>
+    </div>
+  </footer>
   <script src="/assets/js/site.js" defer></script>
   {% if page.url == "/" %}
     <script src="/assets/js/search.js" defer></script>
