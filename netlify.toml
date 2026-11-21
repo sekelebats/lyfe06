@@ -1,8 +1,7 @@
-
 [build]
   command = "npm run build"
   publish = "_site"
 
 [build.environment]
-  NODE_VERSION = "22.23.5"
-  SITE_URL = "https://lyfe06.netlify.app"
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--include=dev"
