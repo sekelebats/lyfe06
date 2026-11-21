@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ site.language | default('en') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <title>{% if title and title != site.name %}{{ title }} — {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ (site.url + page.url) | escape }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("fzh-theme");
+        const theme = saved === "dark" || saved === "light"
+          ? saved
+          : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {}
+    })();
+  </script>
+  {% if page.url == "/" %}
+    <meta property="og:type" content="website">
+  {% else %}
+    <meta property="og:type" content="article">
+  {% endif %}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ (site.url + page.url) | escape }}">
+  {% if date %}
+    <meta property="article:published_time" content="{{ date | dateIso }}">
+  {% endif %}
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="/" aria-label="FZH Studio home">FZH Studio</a>
+      <div class="header-actions">
+        <a class="icon-link search-shortcut" href="/#search" aria-label="Search writings" title="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+      <span class="footer-copy">© {{ "" | currentYear }} FZH Studio</span>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/feed.xml">RSS</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/policy/">Policy</a>
+      </nav>
+    </footer>
+  </div>
+  <script src="/assets/js/site.js" defer></script>
+  {% if page.url == "/" %}
+    <script src="/assets/js/search.js" defer></script>
+  {% endif %}
+</body>
+</html>
