@@ -4,8 +4,8 @@
   const icon = document.getElementById("themeIcon");
 
   const icons = {
-    moon: '<path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5a8.5 8.5 0 1 0 12 12Z"></path>',
-    sun: '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>'
+    sun: '<circle cx="12" cy="12" r="3.6"></circle><path d="M12 2.5v2M12 19.5v2M4.7 4.7l1.4 1.4m11.8 11.8 1.4 1.4M2.5 12h2m15 0h2M4.7 19.3l1.4-1.4M17.9 6.1l1.4-1.4"></path>',
+    moon: '<path d="M19.2 15.1A8 8 0 0 1 8.9 4.8 8.3 8.3 0 1 0 19.2 15.1Z"></path>'
   };
 
   function applyTheme(theme, persist = true) {
@@ -13,7 +13,7 @@
     root.dataset.theme = selected;
     root.style.colorScheme = selected;
 
-    if (icon) icon.innerHTML = selected === "dark" ? icons.sun : icons.moon;
+    if (icon) icon.innerHTML = selected === "dark" ? icons.moon : icons.sun;
     if (toggle) {
       toggle.setAttribute("aria-label", selected === "dark" ? "Switch to light mode" : "Switch to dark mode");
       toggle.title = selected === "dark" ? "Switch to light mode" : "Switch to dark mode";
