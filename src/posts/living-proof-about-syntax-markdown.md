@@ -48,4 +48,6 @@ declared bankrupt with enormous debts. All of its assets, territories, and debts
 
 The VOC's legacy in Indonesia is long and complex. On one hand, the VOC built trading infrastructure, port cities, and an administrative network that later became the foundation of the Dutch East Indies colonial system. But on the other hand, the VOC's forced monopoly practices, forced labor, and violence left deep historical wounds, including the destruction of local economies and the suffering of the archipelago's people during nearly two centuries of their rule.
 
+![voc](https://fzhassets.netlify.app/images/mwc5xenv-nuhyzijl/1280.avif)
+
 In my opinion, the VOC is interesting to study precisely because of its unique status — it was not a state, yet it had powers equivalent to a state; it was not an official army, yet it fought wars and colonized for the profit of its shareholders. The VOC is an early example of how capital and business power can turn into political and military power that changes the course of a nation's history.
