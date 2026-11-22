@@ -1,23 +1,55 @@
+
 ---
 layout: layouts/base.njk
 ---
 <article class="reader">
+
   <a href="/" class="back-link">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7M19 12H5"></path></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m12 19-7-7 7-7M19 12H5"></path>
+    </svg>
     Back
   </a>
 
   <header class="article-header">
+
     <div class="article-meta">
-      <time datetime="{{ date | dateIso }}">{{ date | dateDisplay }}</time>
-      <span aria-hidden="true">·</span>
-      <a class="article-tag" href="/#tag={{ tag }}">{{ category }}</a>
-      <button class="share-button article-share" type="button" data-share-url="{{ page.url }}" data-share-title="{{ title | escape }}" aria-label="Share this article" title="Share">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"></path></svg>
+
+      <time datetime="{{ date | dateIso }}">
+        {{ date | dateDisplay }}
+      </time>
+
+      {% if tag %}
+        <span aria-hidden="true">·</span>
+        <a
+          class="article-tag"
+          href="/#tag={{ tag | lower }}"
+        >
+          {{ category or tag }}
+        </a>
+      {% endif %}
+
+      <button
+        class="share-button article-share"
+        type="button"
+        data-share-url="{{ page.url }}"
+        data-share-title="{{ title | escape }}"
+        aria-label="Share this article"
+        title="Share"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"></path>
+        </svg>
         <span>Share</span>
       </button>
+
     </div>
+
     <h1 class="article-title">{{ title }}</h1>
+
   </header>
 
   <div class="article-content" data-pagefind-body>
