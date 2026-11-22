@@ -1,3 +1,4 @@
+
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 export default function (eleventyConfig) {
@@ -6,9 +7,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("dateDisplay", (date) => {
     const value = date instanceof Date ? date : new Date(date);
     if (Number.isNaN(value.getTime())) return "";
+
     const day = String(value.getDate()).padStart(2, "0");
     const month = String(value.getMonth() + 1).padStart(2, "0");
     const year = String(value.getFullYear()).slice(-2);
+
     return `${day}.${month}.${year}`;
   });
 
@@ -23,9 +26,26 @@ export default function (eleventyConfig) {
     return new URL(url, base).href;
   });
 
+  // All posts, sorted by newest date.
   eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi.getFilteredByGlob("src/posts/*.md")
+    return collectionApi
+      .getFilteredByGlob("src/posts/*.md")
       .sort((a, b) => b.date - a.date);
+  });
+
+  // Automatically collect unique tags from post front matter.
+  eleventyConfig.addCollection("tagList", (collectionApi) => {
+    const tags = new Set();
+
+    for (const post of collectionApi.getFilteredByGlob("src/posts/*.md")) {
+      const value = post.data.tag;
+
+      if (typeof value === "string" && value.trim()) {
+        tags.add(value.trim().toLowerCase());
+      }
+    }
+
+    return [...tags].sort((a, b) => a.localeCompare(b));
   });
 
   eleventyConfig.addPlugin(feedPlugin, {
