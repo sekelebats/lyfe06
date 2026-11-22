@@ -1,3 +1,4 @@
+
 ---
 layout: layouts/base.njk
 title: FZH Studio
@@ -7,44 +8,99 @@ permalink: /
 <section class="home-page">
   <div class="search-wrap" id="search">
     <label class="sr-only" for="searchInput">Search writings</label>
+
     <div class="search-field">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
-      <input id="searchInput" type="search" placeholder="Search writings..." autocomplete="off">
-      <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"></path></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-4-4"></path>
+      </svg>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search writings..."
+        autocomplete="off"
+      >
+
+      <button
+        id="clearSearch"
+        class="clear-search"
+        type="button"
+        aria-label="Clear search"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m18 6-12 12M6 6l12 12"></path>
+        </svg>
       </button>
     </div>
-    <div id="searchResults" class="search-results" aria-live="polite"></div>
+
+    <div
+      id="searchResults"
+      class="search-results"
+      aria-live="polite"
+    ></div>
   </div>
 
   <nav class="tags" id="tagNavigation" aria-label="Filter by tag">
-  <button class="tag active" type="button" data-tag="all" aria-pressed="true">
-    All
-  </button>
 
-  {% for group in collections.posts | groupby("data.tag") %}
-    {% if group.grouper %}
+    <button
+      class="tag active"
+      type="button"
+      data-tag="all"
+      aria-pressed="true"
+    >
+      All
+    </button>
+
+    {% for tag in collections.tagList %}
       <button
         class="tag"
         type="button"
-        data-tag="{{ group.grouper | lower }}"
+        data-tag="{{ tag }}"
         aria-pressed="false"
       >
-        {{ group.grouper | title }}
+        {{ tag | title }}
       </button>
-    {% endif %}
-  {% endfor %}
-</nav>
+    {% endfor %}
 
-  <section class="post-list" id="postList" aria-label="Writings">
+  </nav>
+
+  <section
+    class="post-list"
+    id="postList"
+    aria-label="Writings"
+  >
     {% for post in collections.posts %}
-      <article class="post" data-tag="{{ post.data.tag }}">
-        <h2 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-        <time class="post-date" datetime="{{ post.date | dateIso }}">{{ post.date | dateDisplay }}</time>
+
+      <article
+        class="post"
+        data-tag="{{ post.data.tag | lower }}"
+      >
+        <h2 class="post-title">
+          <a href="{{ post.url }}">
+            {{ post.data.title }}
+          </a>
+        </h2>
+
+        <time
+          class="post-date"
+          datetime="{{ post.date | dateIso }}"
+        >
+          {{ post.date | dateDisplay }}
+        </time>
       </article>
+
     {% else %}
       <p class="empty">No writings yet.</p>
     {% endfor %}
   </section>
-  <p class="empty filter-empty" id="filterEmpty" hidden>No writings found.</p>
+
+  <p
+    class="empty filter-empty"
+    id="filterEmpty"
+    hidden
+  >
+    No writings found.
+  </p>
 </section>
