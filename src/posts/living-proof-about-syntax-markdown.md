@@ -18,7 +18,7 @@ What made the *VOC different from an ordinary trading company* were the special 
 
 > The VOC's headquarters in the archipelago was located in **Batavia**, now **Jakarta**, which was seized and rebuilt by Jan Pieterszoon Coen in 1619 on the ruins of the city of Jayakarta. Batavia was chosen because of its strategic position on the shipping route between the Sunda Strait and the Strait of Malacca, and because it was close to the main spice-producing centers.
 
-Besides Batavia, the VOC also built a network of trading posts and forts in various parts of the archipelago: the Moluccas, ~especially Ambon and Banda,~ as the center of cloves and nutmeg; Makassar in Sulawesi; Banten in West Java; and areas in Sumatra and Kalimantan. Each post was headed by a governor or resident who reported to the center in Batavia.
+Besides Batavia, the VOC also built a network of trading posts and forts in various parts of the archipelago: the Moluccas, ~~especially Ambon and Banda,~~ as the center of cloves and nutmeg; Makassar in Sulawesi; Banten in West Java; and areas in Sumatra and Kalimantan. Each post was headed by a governor or resident who reported to the center in Batavia.
 
 [The VOC's](https://fzh.netlify.app) way of operating was very distinctive and brutal for its time. They implemented a strict monopoly system through forced agreements with local kingdoms. Kingdoms that lost wars or were trapped in trading debts were forced to sign contracts requiring them to sell their produce, especially spices, only to the VOC, at prices determined unilaterally by the VOC itself.
 
@@ -50,4 +50,6 @@ The VOC's legacy in Indonesia is long and complex. On one hand, the VOC built tr
 
 ![voc](https://fzhassets.netlify.app/images/mwc5xenv-nuhyzijl/1280.avif)
 
-In my opinion, the VOC is interesting to study precisely because of its unique status — it was not a state, yet it had powers equivalent to a state; it was not an official army, yet it fought wars and colonized for the profit of its shareholders. The VOC is an early example of how capital and business power can turn into political and military power that changes the course of a nation's history.
+In my opinion, the VOC is interesting to study precisely because of its unique status — it was not a state, yet it had powers equivalent to a state; it was not an official army, yet it fought wars and colonized for the profit of its shareholders.
+
+- The VOC is an early example of how capital and business power can turn into political and military power that changes the course of a nation's history.
