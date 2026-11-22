@@ -1,4 +1,3 @@
-
 (() => {
   const input = document.getElementById("searchInput");
   const results = document.getElementById("searchResults");
